@@ -1,0 +1,463 @@
+/* =================================================================
+   🌌 GALAXY MASTER THEME - VERSION 1.1.0
+   ================================================================= */
+
+/* PRÉREQUIS :
+   1. Plugin "Style Settings" (pour configurer les couleurs)
+   2. Plugin "Pseudo Mica" (pour la transparence sur Windows)
+   3. Police "Rajdhani" (chargée automatiquement)
+*/
+
+/* SOMMAIRE :
+   1. SETTINGS (Style Settings Plugin)
+   2. VARIABLES (Définitions des couleurs)
+   3. GLOBAL (Background & Ambiance)
+   4. SYSTEME HUD (Design des boîtes/Callouts)
+   5. MODULE : NAVIGATION (La grille de boutons)
+   6. MODULE : DATAVIEW (Les tableaux futuristes)
+   7. EXTRAS (Tags & Layouts)
+   8. MODULE : GALAXY FOLDERS (Dossiers Colorés)
+   9. MODULE : TYPOGRAPHIE (Fonts Sci-Fi)
+   10. MODULE : GRAPH VIEW (Constellation)
+   11. MODULE : INTERFACE COMMANDER (Onglets & Sidebars)
+   12. MODULE : GRAPH CONTROLS (Panneau Flottant)
+*/
+
+/* =================================================================
+   1. SETTINGS (PLUGIN STYLE SETTINGS)
+   ================================================================= */
+/* @settings
+
+name: Galaxy
+id: hud-galaxy
+settings:
+    - 
+        id: hud-title
+        title: 🎨 Personnalisation Générale
+        type: heading
+        level: 1
+    - 
+        id: hud-blur
+        title: Intensité du Flou (HUD)
+        type: variable-number
+        default: 8
+        format: px
+    - 
+        id: hud-radius
+        title: Arrondi des coins
+        type: variable-number
+        default: 14
+        format: px
+    - 
+        id: hud-opacity
+        title: Opacité du fond HUD
+        type: variable-number
+        default: 0.75
+        format: 
+        min: 0
+        max: 1
+        step: 0.05
+
+    - 
+        id: icons-title
+        title: 🔮 Gestion des Icônes
+        type: heading
+        level: 2
+    - 
+        id: icon-nav
+        title: Icône Navigation (NAV)
+        type: variable-text
+        default: "🧭"
+    - 
+        id: icon-status
+        title: Icône Status (STATUS)
+        type: variable-text
+        default: "📊"
+    - 
+        id: icon-projects
+        title: Icône Projets (PROJECTS)
+        type: variable-text
+        default: "🚀"
+
+    - 
+        id: colors-title
+        title: 🌈 Couleurs & Dossiers
+        type: heading
+        level: 2
+    - 
+        id: color-nav
+        title: Couleur Navigation (Dossier 1 & Onglets)
+        type: variable-color
+        format: rgb
+        default: '#78B4FF'
+    - 
+        id: color-status
+        title: Couleur Status (Dossier 2)
+        type: variable-color
+        format: rgb
+        default: '#B4FFB4'
+    - 
+        id: color-projects
+        title: Couleur Projets (Dossier 3)
+        type: variable-color
+        format: rgb
+        default: '#FFB478'
+    - 
+        id: color-folder-4
+        title: Couleur Dossier 4
+        type: variable-color
+        format: hex
+        default: '#bd93f9'
+    - 
+        id: color-folder-5
+        title: Couleur Dossier 5
+        type: variable-color
+        format: hex
+        default: '#ff5555'
+    - 
+        id: color-folder-6
+        title: Couleur Dossier 6
+        type: variable-color
+        format: hex
+        default: '#f1fa8c'
+*/
+
+/* =================================================================
+   2. VARIABLES (COULEURS & LOGIQUE)
+   ================================================================= */
+:root {
+  /* VALEURS PAR DÉFAUT */
+  --hud-blur: 8px; 
+  --hud-radius: 14px;
+  --hud-opacity: 0.75;
+  
+  --color-nav: 120, 180, 255;
+  --color-status: 180, 255, 180;
+  --color-projects: 255, 180, 120;
+  
+  --color-folder-4: #bd93f9;
+  --color-folder-5: #ff5555;
+  --color-folder-6: #f1fa8c;
+
+  /* Icônes par défaut */
+  --icon-nav: "🧭";
+  --icon-status: "📊";
+  --icon-projects: "🚀";
+}
+
+/* Assignation dynamique Callouts */
+.callout[data-callout="nav"]      { --hud-color: var(--color-nav);      --hud-bg: 15, 25, 40; --hud-icon: var(--icon-nav); }
+.callout[data-callout="status"]   { --hud-color: var(--color-status);   --hud-bg: 20, 35, 25; --hud-icon: var(--icon-status); }
+.callout[data-callout="projects"] { --hud-color: var(--color-projects); --hud-bg: 40, 25, 15; --hud-icon: var(--icon-projects); }
+
+/* =================================================================
+   3. GLOBAL (BACKGROUND & AMBIANCE)
+   ================================================================= */
+.markdown-reading-view {
+  background: radial-gradient(ellipse at bottom, #0a0f1c 0%, #000010 100%);
+  background-attachment: fixed;
+}
+
+/* =================================================================
+   4. SYSTEME HUD (STRUCTURE DES CALLOUTS)
+   ================================================================= */
+.callout[data-callout="nav"],
+.callout[data-callout="status"],
+.callout[data-callout="projects"] {
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.2rem;
+  
+  border-radius: var(--hud-radius) !important;
+  background: rgba(var(--hud-bg), var(--hud-opacity)) !important;
+  backdrop-filter: blur(var(--hud-blur)) !important;
+  
+  border: 1px solid rgba(var(--hud-color), 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 10px rgba(var(--hud-color), 0.15);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Effet de survol */
+.callout[data-callout="nav"]:hover,
+.callout[data-callout="status"]:hover,
+.callout[data-callout="projects"]:hover {
+  transform: translateY(-3px);
+  border-color: rgba(var(--hud-color), 0.6);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--hud-color), 0.25);
+}
+
+.callout-title {
+  font-family: 'Inter', system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Remplacement Icônes */
+.callout-icon svg { display: none; }
+.callout-icon::before {
+  content: var(--hud-icon);
+  font-size: 1.1rem;
+  margin-right: 0.4rem;
+  line-height: 1;
+}
+
+/* =================================================================
+   5. MODULE : NAVIGATION (HOME BUTTONS)
+   ================================================================= */
+.callout[data-callout="nav"] .callout-content ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); 
+    gap: 15px;
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+}
+
+.callout[data-callout="nav"] .callout-content li {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    text-align: center;
+    padding: 15px 5px;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    list-style-type: none !important;
+    margin-left: 0 !important;
+}
+.callout[data-callout="nav"] .callout-content li::marker { content: none !important; display: none; }
+
+.callout[data-callout="nav"] .callout-content li:hover {
+    background: rgba(var(--hud-color), 0.25);
+    border-color: rgba(var(--hud-color), 0.6);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.callout[data-callout="nav"] a {
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 0.95em;
+    color: #DCE1E8 !important; 
+    display: block;
+}
+.callout[data-callout="nav"] a span { color: #DCE1E8 !important; }
+
+/* =================================================================
+   6. MODULE : DATAVIEW (TABLEAUX FUTURISTES)
+   ================================================================= */
+.callout table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+.callout table th, .callout table td {
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+  color: #eee;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.callout table tr:last-child td { border-bottom: none; }
+.callout table tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
+
+/* Dashboard Status */
+.callout[data-callout="status"] table.dataview {
+    border-collapse: separate; 
+    border-spacing: 0 4px;
+    margin-top: 10px;
+}
+.callout[data-callout="status"] table.dataview thead th {
+    background: transparent !important;
+    border-bottom: 2px solid rgba(var(--hud-color), 0.3);
+    color: rgba(var(--hud-color), 1);
+    text-transform: uppercase;
+    font-size: 0.7em;
+    letter-spacing: 1px;
+    padding-bottom: 8px;
+}
+.callout[data-callout="status"] table.dataview tbody tr {
+    background: rgba(255, 255, 255, 0.03) !important;
+    transition: all 0.2s ease-in-out;
+}
+.callout[data-callout="status"] table.dataview tbody tr:hover {
+    background: rgba(var(--hud-color), 0.15) !important;
+    transform: scale(1.01);
+    box-shadow: -2px 0 0 rgba(var(--hud-color), 0.8);
+}
+.callout[data-callout="status"] table.dataview td {
+    border: none !important;
+    padding: 8px 12px;
+}
+
+/* =================================================================
+   7. EXTRAS (TAGS & LAYOUTS)
+   ================================================================= */
+.callout tr[data-tags~="#Stage/SFR"] td     { background: rgba(120, 180, 255, 0.12); box-shadow: inset 2px 0 0 rgba(120, 180, 255, 0.5); }
+.callout tr[data-tags~="#Stage/Astéria"] td { background: rgba(255, 180, 120, 0.12); box-shadow: inset 2px 0 0 rgba(255, 180, 120, 0.5); }
+.callout tr[data-tags~="#LifeStyle"] td     { background: rgba(180, 255, 180, 0.12); box-shadow: inset 2px 0 0 rgba(180, 255, 180, 0.5); }
+
+.markdown-reading-view .command-center {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+@media (max-width: 900px) {
+  .markdown-reading-view .command-center { grid-template-columns: 1fr; }
+}
+
+/* =================================================================
+   8. MODULE : GALAXY FOLDERS
+   ================================================================= */
+.nav-folder-children > .nav-folder,
+.nav-files-container > div > .nav-folder {
+  --nav-item-color: var(--folder-color);
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.nav-folder-children > .nav-folder:hover,
+.nav-files-container > div > .nav-folder:hover {
+  filter: brightness(1.2) drop-shadow(0 0 8px var(--folder-color));
+  background-color: rgba(var(--folder-color), 0.1);
+}
+
+/* Assignation Couleurs */
+.nav-files-container > div > .nav-folder:nth-child(11n + 1) { --folder-color: rgb(var(--color-nav)); }
+.nav-files-container > div > .nav-folder:nth-child(11n + 2) { --folder-color: rgb(var(--color-status)); }
+.nav-files-container > div > .nav-folder:nth-child(11n + 3) { --folder-color: rgb(var(--color-projects)); }
+.nav-files-container > div > .nav-folder:nth-child(11n + 4) { --folder-color: var(--color-folder-4); }
+.nav-files-container > div > .nav-folder:nth-child(11n + 5) { --folder-color: var(--color-folder-5); }
+.nav-files-container > div > .nav-folder:nth-child(11n + 6) { --folder-color: var(--color-folder-6); }
+.nav-files-container > div > .nav-folder:nth-child(11n + 7) { --folder-color: #8be9fd; }
+.nav-files-container > div > .nav-folder:nth-child(11n + 8) { --folder-color: #ff79c6; }
+.nav-files-container > div > .nav-folder:nth-child(11n + 9) { --folder-color: #6272a4; }
+.nav-files-container > div > .nav-folder:nth-child(11n + 10) { --folder-color: #50fa7b; }
+.nav-files-container > div > .nav-folder:nth-child(11n + 11) { --folder-color: #ffffff; }
+
+/* =================================================================
+   9. MODULE : TYPOGRAPHIE
+   ================================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap');
+
+h1, h2, h3, h4, h5, h6, .callout-title, .view-header-title {
+    font-family: 'Rajdhani', sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em;
+}
+
+h1 { 
+    background: linear-gradient(to right, #fff, rgba(255,255,255,0.5));
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 700;
+}
+.callout-title { font-size: 1.1em !important; font-weight: 600; }
+
+/* =================================================================
+   10. MODULE : GRAPH VIEW
+   ================================================================= */
+.graph-view.color-fill { background: radial-gradient(circle at center, #1a1f2e 0%, #050505 100%) !important; }
+.graph-view.color-line { color: rgba(var(--color-nav), 0.2); }
+.graph-view.color-fill-tag { color: #ff5555; }
+.graph-view.color-fill-attachment { color: #f1fa8c; }
+.graph-view.color-fill { color: rgb(var(--color-nav)); }
+.graph-view.color-circle { fill: currentColor; stroke: currentColor; filter: drop-shadow(0 0 3px currentColor); }
+.graph-view.color-text { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; font-size: 1.2em; text-shadow: 0 0 5px #000; }
+
+/* Fix Fond Graphique */
+.workspace-leaf-content[data-type="graph"] .view-content,
+.graph-view-container {
+    background: radial-gradient(circle at center, #1a253a 0%, #050505 85%) !important;
+}
+.graph-view-canvas { background: transparent !important; }
+
+/* =================================================================
+   11. MODULE : INTERFACE COMMANDER (UI & SIDEBARS)
+   ================================================================= */
+body {
+    --background-secondary: #0b0e14;
+    --background-primary: #131720;
+    --background-primary-alt: #0f1219;
+}
+
+.workspace-ribbon {
+    background-color: #050505 !important;
+    border-right: 1px solid rgba(var(--color-nav), 0.2);
+}
+.workspace-ribbon-collapse-btn:hover, .side-dock-ribbon-action:hover, .clickable-icon:hover {
+    color: rgb(var(--color-nav)) !important;
+    background: rgba(var(--color-nav), 0.15);
+    box-shadow: 0 0 10px rgba(var(--color-nav), 0.4);
+}
+
+/* ONGLETS ACTIFS (VERSION FINALE NEON) */
+.workspace-tab-header.is-active {
+    background: linear-gradient(to bottom, rgba(var(--color-nav), 0.30) 0%, rgba(var(--color-nav), 0.05) 100%) !important;
+    box-shadow: inset 0 3px 0 0 rgb(var(--color-nav)) !important;
+    color: rgb(var(--color-nav)) !important;
+    font-weight: 700;
+    text-shadow: 0 0 12px rgba(var(--color-nav), 0.6);
+    transition: all 0.3s ease-in-out;
+}
+.workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+    color: rgb(var(--color-nav)) !important;
+    filter: drop-shadow(0 0 5px rgba(var(--color-nav), 0.8));
+}
+.workspace-tab-header.is-active .workspace-tab-header-inner-close-button { color: rgba(var(--color-nav), 0.5) !important; }
+.workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
+    background-color: rgba(255, 80, 80, 0.4);
+    color: #fff !important;
+}
+
+/* Boutons classiques */
+button.mod-cta {
+    background-color: rgba(var(--color-status), 0.2) !important;
+    border: 1px solid rgb(var(--color-status)) !important;
+    color: rgb(var(--color-status)) !important;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 1px;
+    box-shadow: 0 0 5px rgba(var(--color-status), 0.3);
+    transition: all 0.3s ease;
+}
+button.mod-cta:hover {
+    background-color: rgba(var(--color-status), 0.4) !important;
+    box-shadow: 0 0 15px rgba(var(--color-status), 0.6);
+    transform: translateY(-2px);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 6px; background: #0b0e14; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(var(--color-nav), 0.5); }
+
+/* =================================================================
+   12. MODULE : GRAPH CONTROLS (PANNEAU FLOTTANT)
+   ================================================================= */
+
+/* Nettoyage Interne */
+.graph-controls .search-input-container,
+.graph-controls .tree-item,
+.graph-controls .setting-item {
+    background: transparent !important;
+}
+
+/* Le Panneau Principal - Compatible Pseudo Mica */
+body .mod-root .workspace-leaf-content[data-type="graph"] .view-content .graph-controls {
+    /* GRÂCE À PSEUDO MICA : On peut remettre le flou et la transparence ! */
+    background-color: rgba(13, 17, 26, 0.60) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    border: 1px solid rgba(var(--color-nav), 0.3) !important;
+    border-radius: var(--hud-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(var(--color-nav), 0.05) !important;
+
+    /* Optimisation GPU pour éviter le bug (au cas où) */
+    transform: translateZ(0);
+    will-change: transform, backdrop-filter;
+
+    padding: 10px 15px;
+    z-index: 100 !important;
+    transition: all 0.3s ease;
+}
