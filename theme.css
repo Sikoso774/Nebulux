@@ -1,554 +1,336 @@
 /* =================================================================
-   🌌 GALAXY MASTER THEME - VERSION 1.1.0
+   🌌 GALAXY MASTER HUD - FINAL EDITION (v2.0)
+   Fusion: Grid Navigation + Opaque Interface + Neon Tactique
    ================================================================= */
 
 /* PRÉREQUIS :
-   1. Plugin "Style Settings" (pour configurer les couleurs)
-   2. Plugin "Pseudo Mica" (pour la transparence sur Windows)
-   3. Police "Rajdhani" (chargée automatiquement)
-*/
-
-/* SOMMAIRE :
-   1. SETTINGS (Style Settings Plugin)
-   2. VARIABLES (Définitions des couleurs)
-   3. GLOBAL (Background & Ambiance)
-   4. SYSTEME HUD (Design des boîtes/Callouts)
-   5. MODULE : NAVIGATION (La grille de boutons)
-   6. MODULE : DATAVIEW (Les tableaux futuristes)
-   7. EXTRAS (Tags & Layouts)
-   8. MODULE : GALAXY FOLDERS (Dossiers Colorés)
-   9. MODULE : TYPOGRAPHIE (Fonts Sci-Fi)
-   10. MODULE : GRAPH VIEW (Constellation)
-   11. MODULE : INTERFACE COMMANDER (Onglets & Sidebars)
-   12. MODULE : GRAPH CONTROLS (Panneau Flottant)
+   1. Plugin "Style Settings" (Configuration complète)
+   2. Police "Rajdhani" (Importée automatiquement ci-dessous)
+   3. Police Interface "Aptos" (Doit être installée sur votre OS, sinon fallback system)
 */
 
 /* =================================================================
-   0. CONFIGURATION GLOBALE (POLICE)
-   ================================================================= */
-:root {
-    /* Force l'utilisation de Aptos pour l'interface et le texte */
-    --font-text-theme: 'Aptos', sans-serif !important;
-    --font-editor-theme: 'Aptos', sans-serif !important;
-    --font-interface-theme: 'Aptos', sans-serif !important;
-}
-
-
-/* =================================================================
-   1. SETTINGS (PLUGIN STYLE SETTINGS)
+   1. STYLE SETTINGS & VARIABLES
    ================================================================= */
 /* @settings
-
-name: Galaxy
-id: hud-galaxy
+name: Galaxy Master HUD
+id: hud-galaxy-master
 settings:
     - 
-        id: hud-title
-        title: 🎨 Personnalisation Générale
+        id: ui-title
+        title: 🖥️ Interface & Ambiance
         type: heading
         level: 1
     - 
+        id: ui-bg-main
+        title: Fond Principal (Éditeur)
+        type: variable-color
+        format: hex
+        default: '#0a0c12'
+    - 
         id: hud-blur
-        title: Intensité du Flou (HUD)
+        title: Flou du HUD (Glassmorphism)
         type: variable-number
-        default: 8
+        default: 12
         format: px
-    - 
-        id: hud-radius
-        title: Arrondi des coins
-        type: variable-number
-        default: 14
-        format: px
-    - 
-        id: hud-opacity
-        title: Opacité du fond HUD
-        type: variable-number
-        default: 0.75
-        format: 
-        min: 0
-        max: 1
-        step: 0.05
-
-    - 
-        id: icons-title
-        title: 🔮 Gestion des Icônes
-        type: heading
-        level: 2
-    - 
-        id: icon-nav
-        title: Icône Navigation (NAV)
-        type: variable-text
-        default: "🧭"
-    - 
-        id: icon-status
-        title: Icône Status (STATUS)
-        type: variable-text
-        default: "📊"
-    - 
-        id: icon-projects
-        title: Icône Projets (PROJECTS)
-        type: variable-text
-        default: "🚀"
-
     - 
         id: colors-title
-        title: 🌈 Couleurs & Dossiers
+        title: 🎨 Palette Tactique (RGB)
         type: heading
         level: 2
+        description: "Format requis: r, g, b (ex: 120, 180, 255)"
     - 
         id: color-nav
-        title: Couleur Navigation (Dossier 1 & Onglets)
-        type: variable-color
-        format: rgb
-        default: '#78B4FF'
+        title: Couleur Navigation (Bleu Néon)
+        type: variable-text
+        default: "120, 180, 255"
     - 
         id: color-status
-        title: Couleur Status (Dossier 2)
-        type: variable-color
-        format: rgb
-        default: '#B4FFB4'
+        title: Couleur Status (Vert HUD)
+        type: variable-text
+        default: "180, 255, 180"
     - 
         id: color-projects
-        title: Couleur Projets (Dossier 3)
-        type: variable-color
-        format: rgb
-        default: '#FFB478'
-    - 
-        id: color-folder-4
-        title: Couleur Dossier 4
-        type: variable-color
-        format: hex
-        default: '#bd93f9'
-    - 
-        id: color-folder-5
-        title: Couleur Dossier 5
-        type: variable-color
-        format: hex
-        default: '#ff5555'
-    - 
-        id: color-folder-6
-        title: Couleur Dossier 6
-        type: variable-color
-        format: hex
-        default: '#f1fa8c'
+        title: Couleur Projets (Orange Alert)
+        type: variable-text
+        default: "255, 180, 120"
 */
 
-/* =================================================================
-   2. VARIABLES (COULEURS & LOGIQUE)
-   ================================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap');
+
 :root {
-  /* VALEURS PAR DÉFAUT */
-  --hud-blur: 8px; 
-  --hud-radius: 14px;
-  --hud-opacity: 0.75;
-  
-  --color-nav: 120, 180, 255;
-  --color-status: 180, 255, 180;
-  --color-projects: 255, 180, 120;
-  
-  --color-folder-4: #bd93f9;
-  --color-folder-5: #ff5555;
-  --color-folder-6: #f1fa8c;
-
-  /* Icônes par défaut */
-  --icon-nav: "🧭";
-  --icon-status: "📊";
-  --icon-projects: "🚀";
-}
-
-/* Assignation dynamique Callouts */
-.callout[data-callout="nav"]      { --hud-color: var(--color-nav);      --hud-bg: 15, 25, 40; --hud-icon: var(--icon-nav); }
-.callout[data-callout="status"]   { --hud-color: var(--color-status);   --hud-bg: 20, 35, 25; --hud-icon: var(--icon-status); }
-.callout[data-callout="projects"] { --hud-color: var(--color-projects); --hud-bg: 40, 25, 15; --hud-icon: var(--icon-projects); }
-
-/* =================================================================
-   3. GLOBAL (BACKGROUND & AMBIANCE)
-   ================================================================= */
-.markdown-reading-view {
-  background: radial-gradient(ellipse at bottom, #0a0f1c 0%, #000010 100%);
-  background-attachment: fixed;
+    /* --- COULEURS CORE (Modifiables via Style Settings) --- */
+    --color-nav: 120, 180, 255;      /* Bleu Cyan Tactique */
+    --color-status: 180, 255, 180;   /* Vert Bio-Scan */
+    --color-projects: 255, 180, 120; /* Orange Système */
+    
+    /* --- VARIABLES SYSTEME --- */
+    --hud-radius: 14px;
+    --hud-blur: 12px;
+    --hud-frame: 1.5px; /* Épaisseur des traits néon */
+    
+    /* --- TYPOGRAPHIE --- */
+    --font-text-theme: 'Aptos', sans-serif !important;
+    --font-interface-theme: 'Aptos', sans-serif !important;
+    --font-headers: 'Rajdhani', sans-serif !important;
 }
 
 /* =================================================================
-   4. SYSTEME HUD (STRUCTURE DES CALLOUTS)
+   2. GLOBAL & TYPOGRAPHIE
    ================================================================= */
-.callout[data-callout="nav"],
-.callout[data-callout="status"],
-.callout[data-callout="projects"] {
-  padding: 0.8rem 1rem;
-  margin-bottom: 1.2rem;
-  
-  border-radius: var(--hud-radius) !important;
-  background: rgba(var(--hud-bg), var(--hud-opacity)) !important;
-  backdrop-filter: blur(var(--hud-blur)) !important;
-  
-  border: 1px solid rgba(var(--hud-color), 0.35);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 10px rgba(var(--hud-color), 0.15);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+.theme-dark {
+    --background-primary: #0a0c12 !important;
+    --background-secondary: #000000 !important;
+    --background-secondary-alt: #050505 !important;
+    --text-normal: #e0e6ed;
+    --text-muted: #8b9bb4;
 }
 
-/* Effet de survol */
-.callout[data-callout="nav"]:hover,
-.callout[data-callout="status"]:hover,
-.callout[data-callout="projects"]:hover {
-  transform: translateY(-3px);
-  border-color: rgba(var(--hud-color), 0.6);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--hud-color), 0.25);
+/* Ambiance Galaxy : Fond Radial */
+.markdown-reading-view, 
+.view-content {
+    background: radial-gradient(circle at center, #1a253a 0%, #050505 85%) !important;
+    background-attachment: fixed !important;
 }
 
-.callout-title {
-  font-family: 'Inter', system-ui, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.9);
+/* Titres Sci-Fi */
+h1, h2, h3, h4, h5, h6, .view-header-title {
+    font-family: var(--font-headers) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    color: rgb(var(--color-nav));
 }
 
-/* Remplacement Icônes */
+h1 {
+    background: linear-gradient(to right, #fff, rgba(255,255,255,0.5));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Texte Tactique */
+strong, b { color: rgb(var(--color-projects)); font-weight: 700; }
+em, i { color: rgba(255, 255, 255, 0.6); font-style: italic !important; font-family: 'Aptos'; }
+
+/* =================================================================
+   3. INTERFACE SYSTÈME (OPAQUE & NÉON)
+   ================================================================= */
+
+/* A. ONGLETS & SIDEBAR (Fix Opaque Bleu Nuit) */
+/* Onglets Actifs (Haut + Settings) */
+.workspace-tab-header.is-active,
+.vertical-tab-nav-item.is-active {
+    background-color: #0f192d !important; /* Bleu Nuit Opaque */
+    background-image: none !important;
+    opacity: 1 !important;
+    color: rgb(var(--color-nav)) !important;
+    border: 1px solid rgba(var(--color-nav), 0.5) !important;
+    box-shadow: inset 0 2px 0 0 rgb(var(--color-nav)), 0 0 10px rgba(var(--color-nav), 0.2) !important;
+    backdrop-filter: none !important;
+}
+
+/* Nettoyage des zones non actives */
+.workspace-tab-header-container, .vertical-tab-header {
+    background-color: #000000 !important;
+}
+
+/* B. TRAITS NÉON (Titlebar & Status) */
+body .app-container .titlebar {
+    background: #000000 !important;
+    border-bottom: var(--hud-frame) solid rgba(var(--color-nav), 0.8) !important;
+    box-shadow: 0 2px 10px rgba(var(--color-nav), 0.25) !important;
+}
+
+body .app-container .status-bar {
+    background: #000000 !important;
+    border-top: var(--hud-frame) solid rgba(var(--color-nav), 0.5) !important;
+}
+
+/* C. BOUTONS INTERFACE (Pas de Majuscules) */
+button, button.mod-cta {
+    background-color: rgba(15, 25, 45, 0.9) !important;
+    border: 1px solid rgba(var(--color-nav), 0.5) !important;
+    color: #e0e6ed !important;
+    text-transform: none !important; /* Important */
+    font-family: 'Aptos', sans-serif !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+button:hover, .clickable-icon:hover {
+    background-color: rgba(var(--color-nav), 0.15) !important;
+    box-shadow: 0 0 15px rgba(var(--color-nav), 0.6) !important;
+    border-color: rgb(var(--color-nav)) !important;
+    transform: translateY(-2px);
+    color: #fff !important;
+}
+
+/* D. MENUS CONTEXTUELS & RECHERCHE */
+.menu, .suggestion-container {
+    background-color: #0f192d !important; /* Bleu Nuit Opaque */
+    border: 1px solid rgba(var(--color-nav), 0.6) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+}
+.menu-item.is-selected, .suggestion-item.is-selected {
+    background-color: rgba(var(--color-nav), 0.2) !important;
+    color: rgb(var(--color-nav)) !important;
+    box-shadow: inset 3px 0 0 rgb(var(--color-nav)) !important;
+}
+
+/* =================================================================
+   4. MODULE : CALLOUTS HUD (GRID NAV & DESIGN)
+   ================================================================= */
+/* Design de base Glassmorphism */
+.callout {
+    padding: 1rem !important;
+    border-radius: var(--hud-radius) !important;
+    border: 1px solid rgba(var(--hud-color), 0.35);
+    background: rgba(var(--hud-bg), 0.75) !important;
+    backdrop-filter: blur(var(--hud-blur)) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+.callout:hover {
+    transform: translateY(-3px);
+    border-color: rgba(var(--hud-color), 0.8);
+    box-shadow: 0 0 20px rgba(var(--hud-color), 0.2);
+}
+
+/* Configuration des Types */
+.callout[data-callout="nav"]      { --hud-color: var(--color-nav);      --hud-bg: 15, 25, 45; --hud-icon: "🧭"; }
+.callout[data-callout="status"]   { --hud-color: var(--color-status);   --hud-bg: 20, 35, 25; --hud-icon: "📊"; }
+.callout[data-callout="projects"] { --hud-color: var(--color-projects); --hud-bg: 40, 25, 15; --hud-icon: "🚀"; }
+
+/* Remplacement Icones */
 .callout-icon svg { display: none; }
 .callout-icon::before {
-  content: var(--hud-icon);
-  font-size: 1.1rem;
-  margin-right: 0.4rem;
-  line-height: 1;
+    content: var(--hud-icon);
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
 }
+.callout-title { font-family: var(--font-headers); font-size: 1.1em; }
 
-/* =================================================================
-   5. MODULE : NAVIGATION (HOME BUTTONS)
-   ================================================================= */
+/* --- CRITICAL : NAVIGATION GRID SYSTEM (Récupéré V1.1.0) --- */
 .callout[data-callout="nav"] .callout-content ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); 
     gap: 15px;
-    padding: 0 !important;
-    margin: 0 !important;
+    padding: 0 !important; margin: 0 !important;
     list-style: none !important;
 }
 
 .callout[data-callout="nav"] .callout-content li {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 14px;
+    border-radius: 12px;
     text-align: center;
-    padding: 15px 5px;
-    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    padding: 12px 5px;
+    transition: all 0.2s ease;
     list-style-type: none !important;
-    margin-left: 0 !important;
 }
-.callout[data-callout="nav"] .callout-content li::marker { content: none !important; display: none; }
+.callout[data-callout="nav"] .callout-content li::marker { content: none; }
 
 .callout[data-callout="nav"] .callout-content li:hover {
-    background: rgba(var(--hud-color), 0.25);
-    border-color: rgba(var(--hud-color), 0.6);
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    background: rgba(var(--color-nav), 0.25);
+    border-color: rgba(var(--color-nav), 0.8);
+    box-shadow: 0 0 15px rgba(var(--color-nav), 0.4);
+    transform: scale(1.02);
 }
 
 .callout[data-callout="nav"] a {
     text-decoration: none !important;
     font-weight: 700;
-    font-size: 0.95em;
-    color: #DCE1E8 !important; 
+    color: #DCE1E8 !important;
     display: block;
 }
-.callout[data-callout="nav"] a span { color: #DCE1E8 !important; }
 
 /* =================================================================
-   6. MODULE : DATAVIEW (TABLEAUX FUTURISTES)
+   5. DATAVIEW & ÉLÉMENTS TACTIQUES
    ================================================================= */
-.callout table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 0.5rem;
-}
-.callout table th, .callout table td {
-  padding: 0.4rem 0.6rem;
-  font-size: 0.85rem;
-  color: #eee;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-.callout table tr:last-child td { border-bottom: none; }
-.callout table tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
-
-/* Dashboard Status */
-.callout[data-callout="status"] table.dataview {
-    border-collapse: separate; 
-    border-spacing: 0 4px;
-    margin-top: 10px;
-}
-.callout[data-callout="status"] table.dataview thead th {
-    background: transparent !important;
-    border-bottom: 2px solid rgba(var(--hud-color), 0.3);
-    color: rgba(var(--hud-color), 1);
+/* Dataview Sci-Fi */
+.table-view-table { border-collapse: separate; border-spacing: 0 4px; }
+.table-view-table thead th {
+    border-bottom: 2px solid rgb(var(--color-nav)) !important;
+    color: rgb(var(--color-nav)) !important;
+    font-family: var(--font-headers) !important;
+    font-size: 0.9em;
     text-transform: uppercase;
-    font-size: 0.7em;
-    letter-spacing: 1px;
-    padding-bottom: 8px;
 }
-.callout[data-callout="status"] table.dataview tbody tr {
-    background: rgba(255, 255, 255, 0.03) !important;
-    transition: all 0.2s ease-in-out;
+.table-view-table tbody tr {
+    background: rgba(255, 255, 255, 0.02);
+    transition: 0.2s;
 }
-.callout[data-callout="status"] table.dataview tbody tr:hover {
-    background: rgba(var(--hud-color), 0.15) !important;
-    transform: scale(1.01);
-    box-shadow: -2px 0 0 rgba(var(--hud-color), 0.8);
+.table-view-table tbody tr:hover {
+    background: rgba(var(--color-nav), 0.15) !important;
+    box-shadow: inset 2px 0 0 rgb(var(--color-nav));
 }
-.callout[data-callout="status"] table.dataview td {
-    border: none !important;
-    padding: 8px 12px;
+.table-view-table td { font-variant-numeric: tabular-nums; }
+
+/* Checkboxes (Carré & Néon) */
+.task-list-item-checkbox {
+    appearance: none; -webkit-appearance: none;
+    border-radius: 3px !important;
+    width: 16px !important; height: 16px !important;
+    border: 1.5px solid rgba(var(--color-nav), 0.6) !important;
+    background: rgba(0,0,0,0.5) !important;
+    cursor: pointer; position: relative; top: 2px;
+}
+.task-list-item-checkbox:checked {
+    background: rgba(var(--color-nav), 0.2) !important;
+    border-color: rgb(var(--color-nav)) !important;
+    box-shadow: 0 0 8px rgba(var(--color-nav), 0.6);
+}
+.task-list-item-checkbox:checked::before {
+    content: "✔";
+    color: rgb(var(--color-nav));
+    position: absolute; left: 50%; top: 45%;
+    transform: translate(-50%, -50%);
+    font-weight: 900; font-size: 12px;
+}
+
+/* Barres de progression Néon */
+progress {
+    appearance: none; height: 8px; width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(var(--color-nav), 0.3);
+    border-radius: 4px;
+}
+progress::-webkit-progress-value {
+    background: linear-gradient(90deg, rgba(var(--color-nav),0.4), rgb(var(--color-nav)));
+    box-shadow: 0 0 10px rgba(var(--color-nav), 0.6);
 }
 
 /* =================================================================
-   7. EXTRAS (TAGS & LAYOUTS)
+   6. GRAPH VIEW & COULEURS DOSSIERS
    ================================================================= */
-.callout tr[data-tags~="#Stage/SFR"] td     { background: rgba(120, 180, 255, 0.12); box-shadow: inset 2px 0 0 rgba(120, 180, 255, 0.5); }
-.callout tr[data-tags~="#Stage/Astéria"] td { background: rgba(255, 180, 120, 0.12); box-shadow: inset 2px 0 0 rgba(255, 180, 120, 0.5); }
-.callout tr[data-tags~="#LifeStyle"] td     { background: rgba(180, 255, 180, 0.12); box-shadow: inset 2px 0 0 rgba(180, 255, 180, 0.5); }
-
-.markdown-reading-view .command-center {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 1.5rem;
-  align-items: start;
-  margin-top: 1rem;
-}
-@media (max-width: 900px) {
-  .markdown-reading-view .command-center { grid-template-columns: 1fr; }
+/* Vue Graphique */
+.graph-view.color-fill { color: rgb(var(--color-nav)); }
+.graph-view.color-line { color: rgba(var(--color-nav), 0.2); }
+.workspace-leaf-content[data-type="graph"] .view-content {
+    background: radial-gradient(circle at center, #1a253a 0%, #050505 85%) !important;
 }
 
-/* =================================================================
-   8. MODULE : GALAXY FOLDERS
-   ================================================================= */
+/* Galaxy Folders (Cycle de 11 couleurs) */
 .nav-folder-children > .nav-folder,
 .nav-files-container > div > .nav-folder {
-  --nav-item-color: var(--folder-color);
-  transition: all 0.3s ease;
-  border-radius: 4px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+.nav-folder-children > .nav-folder:hover {
+    background-color: rgba(var(--folder-color), 0.15);
+    filter: drop-shadow(0 0 5px var(--folder-color));
 }
 
-.nav-folder-children > .nav-folder:hover,
-.nav-files-container > div > .nav-folder:hover {
-  filter: brightness(1.2) drop-shadow(0 0 8px var(--folder-color));
-  background-color: rgba(var(--folder-color), 0.1);
-}
-
-/* Assignation Couleurs */
+/* Assignation des couleurs aux dossiers */
 .nav-files-container > div > .nav-folder:nth-child(11n + 1) { --folder-color: rgb(var(--color-nav)); }
 .nav-files-container > div > .nav-folder:nth-child(11n + 2) { --folder-color: rgb(var(--color-status)); }
 .nav-files-container > div > .nav-folder:nth-child(11n + 3) { --folder-color: rgb(var(--color-projects)); }
-.nav-files-container > div > .nav-folder:nth-child(11n + 4) { --folder-color: var(--color-folder-4); }
-.nav-files-container > div > .nav-folder:nth-child(11n + 5) { --folder-color: var(--color-folder-5); }
-.nav-files-container > div > .nav-folder:nth-child(11n + 6) { --folder-color: var(--color-folder-6); }
+.nav-files-container > div > .nav-folder:nth-child(11n + 4) { --folder-color: #bd93f9; }
+.nav-files-container > div > .nav-folder:nth-child(11n + 5) { --folder-color: #ff5555; }
+.nav-files-container > div > .nav-folder:nth-child(11n + 6) { --folder-color: #f1fa8c; }
 .nav-files-container > div > .nav-folder:nth-child(11n + 7) { --folder-color: #8be9fd; }
 .nav-files-container > div > .nav-folder:nth-child(11n + 8) { --folder-color: #ff79c6; }
 .nav-files-container > div > .nav-folder:nth-child(11n + 9) { --folder-color: #6272a4; }
 .nav-files-container > div > .nav-folder:nth-child(11n + 10) { --folder-color: #50fa7b; }
 .nav-files-container > div > .nav-folder:nth-child(11n + 11) { --folder-color: #ffffff; }
 
-/* =================================================================
-   9. MODULE : TYPOGRAPHIE
-   ================================================================= */
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap');
-
-h1, h2, h3, h4, h5, h6, .callout-title, .view-header-title {
-    font-family: 'Rajdhani', sans-serif !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.08em;
-}
-
-h1 { 
-    background: linear-gradient(to right, #fff, rgba(255,255,255,0.5));
-    -webkit-background-clip: text;
-    color: transparent;
-    font-weight: 700;
-}
-.callout-title { font-size: 1.1em !important; font-weight: 600; }
-
-/* =================================================================
-   10. MODULE : GRAPH VIEW
-   ================================================================= */
-.graph-view.color-fill { background: radial-gradient(circle at center, #1a1f2e 0%, #050505 100%) !important; }
-.graph-view.color-line { color: rgba(var(--color-nav), 0.2); }
-.graph-view.color-fill-tag { color: #ff5555; }
-.graph-view.color-fill-attachment { color: #f1fa8c; }
-.graph-view.color-fill { color: rgb(var(--color-nav)); }
-.graph-view.color-circle { fill: currentColor; stroke: currentColor; filter: drop-shadow(0 0 3px currentColor); }
-.graph-view.color-text { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; font-size: 1.2em; text-shadow: 0 0 5px #000; }
-
-/* Fix Fond Graphique */
-.workspace-leaf-content[data-type="graph"] .view-content,
-.graph-view-container {
-    background: radial-gradient(circle at center, #1a253a 0%, #050505 85%) !important;
-}
-.graph-view-canvas { background: transparent !important; }
-
-/* =================================================================
-   11. MODULE : INTERFACE COMMANDER (VÉROUillage DU BLACKOUT)
-   ================================================================= */
-
-/* A. VARIABLES HUD (Standardisation script.css) */
-:root {
-    --hud-frame: 1.5px;
-}
-
-/* B. BLACKOUT TOTAL DES FONDS (Syntaxe code.css) */
-.theme-dark {
-    --background-primary: #0a0c10 !important;
-    --background-secondary: #000000 !important;
-    --background-secondary-alt: #000000 !important;
-}
-
-/* 1. RÉGLAGE DE LA TITLEBAR (Le dernier trait blanc) */
-body .app-container .titlebar,
-body .app-container .titlebar-inner {
-    background-color: #000000 !important;
-    background: #000000 !important;
-    /* On supprime d'abord les bordures blanches natives */
-    border: none !important;
-}
-
-/* Application du trait néon supérieur sur la Titlebar */
-body .app-container .titlebar {
-    border-bottom: var(--hud-frame) solid rgba(var(--color-nav), 0.8) !important;
-    /* Halo lumineux projeté vers le bas */
-    box-shadow: 0 2px 10px rgba(var(--color-nav), 0.25) !important;
-}
-
-/* 2. RAPPEL DES TRAITS LATERAUX (Ruban & Sidebar) */
-/* Trait Vertical : Ruban d'icônes */
-body .app-container .workspace-ribbon.side-dock-ribbon.mod-left {
-    background-color: #000000 !important;
-    border-right: var(--hud-frame) solid rgba(var(--color-nav), 0.8) !important;
-    box-shadow: 2px 0 8px rgba(var(--color-nav), 0.2) !important;
-}
-
-/* Trait Vertical : Séparateur Sidebar / Éditeur */
-body .app-container .workspace-split.mod-horizontal.mod-sidedock.mod-left-split {
-    border-right: var(--hud-frame) solid rgba(var(--color-nav), 0.6) !important;
-}
-
-/* 3. TRAIT INFÉRIEUR (Barre de statut) */
-body .app-container .status-bar {
-    background-color: #000000 !important;
-    border-top: var(--hud-frame) solid rgba(var(--color-nav), 0.5) !important;
-}
-
-/* 4. ICONES ET ONGLETS (Vibrance Laser) */
-.side-dock-ribbon-action.is-active,
-.clickable-icon:hover {
-    color: rgb(var(--color-nav)) !important;
-    filter: drop-shadow(0 0 6px rgb(var(--color-nav))) !important;
-}
-
-.workspace-tab-header.is-active {
-    background: linear-gradient(to bottom, rgba(var(--color-nav), 0.2), transparent) !important;
-    box-shadow: inset 0 2px 0 0 rgb(var(--color-nav)) !important;
-    color: rgb(var(--color-nav)) !important;
-}
-
-
-/* =================================================================
-   12. MODULE : GRAPH CONTROLS (PANNEAU FLOTTANT)
-   ================================================================= */
-
-/* Nettoyage Interne */
-.graph-controls .search-input-container,
-.graph-controls .tree-item,
-.graph-controls .setting-item {
-    background: transparent !important;
-}
-
-/* Le Panneau Principal - Compatible Pseudo Mica */
-body .mod-root .workspace-leaf-content[data-type="graph"] .view-content .graph-controls {
-    /* GRÂCE À PSEUDO MICA : On peut remettre le flou et la transparence ! */
-    background-color: rgba(13, 17, 26, 0.60) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    
-    border: 1px solid rgba(var(--color-nav), 0.3) !important;
-    border-radius: var(--hud-radius);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(var(--color-nav), 0.05) !important;
-
-    /* Optimisation GPU pour éviter le bug (au cas où) */
-    transform: translateZ(0);
-    will-change: transform, backdrop-filter;
-
-    padding: 10px 15px;
-    z-index: 100 !important;
-    transition: all 0.3s ease;
-}
-
-/* /* =================================================================
-   13. MODULE : CADRES SUPÉRIEUR & INFÉRIEUR (BLACKOUT)
-   ================================================================= */
-
-/* 1. LA BARRE DE TITRE (Tout en haut) */
-/* .titlebar, 
-.titlebar-bg {
-    background-color: #000000 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Séparation très subtile 
-} */
-
-/* 2. LA BARRE DE STATUT (Tout en bas) */
-/*.status-bar {
-    background-color: #000000 !important;
-    border-top: 1px solid rgba(var(--color-nav), 0.15); /* Rappel néon discret 
-} */
-
-
-
-/* =================================================================
-   14. MODULE : TYPOGRAPHIE TACTIQUE (ÉDITEUR)
-   ================================================================= */
-
-/* 1. TEXTE EN GRAS (Mise en évidence critique) */
-strong, b {
-    color: rgb(var(--color-projects)); /* Orange par défaut */
-    font-weight: 700;
-}
-
-/* 2. ITALIQUE (Correction : Style Aptos penché) */
-em, i {
-    color: rgba(255, 255, 255, 0.75); /* Légèrement plus gris que le texte normal */
-    font-style: italic !important;    /* On force l'inclinaison */
-    font-family: 'Aptos', sans-serif; /* On s'assure qu'il reste en Aptos */
-    letter-spacing: 0px;              /* Retour à l'espacement standard */
-}
-
-/* 3. SURLIGNAGE (Highlight ==) */
-.markdown-rendered mark {
-    background-color: rgba(var(--color-status), 0.2);
-    color: rgb(var(--color-status));
-    border: 1px solid rgba(var(--color-status), 0.5);
-    border-radius: 4px;
-    padding: 0 4px;
-}
-
-/* 4. SÉLECTION DE TEXTE (Rayon Laser) */
-::selection {
-    background: rgba(var(--color-nav), 0.3); /* Fond bleu transparent */
-    color: white;
-    text-shadow: 0 0 8px var(--color-nav); /* Lueur */
-}
-
-/* 5. LISTES À PUCES (Remplacement des points noirs) */
-.markdown-source-view.mod-cm6 .cm-list-1 .list-bullet:after,
-ul > li > .list-bullet:after {
-    background-color: rgb(var(--color-nav)); /* Puces bleues */
-    box-shadow: 0 0 5px rgb(var(--color-nav)); /* Lueur */
-    height: 4px; /* Forme carrée/plate plus "Tech" */
-    width: 4px;
-    border-radius: 0; 
-}
-
-/* 6. CITATIONS (Blockquotes -> Logs système) */
-blockquote {
-    border-left: 3px solid rgb(var(--color-nav));
-    background: linear-gradient(90deg, rgba(var(--color-nav), 0.1) 0%, transparent 100%);
-    color: #aebbc7;
-    font-style: italic;
-    padding: 10px 20px;
-    margin: 1em 0;
-    border-radius: 0 var(--hud-radius) var(--hud-radius) 0;
-}
+.nav-folder-title-content { color: var(--folder-color) !important; font-weight: 600; }
