@@ -24,17 +24,6 @@
 */
 
 /* =================================================================
-   0. CONFIGURATION GLOBALE (POLICE)
-   ================================================================= */
-:root {
-    /* Force l'utilisation de Aptos pour l'interface et le texte */
-    --font-text-theme: 'Aptos', sans-serif !important;
-    --font-editor-theme: 'Aptos', sans-serif !important;
-    --font-interface-theme: 'Aptos', sans-serif !important;
-}
-
-
-/* =================================================================
    1. SETTINGS (PLUGIN STYLE SETTINGS)
    ================================================================= */
 /* @settings
@@ -384,69 +373,63 @@ h1 {
 .graph-view-canvas { background: transparent !important; }
 
 /* =================================================================
-   11. MODULE : INTERFACE COMMANDER (VÉROUillage DU BLACKOUT)
+   11. MODULE : INTERFACE COMMANDER (UI & SIDEBARS)
    ================================================================= */
-
-/* A. VARIABLES HUD (Standardisation script.css) */
-:root {
-    --hud-frame: 1.5px;
+body {
+    --background-secondary: #0b0e14;
+    --background-primary: #131720;
+    --background-primary-alt: #0f1219;
 }
 
-/* B. BLACKOUT TOTAL DES FONDS (Syntaxe code.css) */
-.theme-dark {
-    --background-primary: #0a0c10 !important;
-    --background-secondary: #000000 !important;
-    --background-secondary-alt: #000000 !important;
+.workspace-ribbon {
+    background-color: #050505 !important;
+    border-right: 1px solid rgba(var(--color-nav), 0.2);
 }
-
-/* 1. RÉGLAGE DE LA TITLEBAR (Le dernier trait blanc) */
-body .app-container .titlebar,
-body .app-container .titlebar-inner {
-    background-color: #000000 !important;
-    background: #000000 !important;
-    /* On supprime d'abord les bordures blanches natives */
-    border: none !important;
-}
-
-/* Application du trait néon supérieur sur la Titlebar */
-body .app-container .titlebar {
-    border-bottom: var(--hud-frame) solid rgba(var(--color-nav), 0.8) !important;
-    /* Halo lumineux projeté vers le bas */
-    box-shadow: 0 2px 10px rgba(var(--color-nav), 0.25) !important;
-}
-
-/* 2. RAPPEL DES TRAITS LATERAUX (Ruban & Sidebar) */
-/* Trait Vertical : Ruban d'icônes */
-body .app-container .workspace-ribbon.side-dock-ribbon.mod-left {
-    background-color: #000000 !important;
-    border-right: var(--hud-frame) solid rgba(var(--color-nav), 0.8) !important;
-    box-shadow: 2px 0 8px rgba(var(--color-nav), 0.2) !important;
-}
-
-/* Trait Vertical : Séparateur Sidebar / Éditeur */
-body .app-container .workspace-split.mod-horizontal.mod-sidedock.mod-left-split {
-    border-right: var(--hud-frame) solid rgba(var(--color-nav), 0.6) !important;
-}
-
-/* 3. TRAIT INFÉRIEUR (Barre de statut) */
-body .app-container .status-bar {
-    background-color: #000000 !important;
-    border-top: var(--hud-frame) solid rgba(var(--color-nav), 0.5) !important;
-}
-
-/* 4. ICONES ET ONGLETS (Vibrance Laser) */
-.side-dock-ribbon-action.is-active,
-.clickable-icon:hover {
+.workspace-ribbon-collapse-btn:hover, .side-dock-ribbon-action:hover, .clickable-icon:hover {
     color: rgb(var(--color-nav)) !important;
-    filter: drop-shadow(0 0 6px rgb(var(--color-nav))) !important;
+    background: rgba(var(--color-nav), 0.15);
+    box-shadow: 0 0 10px rgba(var(--color-nav), 0.4);
 }
 
+/* ONGLETS ACTIFS (VERSION FINALE NEON) */
 .workspace-tab-header.is-active {
-    background: linear-gradient(to bottom, rgba(var(--color-nav), 0.2), transparent) !important;
-    box-shadow: inset 0 2px 0 0 rgb(var(--color-nav)) !important;
+    background: linear-gradient(to bottom, rgba(var(--color-nav), 0.30) 0%, rgba(var(--color-nav), 0.05) 100%) !important;
+    box-shadow: inset 0 3px 0 0 rgb(var(--color-nav)) !important;
     color: rgb(var(--color-nav)) !important;
+    font-weight: 700;
+    text-shadow: 0 0 12px rgba(var(--color-nav), 0.6);
+    transition: all 0.3s ease-in-out;
+}
+.workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+    color: rgb(var(--color-nav)) !important;
+    filter: drop-shadow(0 0 5px rgba(var(--color-nav), 0.8));
+}
+.workspace-tab-header.is-active .workspace-tab-header-inner-close-button { color: rgba(var(--color-nav), 0.5) !important; }
+.workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
+    background-color: rgba(255, 80, 80, 0.4);
+    color: #fff !important;
 }
 
+/* Boutons classiques */
+button.mod-cta {
+    background-color: rgba(var(--color-status), 0.2) !important;
+    border: 1px solid rgb(var(--color-status)) !important;
+    color: rgb(var(--color-status)) !important;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 1px;
+    box-shadow: 0 0 5px rgba(var(--color-status), 0.3);
+    transition: all 0.3s ease;
+}
+button.mod-cta:hover {
+    background-color: rgba(var(--color-status), 0.4) !important;
+    box-shadow: 0 0 15px rgba(var(--color-status), 0.6);
+    transform: translateY(-2px);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 6px; background: #0b0e14; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(var(--color-nav), 0.5); }
 
 /* =================================================================
    12. MODULE : GRAPH CONTROLS (PANNEAU FLOTTANT)
@@ -477,78 +460,4 @@ body .mod-root .workspace-leaf-content[data-type="graph"] .view-content .graph-c
     padding: 10px 15px;
     z-index: 100 !important;
     transition: all 0.3s ease;
-}
-
-/* /* =================================================================
-   13. MODULE : CADRES SUPÉRIEUR & INFÉRIEUR (BLACKOUT)
-   ================================================================= */
-
-/* 1. LA BARRE DE TITRE (Tout en haut) */
-/* .titlebar, 
-.titlebar-bg {
-    background-color: #000000 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Séparation très subtile 
-} */
-
-/* 2. LA BARRE DE STATUT (Tout en bas) */
-/*.status-bar {
-    background-color: #000000 !important;
-    border-top: 1px solid rgba(var(--color-nav), 0.15); /* Rappel néon discret 
-} */
-
-
-
-/* =================================================================
-   14. MODULE : TYPOGRAPHIE TACTIQUE (ÉDITEUR)
-   ================================================================= */
-
-/* 1. TEXTE EN GRAS (Mise en évidence critique) */
-strong, b {
-    color: rgb(var(--color-projects)); /* Orange par défaut */
-    font-weight: 700;
-}
-
-/* 2. ITALIQUE (Correction : Style Aptos penché) */
-em, i {
-    color: rgba(255, 255, 255, 0.75); /* Légèrement plus gris que le texte normal */
-    font-style: italic !important;    /* On force l'inclinaison */
-    font-family: 'Aptos', sans-serif; /* On s'assure qu'il reste en Aptos */
-    letter-spacing: 0px;              /* Retour à l'espacement standard */
-}
-
-/* 3. SURLIGNAGE (Highlight ==) */
-.markdown-rendered mark {
-    background-color: rgba(var(--color-status), 0.2);
-    color: rgb(var(--color-status));
-    border: 1px solid rgba(var(--color-status), 0.5);
-    border-radius: 4px;
-    padding: 0 4px;
-}
-
-/* 4. SÉLECTION DE TEXTE (Rayon Laser) */
-::selection {
-    background: rgba(var(--color-nav), 0.3); /* Fond bleu transparent */
-    color: white;
-    text-shadow: 0 0 8px var(--color-nav); /* Lueur */
-}
-
-/* 5. LISTES À PUCES (Remplacement des points noirs) */
-.markdown-source-view.mod-cm6 .cm-list-1 .list-bullet:after,
-ul > li > .list-bullet:after {
-    background-color: rgb(var(--color-nav)); /* Puces bleues */
-    box-shadow: 0 0 5px rgb(var(--color-nav)); /* Lueur */
-    height: 4px; /* Forme carrée/plate plus "Tech" */
-    width: 4px;
-    border-radius: 0; 
-}
-
-/* 6. CITATIONS (Blockquotes -> Logs système) */
-blockquote {
-    border-left: 3px solid rgb(var(--color-nav));
-    background: linear-gradient(90deg, rgba(var(--color-nav), 0.1) 0%, transparent 100%);
-    color: #aebbc7;
-    font-style: italic;
-    padding: 10px 20px;
-    margin: 1em 0;
-    border-radius: 0 var(--hud-radius) var(--hud-radius) 0;
 }
