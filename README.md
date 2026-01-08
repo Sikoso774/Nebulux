@@ -3,7 +3,7 @@
 Un thème complet pour Obsidian inspiré des interfaces Sci-Fi (HUD), optimisé pour Windows 11.
 Ce projet transforme l'éditeur de texte en véritable cockpit de vaisseau spatial avec des effets de transparence (Glassmorphism), des animations néons et une gestion sonore immersive.
 
-![Graph View Screenshot](screenshots/graph-view.png)
+![Graph View Screenshot](screenshot.png)
 
 ## 🚀 Fonctionnalités Clés
 
