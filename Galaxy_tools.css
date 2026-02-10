@@ -1,0 +1,247 @@
+/* =================================================================
+   🌌 GALAXY THEME - VERSION PRODUCTION (CORRIGÉE)
+   Auteur : Zoléni KOKOLO ZASSI
+   Description : Thème sombre néon/futuriste pour Obsidian
+   ================================================================= */
+
+
+:root{
+    --color-cross : 255, 255, 255
+}
+
+/* --- 1. BOUTONS & INTERACTIVITÉ (CHECKBOX) --- */
+
+/* Piste du switch (Fond) */
+.checkbox-container.is-enabled {
+    background-color: rgba(var(--color-nav), 0.5) !important;
+    box-shadow: 0 0 10px rgba(var(--color-nav), 0.4) !important;
+    border: 1px solid rgba(var(--color-nav), 0.6) !important;
+}
+
+/* Bille du switch (Rond) */
+.checkbox-container.is-enabled:after {
+    background-color: rgb(var(--color-nav)) !important;
+    box-shadow: 0 0 8px rgba(var(--color-nav), 0.8) !important;
+}
+
+/* Survol */
+.checkbox-container:hover {
+    cursor: pointer;
+    border-color: rgb(var(--color-nav)) !important;
+}
+
+/* --- 2. CALLOUTS (BLOCS D'INFORMATION) --- */
+
+/* Style par défaut "Acier" pour tous les callouts standards */
+.callout {
+    --hud-color: 160, 190, 220 !important;
+    --hud-bg: 30, 35, 45 !important;
+    border: 1px solid rgba(var(--hud-color), 0.5) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+    background: rgba(var(--hud-bg), 0.7) !important;
+}
+
+/* -- Modules Spéciaux -- */
+.callout[data-callout^="nav"]      { --hud-color: var(--color-nav) !important;      --hud-bg: 15, 25, 45 !important; }
+.callout[data-callout^="status"]   { --hud-color: var(--color-status) !important;   --hud-bg: 20, 35, 25 !important; }
+.callout[data-callout^="projects"] { --hud-color: var(--color-projects) !important; --hud-bg: 40, 25, 15 !important; }
+
+/* -- Icônes Personnalisées -- */
+.callout[data-callout$="/idea"]    { --hud-icon: "💡" !important; }
+.callout[data-callout$="/brain"]   { --hud-icon: "🧠" !important; }
+.callout[data-callout$="/bug"]     { --hud-icon: "🐞" !important; }
+.callout[data-callout$="/target"]  { --hud-icon: "🎯" !important; }
+.callout[data-callout$="/write"]   { --hud-icon: "✍️" !important; }
+.callout[data-callout$="/file"]    { --hud-icon: "📂" !important; }
+.callout[data-callout$="/heart"]   { --hud-icon: "❤️" !important; }
+
+/* Mode Clean & Native */
+.callout[data-callout$="/clean"] .callout-icon { display: none !important; }
+.callout[data-callout$="/native"] .callout-icon::before { display: none !important; }
+.callout[data-callout$="/native"] .callout-icon svg { display: block !important; }
+
+/* --- 3. NAVIGATION DASHBOARD (GRID) --- */
+
+.dashboard .callout[data-callout="nav"] .callout-content ul {
+    grid-template-columns: repeat(auto-fit, 140px) !important;
+    justify-content: center !important;
+    gap: 20px !important;
+}
+
+.dashboard .callout[data-callout="nav"] .callout-content li {
+    height: 100px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px !important;
+}
+
+/* Correctif Tableaux à l'intérieur du Nav */
+.callout[data-callout="nav"] table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: var(--text-normal) !important;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.callout[data-callout="nav"] th {
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(var(--color-nav)) !important;
+    border-bottom: 1px solid var(--background-modifier-border);
+    padding: 8px;
+}
+
+.callout[data-callout="nav"] td {
+    padding: 8px;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.callout[data-callout="nav"] table a {
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(var(--color-nav)) !important;
+}
+
+/* --- 4. ÉLÉMENTS D'INTERFACE --- */
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 8px !important; height: 8px !important; background-color: transparent !important; }
+::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--color-nav), 0.2) !important;
+    border: 1px solid rgba(var(--color-nav), 0.3) !important;
+    border-radius: 4px !important;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(var(--color-nav), 0.6) !important;
+    box-shadow: 0 0 10px rgba(var(--color-nav), 0.5) !important;
+}
+
+/* Sliders (Settings) */
+.modal input[type=range]::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(var(--color-nav), 0.3);
+    border-radius: 2px;
+    height: 6px;
+}
+.modal input[type=range]::-webkit-slider-thumb {
+    background: rgb(var(--color-nav));
+    box-shadow: 0 0 10px rgb(var(--color-nav));
+    border: 2px solid #fff;
+}
+
+/* --- 7. TAGS (#) --- */
+
+/* Corps du tag (Bleu Néon) */
+body .tag, body .cm-hashtag, body .cm-hashtag-begin, body .cm-hashtag-end,
+body .metadata-property .multi-select-pill {
+    background-color: rgba(var(--color-nav), 0.15) !important;
+    color: rgb(var(--color-nav)) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+body .tag:hover, body .cm-hashtag:hover,
+body .metadata-property .multi-select-pill:hover {
+    background-color: rgba(var(--color-nav), 0.35) !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+/* --- SPÉCIAL : CROIX VIOLETTES (VALIDÉ) --- */
+body .multi-select-pill-remove-button {
+    color: rgb(var(--color-cross)) !important; /* Force le violet */
+    opacity: 0.8;
+}
+body .multi-select-pill-remove-button:hover {
+    color: #fff !important;
+    background-color: rgba(var(--color-cross), 0.5);
+    border-radius: 50%;
+}
+
+/* --- 7. SÉPARATEURS (HR) & DOSSIERS --- */
+
+/* Rayons Laser */
+hr {
+    border: none !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent 0%, rgba(var(--color-nav), 0.8) 50%, transparent 100%) !important;
+    margin: 2.5em 0 !important;
+    opacity: 0.8;
+    position: relative;
+}
+hr::after {
+    content: "";
+    position: absolute;
+    top: -2px; left: 15%; right: 15%;
+    height: 5px;
+    background: linear-gradient(90deg, transparent 0%, rgba(var(--color-nav), 0.3) 50%, transparent 100%);
+    filter: blur(4px);
+}
+
+/* Dossiers */
+.nav-folder-title-content {
+    color: var(--text-normal) !important;
+    font-weight: 500 !important;
+    transition: color 0.2s ease;
+}
+.nav-folder-collapse-indicator {
+    color: var(--folder-color) !important;
+    opacity: 1 !important;
+}
+.nav-folder-title:hover .nav-folder-title-content {
+    color: #ffffff !important;
+    text-shadow: 0 0 12px var(--folder-color);
+}
+.nav-folder-title:hover {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
+.nav-folder.is-active > .nav-folder-title,
+.nav-folder-title.is-active {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-left: 2px solid var(--folder-color);
+}
+
+/* =================================================================
+   🧪 GALAXY LAB - MODE MONOCHROME (LISIBILITÉ MAXIMALE)
+   Problème : Trop de couleurs rendent l'arborescence illisible.
+   Solution : Tout le monde en BLEU. Allumage uniquement au survol.
+   ================================================================= */
+
+/* 1. RESET TOTAL DES COULEURS (On force le Bleu partout) */
+.nav-files-container > div > .nav-folder,
+.nav-folder-children > .nav-folder {
+    /* On écrase toutes les couleurs arc-en-ciel précédentes */
+    --folder-color: rgb(var(--color-nav)) !important;
+}
+
+/* 2. ÉTAT "REPOS" (Gris Sobres = Calme pour les yeux) */
+.nav-folder-title-content {
+    color: var(--text-muted) !important; /* Gris moyen */
+    font-weight: normal !important;
+}
+.nav-folder-collapse-indicator {
+    color: var(--text-faint) !important; /* Gris très sombre (discret) */
+    opacity: 0.7 !important;
+}
+
+/* 3. ÉTAT "SURVOL" & "ACTIF" (Activation Néon) */
+/* Quand on passe la souris ou qu'on clique, ça s'allume */
+.nav-folder-title:hover .nav-folder-title-content,
+.nav-folder-title.is-active .nav-folder-title-content {
+    color: #ffffff !important; /* Texte Blanc pur */
+}
+
+.nav-folder-title:hover .nav-folder-collapse-indicator,
+.nav-folder-title.is-active .nav-folder-collapse-indicator {
+    color: rgb(var(--color-nav)) !important; /* Flèche Bleu Néon */
+    text-shadow: 0 0 8px rgba(var(--color-nav), 0.8); /* Lueur */
+    opacity: 1 !important;
+}
+
+/* 4. FOND SURVOLÉ (Subtil) */
+.nav-folder-title:hover {
+    background-color: rgba(var(--color-nav), 0.1) !important;
+}
