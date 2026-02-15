@@ -1,6 +1,5 @@
 /* =================================================================
    🌌 GALAXY MASTER HUD - ULTIMATE EDITION (v3.0)
-   Fusion Complète : Interface Opaque + Dashboard + Style Settings
    ================================================================= */
 
 /* @settings
@@ -45,25 +44,27 @@ settings:
         step: 0.5
     - 
         id: colors-title
-        title: 🎨 Palette Tactique (RGB)
+        title: 🎨 Palette Tactique
         type: heading
         level: 1
-        description: "ATTENTION : Format strict 'r, g, b' (Exemple: 120, 180, 255)"
     - 
-        id: color-nav
+        id: theme-nav
         title: 🧭 Navigation (Bleu Néon)
-        type: variable-text
-        default: "120, 180, 255"
+        type: variable-color
+        format: hex
+        default: '#78B4FF'
     - 
-        id: color-status
-        title: 📊 Status (Vert Bio)
-        type: variable-text
-        default: "180, 255, 180"
+        id: theme-status
+        title: 📊 Status (Or Tactique)
+        type: variable-color
+        format: hex
+        default: '#FFC832'
     - 
-        id: color-projects
-        title: 🚀 Projets (Orange Système)
-        type: variable-text
-        default: "255, 180, 120"
+        id: theme-projects
+        title: 🚀 Projets (Bronze Tactique)
+        type: variable-color
+        format: hex
+        default: '#CD7F32'
     - 
         id: typo-title
         title: 🔤 Typographie
@@ -84,10 +85,11 @@ settings:
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap');
 
 :root {
-    /* --- VARIABLES PAR DÉFAUT (Sécurité si Style Settings est désactivé) --- */
-    --color-nav: 120, 180, 255;      
-    --color-status: 180, 255, 180;   
-    --color-projects: 255, 180, 120; 
+    /* --- CONNEXION INTELLIGENTE STYLE SETTINGS --- */
+    /* On récupère les variables (-rgb) générées secrètement par le plugin ! */
+    --color-nav: var(--theme-nav-rgb, 120, 180, 255);      
+    --color-status: var(--theme-status-rgb, 255, 200, 50);   
+    --color-projects: var(--theme-projects-rgb, 205, 127, 50); 
     --color-cross: 255, 255, 255;
     
     --bg-gradient-center: #1a253a;
@@ -205,23 +207,40 @@ button:not(.excalidraw-wrapper *):not(.canvas-wrapper *):hover {
 .callout {
     border: 1px solid rgba(var(--hud-color, 160, 190, 220), 0.5) !important;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
-    background: rgba(var(--hud-bg, 30, 35, 45), 0.7) !important;
-    border-radius: 12px !important; /* 👈 L'arrondi parfait (ni trop, ni trop peu) */
-    transition: all 0.3s ease !important; /* 👈 Prépare une animation fluide */
+    /* 🪄 MAGIE : Le fond se teinte AUTOMATIQUEMENT avec la couleur choisie ! */
+    background: color-mix(in srgb, rgb(var(--hud-color)) 15%, rgba(10, 12, 18, 0.85)) !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
 }
 
 /* 🌟 L'effet de surbrillance (Hover) */
 .callout:hover {
-    transform: translateY(-3px) !important; /* Soulève légèrement le bloc */
-    border-color: rgb(var(--hud-color, 160, 190, 220)) !important; /* Bordure 100% lumineuse */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(var(--hud-color, 160, 190, 220), 0.3) !important; /* Lueur Néon dynamique */
-    background: rgba(var(--hud-bg, 30, 35, 45), 0.85) !important; /* Rend le fond un poil plus opaque */
+    transform: translateY(-3px) !important;
+    border-color: rgb(var(--hud-color, 160, 190, 220)) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(var(--hud-color, 160, 190, 220), 0.3) !important;
+    /* 🪄 MAGIE : Au survol, le fond capte encore plus de lumière (25%) */
+    background: color-mix(in srgb, rgb(var(--hud-color)) 25%, rgba(10, 12, 18, 0.95)) !important;
 }
 
+/* =================================================================
+   🌌 EXCEPTION : FOND PROFOND POUR LA NAVIGATION
+   On court-circuite le "color-mix" automatique pour garder 
+   le vrai Bleu Nuit sombre et immersif sur le bloc Nav.
+   ================================================================= */
+.callout[data-callout^="nav"] {
+    background: rgba(15, 25, 45, 0.85) !important;
+}
+
+.callout[data-callout^="nav"]:hover {
+    background: rgba(15, 25, 45, 0.95) !important;
+}
+
+
+/* 1. Couleurs de base des 3 Piliers */
 /* 1. Couleurs de base des 3 Piliers */
 .callout[data-callout^="nav"]      { --hud-color: var(--color-nav) !important;      --hud-bg: 15, 25, 45 !important; }
-.callout[data-callout^="status"]   { --hud-color: var(--color-status) !important;   --hud-bg: 20, 35, 25 !important; }
-.callout[data-callout^="projects"] { --hud-color: var(--color-projects) !important; --hud-bg: 40, 25, 15 !important; }
+.callout[data-callout^="status"]   { --hud-color: var(--color-status) !important;   --hud-bg: 45, 35, 15 !important; } /* Fond Or Sombre */
+.callout[data-callout^="projects"] { --hud-color: var(--color-projects) !important; --hud-bg: 30, 32, 35 !important; } /* Fond Argent Métallique */
 
 /* 2. On cache les SVG de base UNIQUEMENT pour nos 3 piliers */
 .callout[data-callout^="nav"] .callout-icon svg,
