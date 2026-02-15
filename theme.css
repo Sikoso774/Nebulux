@@ -1,17 +1,8 @@
 /* =================================================================
-   🌌 GALAXY MASTER HUD - FINAL EDITION (v2.0)
-   Fusion: Grid Navigation + Opaque Interface + Neon Tactique
+   🌌 GALAXY MASTER HUD - ULTIMATE EDITION (v3.0)
+   Fusion Complète : Interface Opaque + Dashboard + Style Settings
    ================================================================= */
 
-/* PRÉREQUIS :
-   1. Plugin "Style Settings" (Configuration complète)
-   2. Police "Rajdhani" (Importée automatiquement ci-dessous)
-   3. Police Interface "Aptos" (Doit être installée sur votre OS, sinon fallback system)
-*/
-
-/* =================================================================
-   1. STYLE SETTINGS & VARIABLES
-   ================================================================= */
 /* @settings
 name: Galaxy Master HUD
 id: hud-galaxy-master
@@ -22,61 +13,97 @@ settings:
         type: heading
         level: 1
     - 
-        id: ui-bg-main
-        title: Fond Principal (Éditeur)
+        id: bg-gradient-center
+        title: 🌌 Fond Spatial (Centre du dégradé)
         type: variable-color
         format: hex
-        default: '#0a0c12'
+        default: '#1a253a'
+    - 
+        id: bg-gradient-edge
+        title: 🌌 Fond Spatial (Bords de l'écran)
+        type: variable-color
+        format: hex
+        default: '#050505'
     - 
         id: hud-blur
-        title: Flou du HUD (Glassmorphism)
+        title: 🌫️ Flou du HUD (Glassmorphism)
         type: variable-number
         default: 12
         format: px
     - 
+        id: hud-radius
+        title: 🔲 Arrondi des blocs (Callouts, Boutons)
+        type: variable-number
+        default: 12
+        format: px
+    - 
+        id: hud-frame
+        title: ⚡ Épaisseur des traits Néon (Bordures)
+        type: variable-number
+        default: 1.5
+        format: px
+        step: 0.5
+    - 
         id: colors-title
         title: 🎨 Palette Tactique (RGB)
         type: heading
-        level: 2
-        description: "Format requis: r, g, b (ex: 120, 180, 255)"
+        level: 1
+        description: "ATTENTION : Format strict 'r, g, b' (Exemple: 120, 180, 255)"
     - 
         id: color-nav
-        title: Couleur Navigation (Bleu Néon)
+        title: 🧭 Navigation (Bleu Néon)
         type: variable-text
         default: "120, 180, 255"
     - 
         id: color-status
-        title: Couleur Status (Vert HUD)
+        title: 📊 Status (Vert Bio)
         type: variable-text
         default: "180, 255, 180"
     - 
         id: color-projects
-        title: Couleur Projets (Orange Alert)
+        title: 🚀 Projets (Orange Système)
         type: variable-text
         default: "255, 180, 120"
+    - 
+        id: typo-title
+        title: 🔤 Typographie
+        type: heading
+        level: 1
+    - 
+        id: font-headers
+        title: Police des Titres (H1-H6)
+        type: variable-text
+        default: "'Rajdhani', sans-serif"
+    - 
+        id: font-text-theme
+        title: Police du Texte et Interface
+        type: variable-text
+        default: "'Aptos', sans-serif"
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap');
 
 :root {
-    /* --- COULEURS CORE (Modifiables via Style Settings) --- */
-    --color-nav: 120, 180, 255;      /* Bleu Cyan Tactique */
-    --color-status: 180, 255, 180;   /* Vert Bio-Scan */
-    --color-projects: 255, 180, 120; /* Orange Système */
+    /* --- VARIABLES PAR DÉFAUT (Sécurité si Style Settings est désactivé) --- */
+    --color-nav: 120, 180, 255;      
+    --color-status: 180, 255, 180;   
+    --color-projects: 255, 180, 120; 
+    --color-cross: 255, 255, 255;
     
-    /* --- VARIABLES SYSTEME --- */
-    --hud-radius: 14px;
+    --bg-gradient-center: #1a253a;
+    --bg-gradient-edge: #050505;
+    
+    --hud-radius: 12px;
     --hud-blur: 12px;
-    --hud-frame: 1.5px; /* Épaisseur des traits néon */
+    --hud-frame: 1.5px;
     
-    /* --- TYPOGRAPHIE --- */
+    --font-headers: 'Rajdhani', sans-serif !important;
     --font-text-theme: 'Aptos', sans-serif !important;
     --font-interface-theme: 'Aptos', sans-serif !important;
-    --font-headers: 'Rajdhani', sans-serif !important;
 }
 
 /* =================================================================
-   2. GLOBAL & TYPOGRAPHIE
+   1. GLOBAL & TYPOGRAPHIE
    ================================================================= */
 .theme-dark {
     --background-primary: #0a0c12 !important;
@@ -86,11 +113,16 @@ settings:
     --text-muted: #8b9bb4;
 }
 
-/* Ambiance Galaxy : Fond Radial */
-.markdown-reading-view, 
-.view-content {
-    background: radial-gradient(circle at center, #1a253a 0%, #050505 85%) !important;
+/* Ambiance Galaxy : Fond Radial Dynamique (Connecté à Style Settings) */
+.workspace-leaf-content:not([data-type="excalidraw"]) .view-content,
+.markdown-reading-view {
+    background: radial-gradient(circle at center, var(--bg-gradient-center) 0%, var(--bg-gradient-edge) 85%) !important;
     background-attachment: fixed !important;
+}
+
+/* Protection Excalidraw */
+.workspace-leaf-content[data-type="excalidraw"] .view-content {
+    background: transparent !important; 
 }
 
 /* Titres Sci-Fi */
@@ -100,63 +132,49 @@ h1, h2, h3, h4, h5, h6, .view-header-title {
     letter-spacing: 0.08em !important;
     color: rgb(var(--color-nav));
 }
-
 h1 {
     background: linear-gradient(to right, #fff, rgba(255,255,255,0.5));
     -webkit-background-clip: text;
     color: transparent;
 }
-
-/* Texte Tactique */
 strong, b { color: rgb(var(--color-projects)); font-weight: 700; }
 em, i { color: rgba(255, 255, 255, 0.6); font-style: italic !important; font-family: 'Aptos'; }
 
 /* =================================================================
-   3. INTERFACE SYSTÈME (OPAQUE & NÉON)
+   2. INTERFACE SYSTÈME (OPAQUE & NÉON)
    ================================================================= */
-
-/* A. ONGLETS & SIDEBAR (Fix Opaque Bleu Nuit) */
-/* Onglets Actifs (Haut + Settings) */
+/* Onglets Actifs */
 .workspace-tab-header.is-active,
 .vertical-tab-nav-item.is-active {
-    background-color: #0f192d !important; /* Bleu Nuit Opaque */
-    background-image: none !important;
+    background-color: #0f192d !important;
     opacity: 1 !important;
     color: rgb(var(--color-nav)) !important;
     border: 1px solid rgba(var(--color-nav), 0.5) !important;
     box-shadow: inset 0 2px 0 0 rgb(var(--color-nav)), 0 0 10px rgba(var(--color-nav), 0.2) !important;
-    backdrop-filter: none !important;
 }
+.workspace-tab-header-container, .vertical-tab-header { background-color: #000000 !important; }
 
-/* Nettoyage des zones non actives */
-.workspace-tab-header-container, .vertical-tab-header {
-    background-color: #000000 !important;
-}
-
-/* B. TRAITS NÉON (Titlebar & Status) */
+/* Traits Néon (Titlebar & Status) */
 body .app-container .titlebar {
     background: #000000 !important;
     border-bottom: var(--hud-frame) solid rgba(var(--color-nav), 0.8) !important;
     box-shadow: 0 2px 10px rgba(var(--color-nav), 0.25) !important;
 }
-
 body .app-container .status-bar {
     background: #000000 !important;
     border-top: var(--hud-frame) solid rgba(var(--color-nav), 0.5) !important;
 }
 
-/* C. BOUTONS INTERFACE (Pas de Majuscules) */
-button, button.mod-cta {
+/* Boutons Filtrés (Exclut Excalidraw) */
+button:not(.excalidraw-wrapper *):not(.canvas-wrapper *), 
+button.mod-cta:not(.excalidraw-wrapper *):not(.canvas-wrapper *) {
     background-color: rgba(15, 25, 45, 0.9) !important;
     border: 1px solid rgba(var(--color-nav), 0.5) !important;
     color: #e0e6ed !important;
-    text-transform: none !important; /* Important */
-    font-family: 'Aptos', sans-serif !important;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     transition: all 0.3s ease;
 }
-
-button:hover, .clickable-icon:hover {
+button:not(.excalidraw-wrapper *):not(.canvas-wrapper *):hover {
     background-color: rgba(var(--color-nav), 0.15) !important;
     box-shadow: 0 0 15px rgba(var(--color-nav), 0.6) !important;
     border-color: rgb(var(--color-nav)) !important;
@@ -164,173 +182,270 @@ button:hover, .clickable-icon:hover {
     color: #fff !important;
 }
 
-/* D. MENUS CONTEXTUELS & RECHERCHE */
+/* Menus Contextuels (Original Sécurisé) */
 .menu, .suggestion-container {
-    background-color: #0f192d !important; /* Bleu Nuit Opaque */
-    border: 1px solid rgba(var(--color-nav), 0.6) !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+    background-color: #0f192d !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(var(--color-nav), 0.4) !important;
+    border: none !important; 
+    padding: 4px !important;
 }
-.menu-item.is-selected, .suggestion-item.is-selected {
+.menu-item, .suggestion-item {
+    border: none !important; margin: 0 !important; background-color: transparent !important;
+}
+.menu-item.is-selected, .suggestion-item.is-selected, .menu-item:hover {
     background-color: rgba(var(--color-nav), 0.2) !important;
     color: rgb(var(--color-nav)) !important;
-    box-shadow: inset 3px 0 0 rgb(var(--color-nav)) !important;
+    box-shadow: inset 3px 0 0 rgb(var(--color-nav)) !important; 
 }
 
 /* =================================================================
-   4. MODULE : CALLOUTS HUD (GRID NAV & DESIGN)
+   3. MODULES : CALLOUTS & DASHBOARD
    ================================================================= */
-/* Design de base Glassmorphism */
+
 .callout {
-    padding: 1rem !important;
-    border-radius: var(--hud-radius) !important;
-    border: 1px solid rgba(var(--hud-color), 0.35);
-    background: rgba(var(--hud-bg), 0.75) !important;
-    backdrop-filter: blur(var(--hud-blur)) !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease;
+    border: 1px solid rgba(var(--hud-color, 160, 190, 220), 0.5) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+    background: rgba(var(--hud-bg, 30, 35, 45), 0.7) !important;
+    border-radius: 12px !important; /* 👈 L'arrondi parfait (ni trop, ni trop peu) */
+    transition: all 0.3s ease !important; /* 👈 Prépare une animation fluide */
 }
+
+/* 🌟 L'effet de surbrillance (Hover) */
 .callout:hover {
-    transform: translateY(-3px);
-    border-color: rgba(var(--hud-color), 0.8);
-    box-shadow: 0 0 20px rgba(var(--hud-color), 0.2);
+    transform: translateY(-3px) !important; /* Soulève légèrement le bloc */
+    border-color: rgb(var(--hud-color, 160, 190, 220)) !important; /* Bordure 100% lumineuse */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(var(--hud-color, 160, 190, 220), 0.3) !important; /* Lueur Néon dynamique */
+    background: rgba(var(--hud-bg, 30, 35, 45), 0.85) !important; /* Rend le fond un poil plus opaque */
 }
 
-/* Configuration des Types */
-.callout[data-callout="nav"]      { --hud-color: var(--color-nav);      --hud-bg: 15, 25, 45; --hud-icon: "🧭"; }
-.callout[data-callout="status"]   { --hud-color: var(--color-status);   --hud-bg: 20, 35, 25; --hud-icon: "📊"; }
-.callout[data-callout="projects"] { --hud-color: var(--color-projects); --hud-bg: 40, 25, 15; --hud-icon: "🚀"; }
+/* 1. Couleurs de base des 3 Piliers */
+.callout[data-callout^="nav"]      { --hud-color: var(--color-nav) !important;      --hud-bg: 15, 25, 45 !important; }
+.callout[data-callout^="status"]   { --hud-color: var(--color-status) !important;   --hud-bg: 20, 35, 25 !important; }
+.callout[data-callout^="projects"] { --hud-color: var(--color-projects) !important; --hud-bg: 40, 25, 15 !important; }
 
-/* Remplacement Icones */
-.callout-icon svg { display: none; }
-.callout-icon::before {
+/* 2. On cache les SVG de base UNIQUEMENT pour nos 3 piliers */
+.callout[data-callout^="nav"] .callout-icon svg,
+.callout[data-callout^="status"] .callout-icon svg,
+.callout[data-callout^="projects"] .callout-icon svg {
+    display: none !important;
+}
+
+/* 3. On injecte nos emojis à la place */
+.callout[data-callout^="nav"] .callout-icon::before,
+.callout[data-callout^="status"] .callout-icon::before,
+.callout[data-callout^="projects"] .callout-icon::before {
     content: var(--hud-icon);
     font-size: 1.2rem;
-    margin-right: 0.5rem;
 }
-.callout-title { font-family: var(--font-headers); font-size: 1.1em; }
 
-/* --- CRITICAL : NAVIGATION GRID SYSTEM (Récupéré V1.1.0) --- */
-.callout[data-callout="nav"] .callout-content ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); 
-    gap: 15px;
-    padding: 0 !important; margin: 0 !important;
+/* 4. Icônes par défaut (Quand on tape juste [!nav], etc.) */
+.callout[data-callout^="nav"]      { --hud-icon: "🧭" !important; }
+.callout[data-callout^="status"]   { --hud-icon: "📊" !important; }
+.callout[data-callout^="projects"] { --hud-icon: "🚀" !important; }
+
+/* 5. Les Modificateurs Tactiques (Emojis personnalisés) */
+.callout[data-callout$="/idea"]    { --hud-icon: "💡" !important; }
+.callout[data-callout$="/brain"]   { --hud-icon: "🧠" !important; }
+.callout[data-callout$="/bug"]     { --hud-icon: "🐞" !important; }
+.callout[data-callout$="/target"]  { --hud-icon: "🎯" !important; }
+.callout[data-callout$="/write"]   { --hud-icon: "✍️" !important; }
+.callout[data-callout$="/file"]    { --hud-icon: "📂" !important; }
+.callout[data-callout$="/heart"]   { --hud-icon: "❤️" !important; }
+
+/* 6. Modes Spéciaux : Clean (Pas d'icône) et Native (Restaure le SVG) */
+.callout[data-callout$="/clean"] .callout-icon { display: none !important; }
+.callout[data-callout$="/native"] .callout-icon::before { display: none !important; }
+.callout[data-callout$="/native"] .callout-icon svg { display: block !important; }
+
+/* Dashboard Grid (Ne pas supprimer !) */
+.dashboard .callout[data-callout="nav"] .callout-content ul {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important; justify-content: center !important; gap: 20px !important;
+    padding: 0 !important; list-style: none !important;
+}
+.dashboard .callout[data-callout="nav"] .callout-content li {
+    height: 100px !important; display: flex !important; align-items: center !important; justify-content: center !important;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(var(--color-nav), 0.3); border-radius: 8px; transition: 0.2s;
+}
+.dashboard .callout[data-callout="nav"] .callout-content li:hover {
+    background: rgba(var(--color-nav), 0.2); border-color: rgb(var(--color-nav)); box-shadow: 0 0 10px rgba(var(--color-nav), 0.4); transform: translateY(-2px);
+}
+/* =================================================================
+   4. ÉLÉMENTS INTERACTIFS (SCROLL, TAGS, CHECKBOX)
+   ================================================================= */
+/* Scrollbars */
+::-webkit-scrollbar { width: 8px !important; height: 8px !important; background-color: transparent !important; }
+::-webkit-scrollbar-thumb { background-color: rgba(var(--color-nav), 0.2) !important; border: 1px solid rgba(var(--color-nav), 0.3) !important; border-radius: 4px !important; }
+::-webkit-scrollbar-thumb:hover { background-color: rgba(var(--color-nav), 0.6) !important; box-shadow: 0 0 10px rgba(var(--color-nav), 0.5) !important; }
+
+/* Sliders */
+.modal input[type=range]::-webkit-slider-thumb { background: rgb(var(--color-nav)); box-shadow: 0 0 10px rgb(var(--color-nav)); }
+
+/* Tags */
+body .tag, body .metadata-property .multi-select-pill {
+    background-color: rgba(var(--color-nav), 0.15) !important; color: rgb(var(--color-nav)) !important; border: none !important;
+}
+body .multi-select-pill-remove-button { color: rgb(var(--color-cross)) !important; }
+
+/* Checkboxes */
+.task-list-item-checkbox {
+    appearance: none; -webkit-appearance: none; border-radius: 3px !important;
+    width: 16px !important; height: 16px !important;
+    border: 1.5px solid rgba(var(--color-nav), 0.6) !important; background: rgba(0,0,0,0.5) !important;
+}
+.task-list-item-checkbox:checked {
+    background: rgba(var(--color-nav), 0.2) !important; border-color: rgb(var(--color-nav)) !important;
+    box-shadow: 0 0 8px rgba(var(--color-nav), 0.6);
+}
+
+/* =================================================================
+   🎚️ TOGGLE SWITCHES (Interrupteurs des Paramètres)
+   ================================================================= */
+/* 1. Piste de l'interrupteur activé (Le fond) */
+.checkbox-container.is-enabled {
+    background-color: rgba(var(--color-nav), 0.3) !important;
+    box-shadow: 0 0 10px rgba(var(--color-nav), 0.4), inset 0 0 5px rgba(var(--color-nav), 0.5) !important;
+    border: 1px solid rgb(var(--color-nav)) !important;
+}
+
+/* 2. Bille de l'interrupteur activé (Le petit rond qui bouge) */
+.checkbox-container.is-enabled:after {
+    background-color: #ffffff !important; /* Bille blanche pour le contraste... */
+    box-shadow: 0 0 15px rgb(var(--color-nav)), 0 0 8px rgb(var(--color-nav)) !important; /* ...avec un puissant halo néon bleu ! */
+}
+
+/* 3. Effet d'interaction au survol */
+.checkbox-container:hover {
+    border-color: rgb(var(--color-nav)) !important;
+    box-shadow: 0 0 12px rgba(var(--color-nav), 0.6) !important;
+}
+
+/* =================================================================
+   🚀 MODIFICATEUR : BOUTONS DE NAVIGATION FLEXBOX
+   Syntaxe : > [!nav/menu]
+   ================================================================= */
+/* 1. Configuration du conteneur Flexbox */
+.callout[data-callout="nav/menu"] .callout-content ul {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    padding: 0 !important;
+    margin: 10px 0 0 0 !important;
     list-style: none !important;
 }
 
-.callout[data-callout="nav"] .callout-content li {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    text-align: center;
-    padding: 12px 5px;
-    transition: all 0.2s ease;
-    list-style-type: none !important;
-}
-.callout[data-callout="nav"] .callout-content li::marker { content: none; }
-
-.callout[data-callout="nav"] .callout-content li:hover {
-    background: rgba(var(--color-nav), 0.25);
-    border-color: rgba(var(--color-nav), 0.8);
-    box-shadow: 0 0 15px rgba(var(--color-nav), 0.4);
-    transform: scale(1.02);
+/* 2. Style des boutons (li) */
+.callout[data-callout="nav/menu"] .callout-content li {
+    flex: 1 1 auto !important; /* Flexbox dynamique : s'adapte à l'espace */
+    min-width: 120px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(var(--color-nav), 0.3) !important;
+    border-radius: 10px !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+    margin: 0 !important;
 }
 
-.callout[data-callout="nav"] a {
-    text-decoration: none !important;
-    font-weight: 700;
-    color: #DCE1E8 !important;
-    display: block;
-}
-
-/* =================================================================
-   5. DATAVIEW & ÉLÉMENTS TACTIQUES
-   ================================================================= */
-/* Dataview Sci-Fi */
-.table-view-table { border-collapse: separate; border-spacing: 0 4px; }
-.table-view-table thead th {
-    border-bottom: 2px solid rgb(var(--color-nav)) !important;
-    color: rgb(var(--color-nav)) !important;
-    font-family: var(--font-headers) !important;
-    font-size: 0.9em;
-    text-transform: uppercase;
-}
-.table-view-table tbody tr {
-    background: rgba(255, 255, 255, 0.02);
-    transition: 0.2s;
-}
-.table-view-table tbody tr:hover {
-    background: rgba(var(--color-nav), 0.15) !important;
-    box-shadow: inset 2px 0 0 rgb(var(--color-nav));
-}
-.table-view-table td { font-variant-numeric: tabular-nums; }
-
-/* Checkboxes (Carré & Néon) */
-.task-list-item-checkbox {
-    appearance: none; -webkit-appearance: none;
-    border-radius: 3px !important;
-    width: 16px !important; height: 16px !important;
-    border: 1.5px solid rgba(var(--color-nav), 0.6) !important;
-    background: rgba(0,0,0,0.5) !important;
-    cursor: pointer; position: relative; top: 2px;
-}
-.task-list-item-checkbox:checked {
-    background: rgba(var(--color-nav), 0.2) !important;
+/* 3. Lueur au survol du bouton (Effet Néon Maximal) */
+.callout[data-callout="nav/menu"] .callout-content li:hover {
+    background: rgba(var(--color-nav), 0.25) !important;
     border-color: rgb(var(--color-nav)) !important;
-    box-shadow: 0 0 8px rgba(var(--color-nav), 0.6);
-}
-.task-list-item-checkbox:checked::before {
-    content: "✔";
-    color: rgb(var(--color-nav));
-    position: absolute; left: 50%; top: 45%;
-    transform: translate(-50%, -50%);
-    font-weight: 900; font-size: 12px;
+    /* Double Ombre : Une externe (Glow) + Une interne (Volume) */
+    box-shadow: 0 0 20px rgba(var(--color-nav), 0.6), inset 0 0 10px rgba(var(--color-nav), 0.3) !important;
+    transform: translateY(-3px) !important;
 }
 
-/* Barres de progression Néon */
-progress {
-    appearance: none; height: 8px; width: 100%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(var(--color-nav), 0.3);
-    border-radius: 4px;
+/* 4. Zone cliquable (Le lien prend toute la place du bouton) */
+.callout[data-callout="nav/menu"] .callout-content a {
+    display: block !important;
+    padding: 12px 20px !important;
+    color: #e0e6ed !important; /* Gris clair au repos */
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    letter-spacing: 0.05em !important;
+    transition: all 0.3s ease !important;
 }
-progress::-webkit-progress-value {
-    background: linear-gradient(90deg, rgba(var(--color-nav),0.4), rgb(var(--color-nav)));
-    box-shadow: 0 0 10px rgba(var(--color-nav), 0.6);
+
+/* 🌟 NOUVEAU : Illumination du texte quand on survole le bouton */
+.callout[data-callout="nav/menu"] .callout-content li:hover a {
+    color: #ffffff !important;
+    text-shadow: 0 0 12px rgb(var(--color-nav)), 0 0 20px rgb(var(--color-nav)) !important;
+}
+
+/* 5. Sécurité : On cache les puces natives */
+.callout[data-callout="nav/menu"] .callout-content li::marker {
+    content: "" !important;
 }
 
 /* =================================================================
-   6. GRAPH VIEW & COULEURS DOSSIERS
+   5. SÉPARATEURS (RAYON LASER SÉCURISÉ)
    ================================================================= */
-/* Vue Graphique */
+.markdown-rendered hr, .markdown-source-view hr {
+    border: none !important; height: 1px !important;
+    background: linear-gradient(90deg, transparent 0%, rgba(var(--color-nav), 0.8) 50%, transparent 100%) !important;
+    margin: 2.5em 0 !important; position: relative; overflow: visible !important;
+}
+.markdown-rendered hr::after, .markdown-source-view hr::after {
+    content: ""; position: absolute; top: -2px; left: 15%; right: 15%; height: 5px;
+    background: linear-gradient(90deg, transparent 0%, rgba(var(--color-nav), 0.3) 50%, transparent 100%); filter: blur(4px);
+}
+
+/* =================================================================
+   6. DATAVIEW & GRAPH VIEW
+   ================================================================= */
+.table-view-table thead th { border-bottom: 2px solid rgb(var(--color-nav)) !important; color: rgb(var(--color-nav)) !important; font-family: var(--font-headers) !important; text-transform: uppercase; }
 .graph-view.color-fill { color: rgb(var(--color-nav)); }
-.graph-view.color-line { color: rgba(var(--color-nav), 0.2); }
-.workspace-leaf-content[data-type="graph"] .view-content {
-    background: radial-gradient(circle at center, #1a253a 0%, #050505 85%) !important;
+.workspace-leaf-content[data-type="graph"] .view-content { background: radial-gradient(circle at center, #1a253a 0%, #050505 85%) !important; }
+
+/* =================================================================
+   7. EXPLORATEUR DE FICHIERS (FORCE BLEUE TACTIQUE)
+   ================================================================= */
+/* Reset Bleu Néon */
+.nav-files-container > div > .nav-folder, .nav-folder-children > .nav-folder { --folder-color: rgb(var(--color-nav)) !important; }
+
+/* Repos */
+.nav-folder-title-content, .nav-file-title-content { color: var(--text-normal) !important; font-weight: 500 !important; transition: all 0.2s ease !important; }
+.nav-folder-collapse-indicator { color: rgba(var(--color-nav), 0.5) !important; opacity: 1 !important; }
+
+/* Survol */
+.nav-folder-title:hover .nav-folder-title-content, .nav-folder-title:hover .nav-folder-collapse-indicator, .nav-file-title:hover .nav-file-title-content {
+    color: #ffffff !important; text-shadow: 0 0 12px rgb(var(--color-nav)) !important;
+}
+.nav-folder-title:hover, .nav-file-title:hover { background-color: rgba(var(--color-nav), 0.15) !important; }
+
+/* Actif / Sélectionné */
+.nav-folder.is-active > .nav-folder-title, .nav-folder-title.is-active,
+.nav-file-title.is-active, .nav-file.is-active > .nav-file-title {
+    background-color: rgba(var(--color-nav), 0.2) !important;
+    border-left: 3px solid rgb(var(--color-nav)) !important;
+    box-shadow: inset 4px 0 8px rgba(var(--color-nav), 0.2) !important;
+}
+.nav-file-title.is-active .nav-file-title-content { color: #ffffff !important; text-shadow: 0 0 12px rgb(var(--color-nav)) !important; font-weight: 600 !important; }
+
+/* Icônes Iconize (Survol & Actif) */
+.nav-folder-title:hover .iconize-icon svg, .nav-file-title.is-active .iconize-icon svg, .nav-file-title:hover .iconize-icon svg {
+    filter: drop-shadow(0 0 8px rgb(var(--color-nav))) !important; color: #ffffff !important;
+}
+/* =================================================================
+   📊 DATAVIEW : LIENS DYNAMIQUES (EFFET CAMÉLÉON)
+   ================================================================= */
+/* On prépare une transition douce pour tous les liens des tableaux Dataview */
+.table-view-table a {
+    transition: all 0.2s ease !important;
 }
 
-/* Galaxy Folders (Cycle de 11 couleurs) */
-.nav-folder-children > .nav-folder,
-.nav-files-container > div > .nav-folder {
-    transition: all 0.3s ease;
-    border-radius: 4px;
-}
-.nav-folder-children > .nav-folder:hover {
-    background-color: rgba(var(--folder-color), 0.15);
-    filter: drop-shadow(0 0 5px var(--folder-color));
+/* 1. Si le tableau Dataview est DANS un Callout : */
+/* Le lien s'illumine EXACTEMENT avec la couleur du Callout (Bleu, Vert, Orange...) */
+.callout .table-view-table a:hover {
+    color: rgb(var(--hud-color)) !important;
+    text-shadow: 0 0 10px rgba(var(--hud-color), 0.8) !important;
+    text-decoration: underline !important;
+    text-decoration-color: rgb(var(--hud-color)) !important;
 }
 
-/* Assignation des couleurs aux dossiers */
-.nav-files-container > div > .nav-folder:nth-child(11n + 1) { --folder-color: rgb(var(--color-nav)); }
-.nav-files-container > div > .nav-folder:nth-child(11n + 2) { --folder-color: rgb(var(--color-status)); }
-.nav-files-container > div > .nav-folder:nth-child(11n + 3) { --folder-color: rgb(var(--color-projects)); }
-.nav-files-container > div > .nav-folder:nth-child(11n + 4) { --folder-color: #bd93f9; }
-.nav-files-container > div > .nav-folder:nth-child(11n + 5) { --folder-color: #ff5555; }
-.nav-files-container > div > .nav-folder:nth-child(11n + 6) { --folder-color: #f1fa8c; }
-.nav-files-container > div > .nav-folder:nth-child(11n + 7) { --folder-color: #8be9fd; }
-.nav-files-container > div > .nav-folder:nth-child(11n + 8) { --folder-color: #ff79c6; }
-.nav-files-container > div > .nav-folder:nth-child(11n + 9) { --folder-color: #6272a4; }
-.nav-files-container > div > .nav-folder:nth-child(11n + 10) { --folder-color: #50fa7b; }
-.nav-files-container > div > .nav-folder:nth-child(11n + 11) { --folder-color: #ffffff; }
-
-.nav-folder-title-content { color: var(--folder-color) !important; font-weight: 600; }
+/* 2. Si le tableau Dataview est HORS d'un Callout (Normal) : */
+/* On lui donne la couleur "Bleu Néon" globale par défaut de votre interface */
+.markdown-rendered > div > .table-view-table a:hover {
+    color: rgb(var(--color-nav)) !important;
+    text-shadow: 0 0 10px rgba(var(--color-nav), 0.5) !important;
+}
