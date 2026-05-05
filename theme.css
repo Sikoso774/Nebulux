@@ -413,38 +413,105 @@ body .multi-select-pill-remove-button { color: rgb(var(--color-cross)) !importan
    6. DATAVIEW & GRAPH VIEW
    ================================================================= */
 .table-view-table thead th { border-bottom: 2px solid rgb(var(--color-nav)) !important; color: rgb(var(--color-nav)) !important; font-family: var(--font-headers) !important; text-transform: uppercase; }
-.graph-view.color-fill { color: rgb(var(--color-nav)); }
+.graph-view.color-fill { color: #a3b8cc; }
+/* Couleur des traits de connexion entre les points */
+.graph-view.color-line { color: rgba(255, 255, 255, 0.15); }
 .workspace-leaf-content[data-type="graph"] .view-content { background: radial-gradient(circle at center, #1a253a 0%, #050505 85%) !important; }
 
 /* =================================================================
-   7. EXPLORATEUR DE FICHIERS (FORCE BLEUE TACTIQUE)
+   7. EXPLORATEUR DE FICHIERS (GALAXIE NÉON DYNAMIQUE)
    ================================================================= */
-/* Reset Bleu Néon */
-.nav-files-container > div > .nav-folder, .nav-folder-children > .nav-folder { --folder-color: rgb(var(--color-nav)) !important; }
 
-/* Repos */
-.nav-folder-title-content, .nav-file-title-content { color: var(--text-normal) !important; font-weight: 500 !important; transition: all 0.2s ease !important; }
-.nav-folder-collapse-indicator { color: rgba(var(--color-nav), 0.5) !important; opacity: 1 !important; }
-
-/* Survol */
-.nav-folder-title:hover .nav-folder-title-content, .nav-folder-title:hover .nav-folder-collapse-indicator, .nav-file-title:hover .nav-file-title-content {
-    color: #ffffff !important; text-shadow: 0 0 12px rgb(var(--color-nav)) !important;
+/* --- 1. L'EFFET NÉON (Au Repos) --- */
+.nav-folder-title-content { 
+    color: rgb(var(--color-nav)) !important;
+    text-shadow: 0 0 8px rgba(var(--color-nav), 0.5) !important;
+    font-weight: 600 !important; 
+    transition: all 0.2s ease !important; 
 }
-.nav-folder-title:hover, .nav-file-title:hover { background-color: rgba(var(--color-nav), 0.15) !important; }
 
-/* Actif / Sélectionné */
+/* Fichiers au repos : Discrets pour le contraste */
+.nav-file-title-content { 
+    color: var(--text-normal) !important; 
+    font-weight: 500 !important; 
+    transition: all 0.2s ease !important; 
+}
+
+/* --- 2. LA MAGIE INTERACTIVE (Survol & Clic) --- */
+/* Survol (Hover) : Illumination du texte */
+.nav-folder-title:hover .nav-folder-title-content, 
+.nav-file-title:hover .nav-file-title-content {
+    color: #ffffff !important; 
+    text-shadow: 0 0 12px rgb(var(--color-nav)) !important;
+}
+
+/* Survol (Hover) : Fond subtil */
+.nav-folder-title:hover, .nav-file-title:hover { 
+    background-color: rgba(var(--color-nav), 0.15) !important; 
+}
+
+/* 🌟 Clic (Fichier/Dossier Actif) : Le Liseré et l'Ombre Interne */
 .nav-folder.is-active > .nav-folder-title, .nav-folder-title.is-active,
 .nav-file-title.is-active, .nav-file.is-active > .nav-file-title {
     background-color: rgba(var(--color-nav), 0.2) !important;
     border-left: 3px solid rgb(var(--color-nav)) !important;
     box-shadow: inset 4px 0 8px rgba(var(--color-nav), 0.2) !important;
 }
-.nav-file-title.is-active .nav-file-title-content { color: #ffffff !important; text-shadow: 0 0 12px rgb(var(--color-nav)) !important; font-weight: 600 !important; }
 
-/* Icônes Iconize (Survol & Actif) */
-.nav-folder-title:hover .iconize-icon svg, .nav-file-title.is-active .iconize-icon svg, .nav-file-title:hover .iconize-icon svg {
-    filter: drop-shadow(0 0 8px rgb(var(--color-nav))) !important; color: #ffffff !important;
+/* 🌟 Clic (Texte) : Brillance maximale pour le fichier ouvert */
+.nav-file-title.is-active .nav-file-title-content { 
+    color: #ffffff !important; 
+    text-shadow: 0 0 12px rgb(var(--color-nav)), 0 0 20px rgb(var(--color-nav)) !important; 
+    font-weight: 600 !important; 
 }
+
+
+/* --- 3. LE CYCLE AUTOMATIQUE DES COULEURS (L'Arc-en-ciel) --- */
+.nav-folder-children > .nav-folder:nth-child(11n + 2),
+.nav-files-container > div > .nav-folder:nth-child(11n + 2) {
+  --color-nav: 243, 139, 168 !important;
+}
+.nav-folder-children > .nav-folder:nth-child(11n + 3),
+.nav-files-container > div > .nav-folder:nth-child(11n + 3) {
+  --color-nav: 235, 160, 172 !important;
+}
+.nav-folder-children > .nav-folder:nth-child(11n + 4),
+.nav-files-container > div > .nav-folder:nth-child(11n + 4) {
+  --color-nav: 250, 179, 135 !important;
+}
+.nav-folder-children > .nav-folder:nth-child(11n + 5),
+.nav-files-container > div > .nav-folder:nth-child(11n + 5) {
+  --color-nav: 249, 226, 175 !important;
+}
+.nav-folder-children > .nav-folder:nth-child(11n + 6),
+.nav-files-container > div > .nav-folder:nth-child(11n + 6) {
+  --color-nav: 166, 227, 161 !important;
+}
+.nav-folder-children > .nav-folder:nth-child(11n + 7),
+.nav-files-container > div > .nav-folder:nth-child(11n + 7) {
+  --color-nav: 148, 226, 213 !important;
+}
+.nav-folder-children > .nav-folder:nth-child(11n + 8),
+.nav-files-container > div > .nav-folder:nth-child(11n + 8) {
+  --color-nav: 137, 220, 235 !important;
+}
+.nav-folder-children > .nav-folder:nth-child(11n + 9),
+.nav-files-container > div > .nav-folder:nth-child(11n + 9) {
+  --color-nav: 116, 199, 236 !important;
+}
+.nav-folder-children > .nav-folder:nth-child(11n + 10),
+.nav-files-container > div > .nav-folder:nth-child(11n + 10) {
+  --color-nav: 135, 176, 249 !important;
+}
+.nav-folder-children > .nav-folder:nth-child(11n + 11),
+.nav-files-container > div > .nav-folder:nth-child(11n + 11) {
+  --color-nav: 180, 190, 254 !important;
+}
+.nav-folder-children > .nav-folder:nth-child(11n + 12),
+.nav-files-container > div > .nav-folder:nth-child(11n + 12) {
+  --color-nav: 203, 166, 247 !important;
+}
+
 /* =================================================================
    📊 DATAVIEW : LIENS DYNAMIQUES (EFFET CAMÉLÉON)
    ================================================================= */
