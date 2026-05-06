@@ -246,6 +246,24 @@ button:not(.excalidraw-wrapper *):not(.canvas-wrapper *):hover {
 .callout[data-callout="nav/menu"] .callout-content li:hover a { color: #ffffff !important; text-shadow: 0 0 12px rgb(var(--color-nav)), 0 0 20px rgb(var(--color-nav)) !important; }
 .callout[data-callout="nav/menu"] .callout-content li::marker { content: "" !important; }
 
+/* 1. Retirer le style de liste sur le UL et le LI spécifiques au mode lecture */
+.markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet,
+.markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet li {
+    list-style: none !important;
+}
+
+/* 2. Cacher le span "list-bullet" injecté physiquement par Obsidian */
+.markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet li .list-bullet {
+    display: none !important;
+}
+
+/* 3. Cacher le vrai ::marker natif du navigateur par sécurité */
+.markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet li::marker {
+    content: "" !important;
+    display: none !important;
+    font-size: 0 !important;
+}
+
 /* Dashboard Grid Classique */
 .dashboard .callout[data-callout="nav"] .callout-content ul { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important; justify-content: center !important; gap: 20px !important; padding: 0 !important; list-style: none !important; }
 .dashboard .callout[data-callout="nav"] .callout-content li { height: 100px !important; display: flex !important; align-items: center !important; justify-content: center !important; background: rgba(255,255,255,0.05); border: 1px solid rgba(var(--color-nav), 0.3); border-radius: 8px; transition: 0.2s; }
