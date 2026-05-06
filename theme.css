@@ -119,6 +119,7 @@ body {
     --font-text: var(--font-text-theme, 'Montserrat', sans-serif) !important;
     --font-interface: var(--font-text-theme, 'Montserrat', sans-serif) !important;
     --default-font: var(--font-text-theme, 'Montserrat', sans-serif) !important;
+    
 }
 
 /* Forcer l'éditeur CodeMirror */
@@ -338,3 +339,34 @@ body .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="x"], body .mark
 .table-view-table a { transition: all 0.2s ease !important; }
 .callout .table-view-table a:hover { color: rgb(var(--hud-color)) !important; text-shadow: 0 0 10px rgba(var(--hud-color), 0.8) !important; text-decoration: underline !important; text-decoration-color: rgb(var(--hud-color)) !important; }
 .markdown-rendered > div > .table-view-table a:hover { color: rgb(var(--color-nav)) !important; text-shadow: 0 0 10px rgba(var(--color-nav), 0.5) !important; }
+
+/* =================================================================
+   8. SURLIGNAGE (HIGHLIGHTS) - EFFET NÉBULEUSE
+   ================================================================= */
+
+/* Mode Lecture */
+body .markdown-rendered mark {
+    background-color: rgba(183, 132, 230, 0.35) !important; /* Violet Nébuleuse translucide */
+    color: #ffffff !important;
+    padding: 2px 6px !important;
+    border-radius: 6px !important;
+    box-shadow: 0 0 10px rgba(183, 132, 230, 0.5) !important; /* Halo lumineux */
+    font-weight: 600 !important;
+}
+
+/* Mode Éditeur (Live Preview) */
+body .markdown-source-view.mod-cm6 .cm-highlight {
+    background-color: rgba(183, 132, 230, 0.35) !important;
+    color: #ffffff !important;
+    padding: 2px 4px !important;
+    border-radius: 6px !important;
+    box-shadow: 0 0 10px rgba(183, 132, 230, 0.5) !important;
+    font-weight: 600 !important;
+}
+
+/* Les balises == elles-mêmes dans l'éditeur (pour les rendre discrètes) */
+body .markdown-source-view.mod-cm6 .cm-formatting-highlight {
+    color: rgba(183, 132, 230, 0.5) !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
