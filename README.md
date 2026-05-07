@@ -1,8 +1,23 @@
-# 🌌 Nebulux for Obsidian
+<h1 align="center">🌌 Nebulux for Obsidian</h1>
  
-A premium dark, immersive, and neon theme that transforms your Obsidian into a true interstellar cruiser dashboard. Designed for focus, immersion, and complex data management.
+<div align="center">
  
-![Nebulux Screenshot](assets/img/screenshot.png)
+**v1.0.0** | Designed & Coded with ✨ by **[@Sikoso774](https://github.com/Sikoso774)** <br>
+A premium dark, immersive, and neon theme that transforms your Obsidian into a true interstellar cruiser dashboard.<br>
+Designed for focus, immersion, and complex data management.
+ 
+  <p align="center">
+    <a href="https://github.com/Sikoso774/Nebulux/releases"><img src="https://img.shields.io/github/v/release/Sikoso774/Nebulux?style=flat-square&color=0e131f" alt="Release"></a>
+    <a href="https://github.com/Sikoso774/Nebulux/releases"><img src="https://img.shields.io/github/release-date/Sikoso774/Nebulux?style=flat-square&color=78B4FF" alt="Release Date"></a>
+    <a href="https://github.com/Sikoso774/Nebulux/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Sikoso774/Nebulux?style=flat-square&color=FFC832" alt="License"></a>
+    <a href="https://github.com/Sikoso774/Nebulux/releases"><img src="https://img.shields.io/github/downloads/Sikoso774/Nebulux/total?style=flat-square&color=CD7F32" alt="Downloads"></a>
+  </p>
+ 
+</div>
+ 
+<p align="center">
+  <img src="assets/img/screenshot.png" alt="Nebulux Screenshot">
+</p>
  
 ## ✨ Key Features
  
