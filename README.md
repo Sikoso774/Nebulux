@@ -2,7 +2,7 @@
  
 A premium dark, immersive, and neon theme that transforms your Obsidian into a true interstellar cruiser dashboard. Designed for focus, immersion, and complex data management.
  
-![Nebulux Screenshot](screenshot.png)
+![Nebulux Screenshot](assets/img/screenshot.png)
  
 ## ✨ Key Features
  
