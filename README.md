@@ -11,17 +11,28 @@ Designed for focus, immersion, and complex data management.
     <img src="https://img.shields.io/github/release-date/Sikoso774/Nebulux?color=78B4FF" alt="Release Date">
     <img src="https://img.shields.io/badge/License-MIT-A31F34" alt="License">
     <img src="https://img.shields.io/github/downloads/Sikoso774/Nebulux/total?color=CD7F32" alt="Downloads">
-  </p>
- 
-<b><a href="#">CHANGELOG</a></b> | <b><a href="#">USAGE</a></b>
- 
+  </p> 
 </div>
  
-<p align="center">
-  <img src="assets/img/screenshot.png" alt="Nebulux Screenshot">
-</p>
- 
-## ✨ Key Features
+<div align="center">
+<img src="assets/img/screenshot.png" alt="Nebulux Screenshot" width="1000">
+</div>
+<br>
+<br>
+
+## Summary
+
+- [Key Features](#key-features)
+- [Custom Callouts](#custom-callouts)
+- [Building Dashboards](#building-dashboards)
+- [Typography & Offline Use](#typography--offline-use)
+- [Installation & Configuration](#installation--configuration)
+- [Changelog](CHANGELOG.md)
+
+<br>
+<br>
+
+## Key Features
  
 * 🖥️ **Sci-Fi Cockpit:** Darkened interface, futuristic fonts, and neon glow effects for optimal contrast.
 * 🔠 **Gradient Headers (H1-H6):** Dynamic headers with unique gradients (Stellar Glow, Neon Nav, Status Energy, etc.) to elegantly hierarchy your notes.
@@ -29,9 +40,10 @@ Designed for focus, immersion, and complex data management.
 * 📁 **Dynamic File Explorer:** Built-in "Rainbow Folders" effect to automatically colorize and visually differentiate your folders.
 * ⚙️ **Highly Customizable:** Full support for the *Style Settings* plugin.
  
----
+<br>
+<br>
  
-## 🚀 The 3 Pillars (Custom Callouts)
+## Custom Callouts
  
 The theme features a custom callout system tailored to structure your dashboards, based on a strict design language. Use these to visually organize your data.
  
@@ -41,7 +53,7 @@ The theme features a custom callout system tailored to structure your dashboards
 | `> [!status]` | 📊 **Tactical Gold** | Tasks, Validations, Project Status. |
 | `> [!projects]`| 🚀 **Tactical Bronze**| Ideas, Ongoing projects, Warnings. |
  
-### 🛠️ Icon Modifiers (Tactical Mode)
+### 🛠️ Icon Modifiers
 You can swap the default callout icon on the fly by adding a keyword after a slash `/`.
  
 | Keyword | Icon | Example |
@@ -64,9 +76,10 @@ If you want to use the default Obsidian vector icons (SVG) instead of the theme'
  
 *(Note: Default Obsidian callouts like `> [!info]` or `> [!warning]` are also supported and natively colorized to match the Nebulux palette).*
  
----
+<br>
+<br>
  
-## 🎛️ Building Dashboards
+## Building Dashboards
  
 Nebulux offers two powerful ways to build beautiful button grids and dashboards using Markdown lists inside callouts.
  
@@ -99,9 +112,10 @@ cssclasses: dashboard
 > - [Finances](Finances)
 ```
  
----
+<br>
+<br>
  
-## 🔡 Typography & Offline Use
+## Typography & Offline Use
  
 The theme uses **Orbitron** for headers and **Montserrat** for the body text to achieve its futuristic look. 
  
@@ -110,13 +124,18 @@ The theme uses **Orbitron** for headers and **Montserrat** for the body text to 
   * [Download Montserrat](https://fonts.google.com/specimen/Montserrat)
   * [Download Orbitron](https://fonts.google.com/specimen/Orbitron)
  
----
+<br>
+<br>
  
-## ⚙️ Installation & Configuration
- 
+## Installation & Configuration
+
+<details>
+<summary><strong>Click to expand</strong></summary>
+
 1. Search for **Nebulux** in the Obsidian Community Themes gallery and click "Install".
 2. In Obsidian, go to `Settings > Appearance` and select the theme.
 3. **Important:** Install the **Style Settings** community plugin to unlock all theme options (Neon colors, header gradients, blur intensity, etc.).
+</details>
  
 *💡 Tip: To fully enjoy the Glassmorphism effect on the top bar, it is highly recommended to enable the "Hidden window frame" option in Obsidian's Appearance settings.*
  
