@@ -1,14 +1,22 @@
-/* =================================================================
-   🌌 GALAXY MASTER HUD - ULTIMATE EDITION (v3.5 - REBORN)
-   ================================================================= */
+/** ---------------------------------------------------------------
+**  ███╗   ██╗███████╗██████╗ ██╗   ██╗██╗     ██╗   ██╗██╗  ██╗
+**  ████╗  ██║██╔════╝██╔══██╗██║   ██║██║     ██║   ██║╚██╗██╔╝
+**  ██╔██╗ ██║█████╗  ██████╔╝██║   ██║██║     ██║   ██║ ╚███╔╝ 
+**  ██║╚██╗██║██╔══╝  ██╔══██╗██║   ██║██║     ██║   ██║ ██╔██╗ 
+**  ██║ ╚████║███████╗██████╔╝╚██████╔╝███████╗╚██████╔╝██╔╝ ██╗
+**  ╚═╝  ╚═══╝╚══════╝╚═════╝  ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝
+**  —— Version 1.0.0
+**  —— Made with ✨ by @Sikoso774
+**  —— Changes Log @see: https://github.com/Sikoso774/Nebulux/blob/main/CHANGELOG.md
+**  --------------------------------------------------------------- */
 
 /* @settings
-name: Galaxy Master HUD
-id: hud-galaxy-master
+name: Nebulux
+id: nebulux-hud
 settings:
     - 
         id: ui-title
-        title: 🖥️ Interface & Ambiance
+        title: 🖥️ Nebulux Interface
         type: heading
         level: 1
     - 
@@ -228,7 +236,7 @@ body {
     color: var(--text-muted) !important;
 }
 
-/* Ambiance Galaxy : Fond Radial Dynamique */
+/* Ambiance Nebulux : Fond Radial Dynamique */
 .workspace-leaf-content:not([data-type="excalidraw"]) .view-content,
 .markdown-reading-view {
     background: radial-gradient(circle at center, var(--bg-gradient-center) 0%, var(--bg-gradient-edge) 85%) !important;
@@ -240,7 +248,7 @@ body {
 }
 
 /* =================================================================
-   🎨 GALAXY TITLES : DÉGRADÉS H1 À H6 (CORRIGÉ)
+   🎨 NEBULUX TITLES : DÉGRADÉS H1 À H6 (CORRIGÉ)
    ================================================================= */
 
 /* 1. Base commune : Typographie et espacement */
@@ -785,7 +793,7 @@ body .markdown-rendered .task-list-item.is-checked {
 }
 
 /* =================================================================
-   6. EXPLORATEUR DE FICHIERS (GALAXIE NÉON DYNAMIQUE)
+   6. EXPLORATEUR DE FICHIERS (NÉBULEUSE NÉON DYNAMIQUE)
    ================================================================= */
 /* 🌟 Application explicite de la police pour garantir la stabilité */
 .nav-folder-title-content {

@@ -1,48 +1,41 @@
-# 🌌 HUD Galaxy Theme for Obsidian
+# 🌌 Nebulux for Obsidian
 
-Un thème complet pour Obsidian inspiré des interfaces Sci-Fi (HUD), optimisé pour Windows 11.
-Ce projet transforme l'éditeur de texte en véritable cockpit de vaisseau spatial avec des effets de transparence (Glassmorphism), des animations néons et une gestion sonore immersive.
+A dark, immersive, and neon theme that transforms your Obsidian into a true interstellar cruiser dashboard. Designed for focus, immersion, and complex data management.
 
-![Graph View Screenshot](screenshot.png)
+![Nebulux Screenshot](screenshot.png)
 
-## 🚀 Fonctionnalités Clés
+## ✨ Key Features
 
-* **Glassmorphism Réel sur Windows :** Intégration avancée avec le moteur de rendu via *Pseudo Mica* pour contourner les limitations de transparence d'Electron sur Windows 11.
-* **Système de Couleurs Cyclique :** Utilisation de `:nth-child` et de variables CSS (`var(--color-nav)`) pour colorer automatiquement les dossiers et l'interface sans intervention manuelle.
-* **Graph View HUD :** Panneau de contrôle flottant entièrement transparent avec effets de flou (`backdrop-filter`) et accélération matérielle forcée (`transform: translateZ(0)`).
-* **Soundscapes Integration :** Support natif pour les ambiances sonores via ID YouTube.
+* 🖥️ **Sci-Fi Cockpit:** Darkened interface, futuristic fonts (Orbitron & Montserrat), and neon glow effects for optimal contrast.
+* 🔠 **Gradient Headers (H1-H6):** Dynamic headers with unique gradients (Stellar Glow, Neon Nav, Status Energy, etc.) to elegantly hierarchy your notes.
+* 🌫️ **Glassmorphism:** Dynamic transparency and background blur on active tabs and floating menus.
+* 📁 **Dynamic File Explorer:** Built-in "Rainbow Folders" effect to automatically colorize and visually differentiate your folders.
+* ⚙️ **Highly Customizable:** Full support for the *Style Settings* plugin.
 
-## 🛠️ Challenges Techniques & Solutions
+## 🚀 The 3 Pillars (Custom Callouts)
 
-### Le Bug du "Voile Gris" (Windows/Electron)
+The theme features a custom callout system tailored to structure your dashboards, based on a strict design language:
 
-Sur Windows, l'accélération matérielle désactive souvent le `backdrop-filter` sur les éléments flottants au-dessus du WebGL (Graph View), créant un fond gris opaque lors du focus.
+| Syntax | Render | Usage |
+| :--- | :--- | :--- |
+| `> [!nav]` | 🧭 **Neon Blue** | Navigation, Table of Contents, Dashboards. |
+| `> [!status]` | 📊 **Tactical Gold** | Tasks, Validations, Project Status. |
+| `> [!projects]`| 🚀 **Project Bronze**| Ideas, Ongoing projects, Warnings. |
 
-**Solution :**
-J'ai implémenté un correctif CSS hybride qui force la création d'une nouvelle couche de composition GPU tout en utilisant le plugin *Pseudo Mica* pour gérer la transparence au niveau de la fenêtre OS.
+### 🛠️ Icon Modifiers
+You can swap the default callout icon on the fly by adding a keyword after a slash `/` :
+* `> [!projects/brain]` 🧠 (Brainstorming Session)
+* `> [!status/bug]` 🐞 (Bug Report)
+* `> [!nav/clean]` (Removes the icon entirely for a minimalist look)
+* `> [!status/native]` (Forces the default Obsidian SVG icon)
 
-```css
-/* Extrait du code correctif */
-.graph-controls {
-    background-color: rgba(13, 17, 26, 0.60) !important;
-    backdrop-filter: blur(12px);
-    transform: translateZ(0); /* Force GPU Layer */
-    will-change: transform, backdrop-filter;
-}
-```
+## ⚙️ Installation & Configuration
 
-## 📦 Installation
+1. Search for **Nebulux** in the Obsidian Community Themes gallery and click "Install".
+2. In Obsidian, go to `Settings > Appearance` and select the theme.
+3. **Important:** Install the **Style Settings** community plugin to unlock all theme options (Neon colors, header gradients, blur intensity, etc.).
 
-1. Téléchargez le fichier `theme.css`.
-2. Placez-le dans `.obsidian/themes/HUD Galaxy Theme/`.
-3. Activez le thème dans les paramètres d'Obsidian.
-4. **Requis :** Installez le plugin "Style Settings" pour la configuration et "Pseudo Mica" pour la transparence.
-
-## 🎨 Personnalisation
-
-Le thème est entièrement configurable via des variables CSS exposées dans Style Settings :
--`--hud-blur`: Intensité du flou.
--`--color-nav`: Couleur principale (Défaut: Bleu Néon).
+*Note: To fully enjoy the Glassmorphism effect on the top bar, it is highly recommended to enable the "Hidden window frame" option in Obsidian's Appearance settings.*
 
 ---
-*Développé par Sikoso774*
+*Created by [Zoléni KOKOLO ZASSI](https://github.com/Sikoso774)*
