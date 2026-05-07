@@ -1,5 +1,5 @@
 /* =================================================================
-   🌌 GALAXY MASTER HUD - ULTIMATE EDITION (v3.5.0)
+   🌌 GALAXY MASTER HUD - ULTIMATE EDITION (v3.5 - REBORN)
    ================================================================= */
 
 /* @settings
@@ -74,33 +74,124 @@ settings:
         id: font-headers
         title: Police des Titres (H1-H6)
         type: variable-text
-        default: "'Rajdhani', sans-serif"
+        default: "'Orbitron', sans-serif"
     - 
         id: font-text-theme
         title: Police du Texte et Interface
         type: variable-text
         default: "'Montserrat', sans-serif"
+	- 
+        id: titles-gradient-settings
+        title: 🔠 Dégradés des Titres (H1-H6)
+        type: heading
+        level: 1
+    - 
+        id: h1-start
+        title: H1 - Couleur de départ (Gauche)
+        type: variable-color
+        format: hex
+        default: '#ffffff'
+    - 
+        id: h1-end
+        title: H1 - Couleur de fin (Droite)
+        type: variable-color
+        format: hex
+        default: '#999999'
+    - 
+        id: h2-start
+        title: H2 - Couleur de départ
+        type: variable-color
+        format: hex
+        default: '#78B4FF'
+    - 
+        id: h2-end
+        title: H2 - Couleur de fin
+        type: variable-color
+        format: hex
+        default: '#2563eb'
+    - 
+        id: h3-start
+        title: H3 - Couleur de départ
+        type: variable-color
+        format: hex
+        default: '#FFC832'
+    - 
+        id: h3-end
+        title: H3 - Couleur de fin
+        type: variable-color
+        format: hex
+        default: '#d97706'
+    - 
+        id: h4-start
+        title: H4 - Couleur de départ
+        type: variable-color
+        format: hex
+        default: '#CD7F32'
+    - 
+        id: h4-end
+        title: H4 - Couleur de fin
+        type: variable-color
+        format: hex
+        default: '#b91c1c'
+    - 
+        id: h5-start
+        title: H5 - Couleur de départ
+        type: variable-color
+        format: hex
+        default: '#c084fc'
+    - 
+        id: h5-end
+        title: H5 - Couleur de fin
+        type: variable-color
+        format: hex
+        default: '#6d28d9'
+    - 
+        id: h6-start
+        title: H6 - Couleur de départ
+        type: variable-color
+        format: hex
+        default: '#94a3b8'
+    - 
+        id: h6-end
+        title: H6 - Couleur de fin
+        type: variable-color
+        format: hex
+        default: '#475569'
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Rajdhani:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
 :root {
     /* --- CONNEXION INTELLIGENTE STYLE SETTINGS --- */
-    --color-nav: var(--theme-nav-rgb, 120, 180, 255);      
-    --color-status: var(--theme-status-rgb, 255, 200, 50);   
-    --color-projects: var(--theme-projects-rgb, 205, 127, 50); 
+    --color-nav: var(--theme-nav-rgb, 120, 180, 255);
+    --color-status: var(--theme-status-rgb, 255, 200, 50);
+    --color-projects: var(--theme-projects-rgb, 205, 127, 50);
     --color-cross: 255, 255, 255;
-    
+
     --bg-gradient-center: #1a253a;
     --bg-gradient-edge: #050505;
-    
+
     --hud-radius: 12px;
     --hud-blur: 12px;
     --hud-frame: 1.5px;
-    
-    --font-headers: 'Rajdhani', sans-serif !important;
+
+    --font-headers: 'Orbitron', sans-serif !important;
     --font-text-theme: 'Montserrat', sans-serif !important;
     --font-interface-theme: 'Montserrat', sans-serif !important;
+
+    /* 🌈 Variables par défaut des dégradés de Titres */
+    --h1-start: #ffffff;
+    --h1-end: rgba(255, 255, 255, 0.4);
+    --h2-start: #78B4FF;
+    --h2-end: #2563eb;
+    --h3-start: #FFC832;
+    --h3-end: #d97706;
+    --h4-start: #CD7F32;
+    --h4-end: #b91c1c;
+    --h5-start: #c084fc;
+    --h5-end: #6d28d9;
+    --h6-start: #94a3b8;
+    --h6-end: #475569;
 }
 
 /* =================================================================
@@ -119,7 +210,7 @@ body {
     --font-text: var(--font-text-theme, 'Montserrat', sans-serif) !important;
     --font-interface: var(--font-text-theme, 'Montserrat', sans-serif) !important;
     --default-font: var(--font-text-theme, 'Montserrat', sans-serif) !important;
-    
+
 }
 
 /* Forcer l'éditeur CodeMirror */
@@ -132,7 +223,10 @@ body {
 .metadata-container * {
     font-family: var(--font-text) !important;
 }
-.metadata-property-key-input { color: var(--text-muted) !important; }
+
+.metadata-property-key-input {
+    color: var(--text-muted) !important;
+}
 
 /* Ambiance Galaxy : Fond Radial Dynamique */
 .workspace-leaf-content:not([data-type="excalidraw"]) .view-content,
@@ -140,111 +234,357 @@ body {
     background: radial-gradient(circle at center, var(--bg-gradient-center) 0%, var(--bg-gradient-edge) 85%) !important;
     background-attachment: fixed !important;
 }
-.workspace-leaf-content[data-type="excalidraw"] .view-content { background: transparent !important; }
 
-/* Titres Sci-Fi (Lecture ET Éditeur Live Preview) */
-h1, h2, h3, h4, h5, h6, .view-header-title,
-.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4, .cm-header-5, .cm-header-6 {
-    font-family: var(--font-headers, 'Rajdhani', sans-serif) !important;
-    /* text-transform: uppercase !important; */
-    letter-spacing: 0.08em !important;
-    color: rgb(var(--color-nav)) !important;
+.workspace-leaf-content[data-type="excalidraw"] .view-content {
+    background: transparent !important;
 }
 
-h1, .cm-header-1 {
-    background: linear-gradient(to right, #fff, rgba(255,255,255,0.5)) !important;
+/* =================================================================
+   🎨 GALAXY TITLES : DÉGRADÉS H1 À H6 (CORRIGÉ)
+   ================================================================= */
+
+/* 1. Base commune : Typographie et espacement */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.view-header-title,
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+    font-family: var(--font-headers, 'Orbitron', sans-serif) !important;
+    letter-spacing: 0.08em !important;
+    /* On force la découpe du fond selon la forme du texte */
     -webkit-background-clip: text !important;
+    background-clip: text !important;
     color: transparent !important;
+    font-weight: 700 !important;
+}
+
+/* 2. H1 : Éclat Stellaire */
+h1,
+.cm-header-1 {
+    background-image: linear-gradient(90deg, var(--h1-start) 0%, var(--h1-end) 100%) !important;
+}
+
+/* 3. H2 : Nav Néon */
+h2,
+.cm-header-2 {
+    background-image: linear-gradient(90deg, var(--h2-start) 0%, var(--h2-end) 100%) !important;
+}
+
+/* 4. H3 : Énergie Status */
+h3,
+.cm-header-3 {
+    background-image: linear-gradient(90deg, var(--h3-start) 0%, var(--h3-end) 100%) !important;
+}
+
+/* 5. H4 : Cuivre Projets */
+h4,
+.cm-header-4 {
+    background-image: linear-gradient(90deg, var(--h4-start) 0%, var(--h4-end) 100%) !important;
+}
+
+/* 6. H5 : Nébuleuse */
+h5,
+.cm-header-5 {
+    background-image: linear-gradient(90deg, var(--h5-start) 0%, var(--h5-end) 100%) !important;
+}
+
+/* 7. H6 : Métal Froid */
+h6,
+.cm-header-6 {
+    background-image: linear-gradient(90deg, var(--h6-start) 0%, var(--h6-end) 100%) !important;
 }
 
 /* Gras et Italique unifiés (Lecture ET Éditeur) */
-strong, b, .cm-strong { 
-    color: rgb(var(--color-projects)) !important; 
-    font-weight: 700 !important; 
+strong,
+b,
+.cm-strong {
+    color: rgb(var(--color-projects)) !important;
+    font-weight: 700 !important;
 }
-em, i, .cm-em { 
-    color: rgba(255, 255, 255, 0.6) !important; 
-    font-style: italic !important; 
+
+em,
+i,
+.cm-em {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-style: italic !important;
 }
 
 /* =================================================================
    2. INTERFACE SYSTÈME (OPAQUE & NÉON)
    ================================================================= */
-.workspace-tab-header.is-active, .vertical-tab-nav-item.is-active {
-    background-color: #0f192d !important; opacity: 1 !important; color: rgb(var(--color-nav)) !important;
-    border: 1px solid rgba(var(--color-nav), 0.5) !important; box-shadow: inset 0 2px 0 0 rgb(var(--color-nav)), 0 0 10px rgba(var(--color-nav), 0.2) !important;
+.workspace-tab-header.is-active,
+.vertical-tab-nav-item.is-active {
+    background-color: #0f192d !important;
+    opacity: 1 !important;
+    color: rgb(var(--color-nav)) !important;
+    border: 1px solid rgba(var(--color-nav), 0.5) !important;
+    box-shadow: inset 0 2px 0 0 rgb(var(--color-nav)), 0 0 10px rgba(var(--color-nav), 0.2) !important;
 }
-.workspace-tab-header-container, .vertical-tab-header { background-color: #000000 !important; }
+
+.workspace-tab-header-container,
+.vertical-tab-header {
+    background-color: #000000 !important;
+}
 
 body .app-container .titlebar {
-    background: #000000 !important; border-bottom: var(--hud-frame) solid rgba(var(--color-nav), 0.8) !important; box-shadow: 0 2px 10px rgba(var(--color-nav), 0.25) !important;
+    background: #000000 !important;
+    border-bottom: var(--hud-frame) solid rgba(var(--color-nav), 0.8) !important;
+    box-shadow: 0 2px 10px rgba(var(--color-nav), 0.25) !important;
 }
-body .app-container .status-bar { background: #000000 !important; border-top: var(--hud-frame) solid rgba(var(--color-nav), 0.5) !important; }
 
-button:not(.excalidraw-wrapper *):not(.canvas-wrapper *), button.mod-cta:not(.excalidraw-wrapper *):not(.canvas-wrapper *) {
-    background-color: rgba(15, 25, 45, 0.9) !important; border: 1px solid rgba(var(--color-nav), 0.5) !important; color: #e0e6ed !important; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: all 0.3s ease;
+body .app-container .status-bar {
+    background: #000000 !important;
+    border-top: var(--hud-frame) solid rgba(var(--color-nav), 0.5) !important;
 }
+
+button:not(.excalidraw-wrapper *):not(.canvas-wrapper *),
+button.mod-cta:not(.excalidraw-wrapper *):not(.canvas-wrapper *) {
+    background-color: rgba(15, 25, 45, 0.9) !important;
+    border: 1px solid rgba(var(--color-nav), 0.5) !important;
+    color: #e0e6ed !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
 button:not(.excalidraw-wrapper *):not(.canvas-wrapper *):hover {
-    background-color: rgba(var(--color-nav), 0.15) !important; box-shadow: 0 0 15px rgba(var(--color-nav), 0.6) !important; border-color: rgb(var(--color-nav)) !important; transform: translateY(-2px); color: #fff !important;
+    background-color: rgba(var(--color-nav), 0.15) !important;
+    box-shadow: 0 0 15px rgba(var(--color-nav), 0.6) !important;
+    border-color: rgb(var(--color-nav)) !important;
+    transform: translateY(-2px);
+    color: #fff !important;
 }
 
-.menu, .suggestion-container { background-color: #0f192d !important; box-shadow: 0 10px 30px rgba(0,0,0,0.9), inset 0 0 0 1px rgba(var(--color-nav), 0.4) !important; border: none !important; padding: 4px !important; }
-.menu-item, .suggestion-item { border: none !important; margin: 0 !important; background-color: transparent !important; }
-.menu-item.is-selected, .suggestion-item.is-selected, .menu-item:hover { background-color: rgba(var(--color-nav), 0.2) !important; color: rgb(var(--color-nav)) !important; box-shadow: inset 3px 0 0 rgb(var(--color-nav)) !important; }
+.menu,
+.suggestion-container {
+    background-color: #0f192d !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), inset 0 0 0 1px rgba(var(--color-nav), 0.4) !important;
+    border: none !important;
+    padding: 4px !important;
+}
+
+.menu-item,
+.suggestion-item {
+    border: none !important;
+    margin: 0 !important;
+    background-color: transparent !important;
+}
+
+.menu-item.is-selected,
+.suggestion-item.is-selected,
+.menu-item:hover {
+    background-color: rgba(var(--color-nav), 0.2) !important;
+    color: rgb(var(--color-nav)) !important;
+    box-shadow: inset 3px 0 0 rgb(var(--color-nav)) !important;
+}
 
 /* =================================================================
    3. MODULES : CALLOUTS & DASHBOARD
    ================================================================= */
 .callout {
-    border: 1px solid rgba(var(--hud-color, 160, 190, 220), 0.5) !important; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
-    background: color-mix(in srgb, rgb(var(--hud-color)) 15%, rgba(10, 12, 18, 0.85)) !important; border-radius: 12px !important; transition: all 0.3s ease !important;
+    border: 1px solid rgba(var(--hud-color, 160, 190, 220), 0.5) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+    background: color-mix(in srgb, rgb(var(--hud-color)) 15%, rgba(10, 12, 18, 0.85)) !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
 }
+
 .callout:hover {
-    transform: translateY(-3px) !important; border-color: rgb(var(--hud-color, 160, 190, 220)) !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(var(--hud-color, 160, 190, 220), 0.3) !important; background: color-mix(in srgb, rgb(var(--hud-color)) 25%, rgba(10, 12, 18, 0.95)) !important;
+    transform: translateY(-3px) !important;
+    border-color: rgb(var(--hud-color, 160, 190, 220)) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(var(--hud-color, 160, 190, 220), 0.3) !important;
+    background: color-mix(in srgb, rgb(var(--hud-color)) 25%, rgba(10, 12, 18, 0.95)) !important;
 }
 
-.callout[data-callout^="nav"] { background: rgba(15, 25, 45, 0.85) !important; }
-.callout[data-callout^="nav"]:hover { background: rgba(15, 25, 45, 0.95) !important; }
+.callout[data-callout^="nav"] {
+    background: rgba(15, 25, 45, 0.85) !important;
+}
 
-.callout[data-callout^="nav"]      { --hud-color: var(--color-nav) !important;      --hud-bg: 15, 25, 45 !important; }
-.callout[data-callout^="status"]   { --hud-color: var(--color-status) !important;   --hud-bg: 45, 35, 15 !important; } 
-.callout[data-callout^="projects"] { --hud-color: var(--color-projects) !important; --hud-bg: 30, 32, 35 !important; } 
+.callout[data-callout^="nav"]:hover {
+    background: rgba(15, 25, 45, 0.95) !important;
+}
 
-.callout[data-callout^="nav"] .callout-icon svg, .callout[data-callout^="status"] .callout-icon svg, .callout[data-callout^="projects"] .callout-icon svg { display: none !important; }
-.callout[data-callout^="nav"] .callout-icon::before, .callout[data-callout^="status"] .callout-icon::before, .callout[data-callout^="projects"] .callout-icon::before { content: var(--hud-icon); font-size: 1.2rem; }
+.callout[data-callout^="nav"] {
+    --hud-color: var(--color-nav) !important;
+    --hud-bg: 15, 25, 45 !important;
+}
 
-.callout[data-callout^="nav"]      { --hud-icon: "🧭" !important; }
-.callout[data-callout^="status"]   { --hud-icon: "📊" !important; }
-.callout[data-callout^="projects"] { --hud-icon: "🚀" !important; }
-.callout[data-callout$="/idea"]    { --hud-icon: "💡" !important; }
-.callout[data-callout$="/brain"]   { --hud-icon: "🧠" !important; }
-.callout[data-callout$="/bug"]     { --hud-icon: "🐞" !important; }
-.callout[data-callout$="/target"]  { --hud-icon: "🎯" !important; }
-.callout[data-callout$="/write"]   { --hud-icon: "✍️" !important; }
-.callout[data-callout$="/file"]    { --hud-icon: "📂" !important; }
-.callout[data-callout$="/heart"]   { --hud-icon: "❤️" !important; }
+.callout[data-callout^="status"] {
+    --hud-color: var(--color-status) !important;
+    --hud-bg: 45, 35, 15 !important;
+}
 
-.callout[data-callout$="/clean"] .callout-icon { display: none !important; }
-.callout[data-callout$="/native"] .callout-icon::before { display: none !important; }
-.callout[data-callout$="/native"] .callout-icon svg { display: block !important; }
+.callout[data-callout^="projects"] {
+    --hud-color: var(--color-projects) !important;
+    --hud-bg: 30, 32, 35 !important;
+}
+
+.callout[data-callout^="nav"] .callout-icon svg,
+.callout[data-callout^="status"] .callout-icon svg,
+.callout[data-callout^="projects"] .callout-icon svg {
+    display: none !important;
+}
+
+.callout[data-callout^="nav"] .callout-icon::before,
+.callout[data-callout^="status"] .callout-icon::before,
+.callout[data-callout^="projects"] .callout-icon::before {
+    content: var(--hud-icon);
+    font-size: 1.2rem;
+}
+
+.callout[data-callout^="nav"] {
+    --hud-icon: "🧭" !important;
+}
+
+.callout[data-callout^="status"] {
+    --hud-icon: "📊" !important;
+}
+
+.callout[data-callout^="projects"] {
+    --hud-icon: "🚀" !important;
+}
+
+.callout[data-callout$="/idea"] {
+    --hud-icon: "💡" !important;
+}
+
+.callout[data-callout$="/brain"] {
+    --hud-icon: "🧠" !important;
+}
+
+.callout[data-callout$="/bug"] {
+    --hud-icon: "🐞" !important;
+}
+
+.callout[data-callout$="/target"] {
+    --hud-icon: "🎯" !important;
+}
+
+.callout[data-callout$="/write"] {
+    --hud-icon: "✍️" !important;
+}
+
+.callout[data-callout$="/file"] {
+    --hud-icon: "📂" !important;
+}
+
+.callout[data-callout$="/heart"] {
+    --hud-icon: "❤️" !important;
+}
+
+.callout[data-callout$="/clean"] .callout-icon {
+    display: none !important;
+}
+
+.callout[data-callout$="/native"] .callout-icon::before {
+    display: none !important;
+}
+
+.callout[data-callout$="/native"] .callout-icon svg {
+    display: block !important;
+}
 
 /* Callouts Natifs Obsidian Colorisés */
-.callout[data-callout="info"], .callout[data-callout="todo"] { --hud-color: 80, 160, 255 !important; }
-.callout[data-callout="example"] { --hud-color: 180, 120, 255 !important; }
-.callout[data-callout="success"], .callout[data-callout="check"], .callout[data-callout="done"] { --hud-color: 80, 220, 120 !important; }
-.callout[data-callout="warning"], .callout[data-callout="question"], .callout[data-callout="help"], .callout[data-callout="faq"], .callout[data-callout="caution"], .callout[data-callout="attention"] { --hud-color: 255, 170, 50 !important; }
-.callout[data-callout="danger"], .callout[data-callout="error"], .callout[data-callout="fail"], .callout[data-callout="failure"], .callout[data-callout="bug"] { --hud-color: 255, 80, 80 !important; }
-.callout[data-callout="tip"], .callout[data-callout="important"], .callout[data-callout="abstract"], .callout[data-callout="summary"], .callout[data-callout="tldr"], .callout[data-callout="hint"] { --hud-color: 50, 220, 255 !important; }
-.callout[data-callout="quote"], .callout[data-callout="cite"] { --hud-color: 150, 160, 170 !important; }
+.callout[data-callout="info"],
+.callout[data-callout="todo"] {
+    --hud-color: 80, 160, 255 !important;
+}
+
+.callout[data-callout="example"] {
+    --hud-color: 180, 120, 255 !important;
+}
+
+.callout[data-callout="success"],
+.callout[data-callout="check"],
+.callout[data-callout="done"] {
+    --hud-color: 80, 220, 120 !important;
+}
+
+.callout[data-callout="warning"],
+.callout[data-callout="question"],
+.callout[data-callout="help"],
+.callout[data-callout="faq"],
+.callout[data-callout="caution"],
+.callout[data-callout="attention"] {
+    --hud-color: 255, 170, 50 !important;
+}
+
+.callout[data-callout="danger"],
+.callout[data-callout="error"],
+.callout[data-callout="fail"],
+.callout[data-callout="failure"],
+.callout[data-callout="bug"] {
+    --hud-color: 255, 80, 80 !important;
+}
+
+.callout[data-callout="tip"],
+.callout[data-callout="important"],
+.callout[data-callout="abstract"],
+.callout[data-callout="summary"],
+.callout[data-callout="tldr"],
+.callout[data-callout="hint"] {
+    --hud-color: 50, 220, 255 !important;
+}
+
+.callout[data-callout="quote"],
+.callout[data-callout="cite"] {
+    --hud-color: 150, 160, 170 !important;
+}
 
 /* Dashboard Menu Flexbox */
-.callout[data-callout="nav/menu"] .callout-content ul { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 15px !important; padding: 0 !important; margin: 10px 0 0 0 !important; list-style: none !important; }
-.callout[data-callout="nav/menu"] .callout-content li { flex: 1 1 auto !important; min-width: 120px !important; background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(var(--color-nav), 0.3) !important; border-radius: 10px !important; text-align: center !important; transition: all 0.3s ease !important; margin: 0 !important; }
-.callout[data-callout="nav/menu"] .callout-content li:hover { background: rgba(var(--color-nav), 0.25) !important; border-color: rgb(var(--color-nav)) !important; box-shadow: 0 0 20px rgba(var(--color-nav), 0.6), inset 0 0 10px rgba(var(--color-nav), 0.3) !important; transform: translateY(-3px) !important; }
-.callout[data-callout="nav/menu"] .callout-content a { display: block !important; padding: 12px 20px !important; color: #e0e6ed !important; font-weight: 700 !important; text-decoration: none !important; letter-spacing: 0.05em !important; transition: all 0.3s ease !important; }
-.callout[data-callout="nav/menu"] .callout-content li:hover a { color: #ffffff !important; text-shadow: 0 0 12px rgb(var(--color-nav)), 0 0 20px rgb(var(--color-nav)) !important; }
-.callout[data-callout="nav/menu"] .callout-content li::marker { content: "" !important; }
+.callout[data-callout="nav/menu"] .callout-content ul {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    padding: 0 !important;
+    margin: 10px 0 0 0 !important;
+    list-style: none !important;
+}
+
+.callout[data-callout="nav/menu"] .callout-content li {
+    flex: 1 1 auto !important;
+    min-width: 120px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(var(--color-nav), 0.3) !important;
+    border-radius: 10px !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+    margin: 0 !important;
+}
+
+.callout[data-callout="nav/menu"] .callout-content li:hover {
+    background: rgba(var(--color-nav), 0.25) !important;
+    border-color: rgb(var(--color-nav)) !important;
+    box-shadow: 0 0 20px rgba(var(--color-nav), 0.6), inset 0 0 10px rgba(var(--color-nav), 0.3) !important;
+    transform: translateY(-3px) !important;
+}
+
+.callout[data-callout="nav/menu"] .callout-content a {
+    display: block !important;
+    padding: 12px 20px !important;
+    color: #e0e6ed !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    letter-spacing: 0.05em !important;
+    transition: all 0.3s ease !important;
+}
+
+.callout[data-callout="nav/menu"] .callout-content li:hover a {
+    color: #ffffff !important;
+    text-shadow: 0 0 12px rgb(var(--color-nav)), 0 0 20px rgb(var(--color-nav)) !important;
+}
+
+.callout[data-callout="nav/menu"] .callout-content li::marker {
+    content: "" !important;
+}
 
 /* 1. Retirer le style de liste sur le UL et le LI spécifiques au mode lecture */
 .markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet,
@@ -265,98 +605,304 @@ button:not(.excalidraw-wrapper *):not(.canvas-wrapper *):hover {
 }
 
 /* Dashboard Grid Classique */
-.dashboard .callout[data-callout="nav"] .callout-content ul { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important; justify-content: center !important; gap: 20px !important; padding: 0 !important; list-style: none !important; }
-.dashboard .callout[data-callout="nav"] .callout-content li { height: 100px !important; display: flex !important; align-items: center !important; justify-content: center !important; background: rgba(255,255,255,0.05); border: 1px solid rgba(var(--color-nav), 0.3); border-radius: 8px; transition: 0.2s; }
-.dashboard .callout[data-callout="nav"] .callout-content li:hover { background: rgba(var(--color-nav), 0.2); border-color: rgb(var(--color-nav)); box-shadow: 0 0 10px rgba(var(--color-nav), 0.4); transform: translateY(-2px); }
+.dashboard .callout[data-callout="nav"] .callout-content ul {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.dashboard .callout[data-callout="nav"] .callout-content li {
+    height: 100px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(var(--color-nav), 0.3);
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.dashboard .callout[data-callout="nav"] .callout-content li:hover {
+    background: rgba(var(--color-nav), 0.2);
+    border-color: rgb(var(--color-nav));
+    box-shadow: 0 0 10px rgba(var(--color-nav), 0.4);
+    transform: translateY(-2px);
+}
 
 /* =================================================================
    4. ÉLÉMENTS INTERACTIFS (SCROLL, TAGS, TOGGLES, CHECKBOXES)
    ================================================================= */
-::-webkit-scrollbar { width: 8px !important; height: 8px !important; background-color: transparent !important; }
-::-webkit-scrollbar-thumb { background-color: rgba(var(--color-nav), 0.2) !important; border: 1px solid rgba(var(--color-nav), 0.3) !important; border-radius: 4px !important; }
-::-webkit-scrollbar-thumb:hover { background-color: rgba(var(--color-nav), 0.6) !important; box-shadow: 0 0 10px rgba(var(--color-nav), 0.5) !important; }
+::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+    background-color: transparent !important;
+}
 
-.modal input[type=range]::-webkit-slider-thumb { background: rgb(var(--color-nav)); box-shadow: 0 0 10px rgb(var(--color-nav)); }
+::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--color-nav), 0.2) !important;
+    border: 1px solid rgba(var(--color-nav), 0.3) !important;
+    border-radius: 4px !important;
+}
 
-body .tag, body .metadata-property .multi-select-pill { background-color: rgba(var(--color-nav), 0.15) !important; color: rgb(var(--color-nav)) !important; border: none !important; }
-body .multi-select-pill-remove-button { color: rgb(var(--color-cross)) !important; }
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(var(--color-nav), 0.6) !important;
+    box-shadow: 0 0 10px rgba(var(--color-nav), 0.5) !important;
+}
+
+.modal input[type=range]::-webkit-slider-thumb {
+    background: rgb(var(--color-nav));
+    box-shadow: 0 0 10px rgb(var(--color-nav));
+}
+
+body .tag,
+body .metadata-property .multi-select-pill {
+    background-color: rgba(var(--color-nav), 0.15) !important;
+    color: rgb(var(--color-nav)) !important;
+    border: none !important;
+}
+
+body .multi-select-pill-remove-button {
+    color: rgb(var(--color-cross)) !important;
+}
 
 /* Toggles Settings */
-.checkbox-container.is-enabled { background-color: rgba(var(--color-nav), 0.3) !important; box-shadow: 0 0 10px rgba(var(--color-nav), 0.4), inset 0 0 5px rgba(var(--color-nav), 0.5) !important; border: 1px solid rgb(var(--color-nav)) !important; }
-.checkbox-container.is-enabled:after { background-color: #ffffff !important; box-shadow: 0 0 15px rgb(var(--color-nav)), 0 0 8px rgb(var(--color-nav)) !important; }
-.checkbox-container:hover { border-color: rgb(var(--color-nav)) !important; box-shadow: 0 0 12px rgba(var(--color-nav), 0.6) !important; }
+.checkbox-container.is-enabled {
+    background-color: rgba(var(--color-nav), 0.3) !important;
+    box-shadow: 0 0 10px rgba(var(--color-nav), 0.4), inset 0 0 5px rgba(var(--color-nav), 0.5) !important;
+    border: 1px solid rgb(var(--color-nav)) !important;
+}
+
+.checkbox-container.is-enabled:after {
+    background-color: #ffffff !important;
+    box-shadow: 0 0 15px rgb(var(--color-nav)), 0 0 8px rgb(var(--color-nav)) !important;
+}
+
+.checkbox-container:hover {
+    border-color: rgb(var(--color-nav)) !important;
+    box-shadow: 0 0 12px rgba(var(--color-nav), 0.6) !important;
+}
 
 /* 🌟 Checkboxes Fix Unifié (Lecture & Éditeur) */
-body .markdown-source-view.mod-cm6 .task-list-item-checkbox, body .markdown-rendered .task-list-item-checkbox {
-    appearance: none !important; -webkit-appearance: none !important; width: 18px !important; height: 18px !important; border-radius: 4px !important; border: 2px solid rgba(var(--color-nav), 0.5) !important; background-color: rgba(0, 0, 0, 0.4) !important; cursor: pointer !important; position: relative !important; display: inline-flex !important; align-self: center !important; margin-right: 8px !important; margin-top: 4px !important; vertical-align: top !important; transition: all 0.2s ease !important;
+body .markdown-source-view.mod-cm6 .task-list-item-checkbox,
+body .markdown-rendered .task-list-item-checkbox {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 4px !important;
+    border: 2px solid rgba(var(--color-nav), 0.5) !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    cursor: pointer !important;
+    position: relative !important;
+    display: inline-flex !important;
+    align-self: center !important;
+    margin-right: 8px !important;
+    margin-top: 4px !important;
+    vertical-align: top !important;
+    transition: all 0.2s ease !important;
 }
-body .markdown-source-view.mod-cm6 .task-list-item-checkbox:hover, body .markdown-rendered .task-list-item-checkbox:hover {
-    border-color: rgb(var(--color-nav)) !important; box-shadow: 0 0 8px rgba(var(--color-nav), 0.6), inset 0 0 4px rgba(var(--color-nav), 0.3) !important; background-color: rgba(var(--color-nav), 0.1) !important;
+
+body .markdown-source-view.mod-cm6 .task-list-item-checkbox:hover,
+body .markdown-rendered .task-list-item-checkbox:hover {
+    border-color: rgb(var(--color-nav)) !important;
+    box-shadow: 0 0 8px rgba(var(--color-nav), 0.6), inset 0 0 4px rgba(var(--color-nav), 0.3) !important;
+    background-color: rgba(var(--color-nav), 0.1) !important;
 }
-body .markdown-source-view.mod-cm6 .task-list-item-checkbox:checked, body .markdown-rendered .task-list-item-checkbox:checked {
-    background-color: rgba(var(--color-nav), 0.3) !important; border-color: rgb(var(--color-nav)) !important; box-shadow: 0 0 12px rgba(var(--color-nav), 0.8) !important;
+
+body .markdown-source-view.mod-cm6 .task-list-item-checkbox:checked,
+body .markdown-rendered .task-list-item-checkbox:checked {
+    background-color: rgba(var(--color-nav), 0.3) !important;
+    border-color: rgb(var(--color-nav)) !important;
+    box-shadow: 0 0 12px rgba(var(--color-nav), 0.8) !important;
 }
-body .markdown-source-view.mod-cm6 .task-list-item-checkbox:checked::before, body .markdown-rendered .task-list-item-checkbox:checked::before {
-    content: "✔" !important; position: absolute !important; top: 45% !important; left: 50% !important; transform: translate(-50%, -50%) !important; color: #ffffff !important; font-size: 14px !important; font-weight: 900 !important; text-shadow: 0 0 8px rgb(var(--color-nav)) !important; display: block !important;
+
+body .markdown-source-view.mod-cm6 .task-list-item-checkbox:checked::before,
+body .markdown-rendered .task-list-item-checkbox:checked::before {
+    content: "✔" !important;
+    position: absolute !important;
+    top: 45% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    text-shadow: 0 0 8px rgb(var(--color-nav)) !important;
+    display: block !important;
 }
-body .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="x"], body .markdown-rendered .task-list-item.is-checked { color: var(--text-muted) !important; text-decoration: line-through !important; opacity: 0.7 !important; }
+
+body .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="x"],
+body .markdown-rendered .task-list-item.is-checked {
+    color: var(--text-muted) !important;
+    text-decoration: line-through !important;
+    opacity: 0.7 !important;
+}
 
 /* =================================================================
    5. SÉPARATEURS & GRAPH VIEW
    ================================================================= */
-.markdown-rendered hr, .markdown-source-view hr {
-    border: none !important; height: 1px !important; background: linear-gradient(90deg, transparent 0%, rgba(var(--color-nav), 0.8) 50%, transparent 100%) !important; margin: 2.5em 0 !important; position: relative; overflow: visible !important;
+.markdown-rendered hr,
+.markdown-source-view hr {
+    border: none !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent 0%, rgba(var(--color-nav), 0.8) 50%, transparent 100%) !important;
+    margin: 2.5em 0 !important;
+    position: relative;
+    overflow: visible !important;
 }
-.markdown-rendered hr::after, .markdown-source-view hr::after {
-    content: ""; position: absolute; top: -2px; left: 15%; right: 15%; height: 5px; background: linear-gradient(90deg, transparent 0%, rgba(var(--color-nav), 0.3) 50%, transparent 100%); filter: blur(4px);
+
+.markdown-rendered hr::after,
+.markdown-source-view hr::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 15%;
+    right: 15%;
+    height: 5px;
+    background: linear-gradient(90deg, transparent 0%, rgba(var(--color-nav), 0.3) 50%, transparent 100%);
+    filter: blur(4px);
 }
-.table-view-table thead th { border-bottom: 2px solid rgb(var(--color-nav)) !important; color: rgb(var(--color-nav)) !important; font-family: var(--font-headers) !important; text-transform: uppercase; }
+
+.table-view-table thead th {
+    border-bottom: 2px solid rgb(var(--color-nav)) !important;
+    color: rgb(var(--color-nav)) !important;
+    font-family: var(--font-headers) !important;
+    text-transform: uppercase;
+}
 
 /* Graph View */
-.graph-view.color-fill { color: #a3b8cc; }
-.graph-view.color-line { color: rgba(255, 255, 255, 0.15); }
-.workspace-leaf-content[data-type="graph"] .view-content { background: radial-gradient(circle at center, #1a253a 0%, #050505 85%) !important; }
+.graph-view.color-fill {
+    color: #a3b8cc;
+}
+
+.graph-view.color-line {
+    color: rgba(255, 255, 255, 0.15);
+}
+
+.workspace-leaf-content[data-type="graph"] .view-content {
+    background: radial-gradient(circle at center, #1a253a 0%, #050505 85%) !important;
+}
 
 /* =================================================================
    6. EXPLORATEUR DE FICHIERS (GALAXIE NÉON DYNAMIQUE)
    ================================================================= */
 /* 🌟 Application explicite de la police pour garantir la stabilité */
-.nav-folder-title-content { 
+.nav-folder-title-content {
     font-family: var(--font-text) !important;
-    color: rgb(var(--color-nav)) !important; text-shadow: 0 0 8px rgba(var(--color-nav), 0.5) !important; font-weight: 600 !important; transition: all 0.2s ease !important; 
-}
-.nav-file-title-content { 
-    font-family: var(--font-text) !important;
-    color: var(--text-normal) !important; font-weight: 500 !important; transition: all 0.2s ease !important; 
+    color: rgb(var(--color-nav)) !important;
+    text-shadow: 0 0 8px rgba(var(--color-nav), 0.5) !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
 }
 
-.nav-folder-title:hover .nav-folder-title-content, .nav-file-title:hover .nav-file-title-content { color: #ffffff !important; text-shadow: 0 0 12px rgb(var(--color-nav)) !important; }
-.nav-folder-title:hover, .nav-file-title:hover { background-color: rgba(var(--color-nav), 0.15) !important; }
-
-.nav-folder.is-active > .nav-folder-title, .nav-folder-title.is-active, .nav-file-title.is-active, .nav-file.is-active > .nav-file-title {
-    background-color: rgba(var(--color-nav), 0.2) !important; border-left: 3px solid rgb(var(--color-nav)) !important; box-shadow: inset 4px 0 8px rgba(var(--color-nav), 0.2) !important;
+.nav-file-title-content {
+    font-family: var(--font-text) !important;
+    color: var(--text-normal) !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
 }
-.nav-file-title.is-active .nav-file-title-content { color: #ffffff !important; text-shadow: 0 0 12px rgb(var(--color-nav)), 0 0 20px rgb(var(--color-nav)) !important; font-weight: 600 !important; }
+
+.nav-folder-title:hover .nav-folder-title-content,
+.nav-file-title:hover .nav-file-title-content {
+    color: #ffffff !important;
+    text-shadow: 0 0 12px rgb(var(--color-nav)) !important;
+}
+
+.nav-folder-title:hover,
+.nav-file-title:hover {
+    background-color: rgba(var(--color-nav), 0.15) !important;
+}
+
+.nav-folder.is-active>.nav-folder-title,
+.nav-folder-title.is-active,
+.nav-file-title.is-active,
+.nav-file.is-active>.nav-file-title {
+    background-color: rgba(var(--color-nav), 0.2) !important;
+    border-left: 3px solid rgb(var(--color-nav)) !important;
+    box-shadow: inset 4px 0 8px rgba(var(--color-nav), 0.2) !important;
+}
+
+.nav-file-title.is-active .nav-file-title-content {
+    color: #ffffff !important;
+    text-shadow: 0 0 12px rgb(var(--color-nav)), 0 0 20px rgb(var(--color-nav)) !important;
+    font-weight: 600 !important;
+}
 
 /* Cycle Automatique des Couleurs (Rainbow Folders) */
-.nav-folder-children > .nav-folder:nth-child(11n + 2), .nav-files-container > div > .nav-folder:nth-child(11n + 2) { --color-nav: 243, 139, 168 !important; }
-.nav-folder-children > .nav-folder:nth-child(11n + 3), .nav-files-container > div > .nav-folder:nth-child(11n + 3) { --color-nav: 235, 160, 172 !important; }
-.nav-folder-children > .nav-folder:nth-child(11n + 4), .nav-files-container > div > .nav-folder:nth-child(11n + 4) { --color-nav: 250, 179, 135 !important; }
-.nav-folder-children > .nav-folder:nth-child(11n + 5), .nav-files-container > div > .nav-folder:nth-child(11n + 5) { --color-nav: 249, 226, 175 !important; }
-.nav-folder-children > .nav-folder:nth-child(11n + 6), .nav-files-container > div > .nav-folder:nth-child(11n + 6) { --color-nav: 166, 227, 161 !important; }
-.nav-folder-children > .nav-folder:nth-child(11n + 7), .nav-files-container > div > .nav-folder:nth-child(11n + 7) { --color-nav: 148, 226, 213 !important; }
-.nav-folder-children > .nav-folder:nth-child(11n + 8), .nav-files-container > div > .nav-folder:nth-child(11n + 8) { --color-nav: 137, 220, 235 !important; }
-.nav-folder-children > .nav-folder:nth-child(11n + 9), .nav-files-container > div > .nav-folder:nth-child(11n + 9) { --color-nav: 116, 199, 236 !important; }
-.nav-folder-children > .nav-folder:nth-child(11n + 10), .nav-files-container > div > .nav-folder:nth-child(11n + 10) { --color-nav: 135, 176, 249 !important; }
-.nav-folder-children > .nav-folder:nth-child(11n + 11), .nav-files-container > div > .nav-folder:nth-child(11n + 11) { --color-nav: 180, 190, 254 !important; }
-.nav-folder-children > .nav-folder:nth-child(11n + 12), .nav-files-container > div > .nav-folder:nth-child(11n + 12) { --color-nav: 203, 166, 247 !important; }
+.nav-folder-children>.nav-folder:nth-child(11n + 2),
+.nav-files-container>div>.nav-folder:nth-child(11n + 2) {
+    --color-nav: 243, 139, 168 !important;
+}
+
+.nav-folder-children>.nav-folder:nth-child(11n + 3),
+.nav-files-container>div>.nav-folder:nth-child(11n + 3) {
+    --color-nav: 235, 160, 172 !important;
+}
+
+.nav-folder-children>.nav-folder:nth-child(11n + 4),
+.nav-files-container>div>.nav-folder:nth-child(11n + 4) {
+    --color-nav: 250, 179, 135 !important;
+}
+
+.nav-folder-children>.nav-folder:nth-child(11n + 5),
+.nav-files-container>div>.nav-folder:nth-child(11n + 5) {
+    --color-nav: 249, 226, 175 !important;
+}
+
+.nav-folder-children>.nav-folder:nth-child(11n + 6),
+.nav-files-container>div>.nav-folder:nth-child(11n + 6) {
+    --color-nav: 166, 227, 161 !important;
+}
+
+.nav-folder-children>.nav-folder:nth-child(11n + 7),
+.nav-files-container>div>.nav-folder:nth-child(11n + 7) {
+    --color-nav: 148, 226, 213 !important;
+}
+
+.nav-folder-children>.nav-folder:nth-child(11n + 8),
+.nav-files-container>div>.nav-folder:nth-child(11n + 8) {
+    --color-nav: 137, 220, 235 !important;
+}
+
+.nav-folder-children>.nav-folder:nth-child(11n + 9),
+.nav-files-container>div>.nav-folder:nth-child(11n + 9) {
+    --color-nav: 116, 199, 236 !important;
+}
+
+.nav-folder-children>.nav-folder:nth-child(11n + 10),
+.nav-files-container>div>.nav-folder:nth-child(11n + 10) {
+    --color-nav: 135, 176, 249 !important;
+}
+
+.nav-folder-children>.nav-folder:nth-child(11n + 11),
+.nav-files-container>div>.nav-folder:nth-child(11n + 11) {
+    --color-nav: 180, 190, 254 !important;
+}
+
+.nav-folder-children>.nav-folder:nth-child(11n + 12),
+.nav-files-container>div>.nav-folder:nth-child(11n + 12) {
+    --color-nav: 203, 166, 247 !important;
+}
 
 /* =================================================================
    7. DATAVIEW (LIENS DYNAMIQUES)
    ================================================================= */
-.table-view-table a { transition: all 0.2s ease !important; }
-.callout .table-view-table a:hover { color: rgb(var(--hud-color)) !important; text-shadow: 0 0 10px rgba(var(--hud-color), 0.8) !important; text-decoration: underline !important; text-decoration-color: rgb(var(--hud-color)) !important; }
-.markdown-rendered > div > .table-view-table a:hover { color: rgb(var(--color-nav)) !important; text-shadow: 0 0 10px rgba(var(--color-nav), 0.5) !important; }
+.table-view-table a {
+    transition: all 0.2s ease !important;
+}
+
+.callout .table-view-table a:hover {
+    color: rgb(var(--hud-color)) !important;
+    text-shadow: 0 0 10px rgba(var(--hud-color), 0.8) !important;
+    text-decoration: underline !important;
+    text-decoration-color: rgb(var(--hud-color)) !important;
+}
+
+.markdown-rendered>div>.table-view-table a:hover {
+    color: rgb(var(--color-nav)) !important;
+    text-shadow: 0 0 10px rgba(var(--color-nav), 0.5) !important;
+}
 
 /* =================================================================
    8. SURLIGNAGE (HIGHLIGHTS) - EFFET NÉBULEUSE
@@ -364,11 +910,13 @@ body .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="x"], body .mark
 
 /* Mode Lecture */
 body .markdown-rendered mark {
-    background-color: rgba(183, 132, 230, 0.35) !important; /* Violet Nébuleuse translucide */
+    background-color: rgba(183, 132, 230, 0.35) !important;
+    /* Violet Nébuleuse translucide */
     color: #ffffff !important;
     padding: 2px 6px !important;
     border-radius: 6px !important;
-    box-shadow: 0 0 10px rgba(183, 132, 230, 0.5) !important; /* Halo lumineux */
+    box-shadow: 0 0 10px rgba(183, 132, 230, 0.5) !important;
+    /* Halo lumineux */
     font-weight: 600 !important;
 }
 
@@ -387,4 +935,133 @@ body .markdown-source-view.mod-cm6 .cm-formatting-highlight {
     color: rgba(183, 132, 230, 0.5) !important;
     background-color: transparent !important;
     box-shadow: none !important;
+}
+
+/* =================================================================
+   9. GALAXY TOOLS (PATCHES & FIXES MICA / ALIGNEMENTS)
+   ================================================================= */
+
+/* 🛠️ FIX TEXTE DE L'ONGLET ACTIF */
+body .workspace-tab-header.is-active .workspace-tab-header-inner-title,
+body .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+    color: rgb(var(--color-nav)) !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 8px rgba(var(--color-nav), 0.6) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 🛠️ BOUTON FERMER ONGLET ACTIF (NÉON) */
+body .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
+    color: #ffffff !important;
+    background-color: rgba(var(--color-nav), 0.8) !important;
+    box-shadow: 0 0 10px rgba(var(--color-nav), 0.6) !important;
+}
+
+/* 🛠️ ONGLET ACTIF "MICA / GLASSMORPHISM" */
+body .workspace-tab-header.is-active {
+    background-color: rgba(var(--color-nav), 0.15) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(var(--color-nav), 0.4) !important;
+    border-bottom: none !important;
+    box-shadow: inset 0 0 20px rgba(var(--color-nav), 0.15), 0 -4px 15px rgba(var(--color-nav), 0.1) !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+}
+
+body .workspace-tab-header.is-active .workspace-tab-header-inner {
+    background-color: transparent !important;
+}
+
+/* 🛠️ FIX DES CARRÉS NOIRS (COINS DE L'ONGLET) */
+body .workspace-tab-header.is-active::before,
+body .workspace-tab-header.is-active::after,
+body .workspace-tab-header.is-active .workspace-tab-header-inner::before,
+body .workspace-tab-header.is-active .workspace-tab-header-inner::after {
+    display: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* 🛠️ ONGLETS INACTIFS & SURVOL (HOVER) */
+body .workspace-tab-header::before,
+body .workspace-tab-header::after,
+body .workspace-tab-header .workspace-tab-header-inner::before,
+body .workspace-tab-header .workspace-tab-header-inner::after {
+    display: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+body .workspace-tab-header:not(.is-active) {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-bottom: 1px solid rgba(var(--color-nav), 0.3) !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    transition: all 0.3s ease !important;
+}
+
+body .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-title,
+body .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-icon {
+    color: var(--text-muted) !important;
+    font-weight: 500 !important;
+    text-shadow: none !important;
+    transition: all 0.3s ease !important;
+}
+
+body .workspace-tab-header:not(.is-active):hover {
+    background-color: rgba(var(--color-nav), 0.08) !important;
+    border-color: rgba(var(--color-nav), 0.2) !important;
+}
+
+body .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-title,
+body .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-icon {
+    color: #ffffff !important;
+}
+
+/* 🛠️ BOUTON FERMER L'APPLICATION (TITLEBAR) */
+body .app-container .titlebar-button.mod-close:hover {
+    background-color: rgba(var(--color-nav), 0.8) !important;
+    color: #ffffff !important;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2), 0 0 15px rgba(var(--color-nav), 0.6) !important;
+    transition: all 0.3s ease !important;
+}
+
+body .app-container .titlebar-button.mod-close:active {
+    background-color: rgba(var(--color-nav), 1) !important;
+    box-shadow: 0 0 20px rgba(var(--color-nav), 0.9) !important;
+}
+
+/* 🛠️ FIX ALIGNEMENT DES ICÔNES DE CALLOUTS (ORBITRON) */
+body .callout[data-callout^="nav"] .callout-title,
+body .callout[data-callout^="status"] .callout-title,
+body .callout[data-callout^="projects"] .callout-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+body .callout[data-callout^="nav"] .callout-icon,
+body .callout[data-callout^="status"] .callout-icon,
+body .callout[data-callout^="projects"] .callout-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body .callout[data-callout^="nav"] .callout-title-inner,
+body .callout[data-callout^="status"] .callout-title-inner,
+body .callout[data-callout^="projects"] .callout-title-inner {
+    margin: 0 !important;
+    transform: translateY(1px) !important;
+}
+
+body .callout[data-callout^="nav"] .callout-icon::before,
+body .callout[data-callout^="status"] .callout-icon::before,
+body .callout[data-callout^="projects"] .callout-icon::before {
+    display: block !important;
+    line-height: 1 !important;
 }
