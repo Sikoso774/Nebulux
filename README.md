@@ -7,11 +7,13 @@ A premium dark, immersive, and neon theme that transforms your Obsidian into a t
 Designed for focus, immersion, and complex data management.
  
   <p align="center">
-    <a href="https://github.com/Sikoso774/Nebulux/releases"><img src="https://img.shields.io/github/v/release/Sikoso774/Nebulux?style=flat-square&color=0e131f" alt="Release"></a>
-    <a href="https://github.com/Sikoso774/Nebulux/releases"><img src="https://img.shields.io/github/release-date/Sikoso774/Nebulux?style=flat-square&color=78B4FF" alt="Release Date"></a>
-    <a href="https://github.com/Sikoso774/Nebulux/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Sikoso774/Nebulux?style=flat-square&color=FFC832" alt="License"></a>
-    <a href="https://github.com/Sikoso774/Nebulux/releases"><img src="https://img.shields.io/github/downloads/Sikoso774/Nebulux/total?style=flat-square&color=CD7F32" alt="Downloads"></a>
+    <img src="https://img.shields.io/github/v/release/Sikoso774/Nebulux?color=0e131f" alt="Release">
+    <img src="https://img.shields.io/github/release-date/Sikoso774/Nebulux?color=78B4FF" alt="Release Date">
+    <img src="https://img.shields.io/badge/License-MIT-A31F34" alt="License">
+    <img src="https://img.shields.io/github/downloads/Sikoso774/Nebulux/total?color=CD7F32" alt="Downloads">
   </p>
+ 
+<b><a href="#">CHANGELOG</a></b> | <b><a href="#">USAGE</a></b>
  
 </div>
  
