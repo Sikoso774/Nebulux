@@ -21,153 +21,153 @@ settings:
         level: 1
     - 
         id: bg-gradient-center
-        title: 🌌 Fond Spatial (Centre du dégradé)
+        title: 🌌 Space Background (Gradient Center)
         type: variable-color
         format: hex
         default: '#1a253a'
     - 
         id: bg-gradient-edge
-        title: 🌌 Fond Spatial (Bords de l'écran)
+        title: 🌌 Space Background (Edges)
         type: variable-color
         format: hex
         default: '#050505'
     - 
         id: hud-blur
-        title: 🌫️ Flou du HUD (Glassmorphism)
+        title: 🌫️ HUD Blur (Glassmorphism)
         type: variable-number
         default: 12
         format: px
     - 
         id: hud-radius
-        title: 🔲 Arrondi des blocs (Callouts, Boutons)
+        title: 🔲 Block Border Radius
         type: variable-number
         default: 12
         format: px
     - 
         id: hud-frame
-        title: ⚡ Épaisseur des traits Néon (Bordures)
+        title: ⚡ Neon Line Thickness (Borders)
         type: variable-number
         default: 1.5
         format: px
         step: 0.5
     - 
         id: colors-title
-        title: 🎨 Palette Tactique
+        title: 🎨 Tactical Palette
         type: heading
         level: 1
     - 
         id: theme-nav
-        title: 🧭 Navigation (Bleu Néon)
+        title: 🧭 Navigation (Neon Blue)
         type: variable-color
         format: hex
         default: '#78B4FF'
     - 
         id: theme-status
-        title: 📊 Status (Or Tactique)
+        title: 📊 Status (Tactical Gold)
         type: variable-color
         format: hex
         default: '#FFC832'
     - 
         id: theme-projects
-        title: 🚀 Projets (Bronze Tactique)
+        title: 🚀 Projects (Tactical Bronze)
         type: variable-color
         format: hex
         default: '#CD7F32'
     - 
         id: typo-title
-        title: 🔤 Typographie
+        title: 🔤 Typography
         type: heading
         level: 1
     - 
         id: font-headers
-        title: Police des Titres (H1-H6)
+        title: Header Font (H1-H6)
         type: variable-text
         default: "'Orbitron', sans-serif"
     - 
         id: font-text-theme
-        title: Police du Texte et Interface
+        title: Body & UI Font
         type: variable-text
         default: "'Montserrat', sans-serif"
 	- 
         id: titles-gradient-settings
-        title: 🔠 Dégradés des Titres (H1-H6)
+        title: 🔠 Header Gradients (H1-H6)
         type: heading
         level: 1
     - 
         id: h1-start
-        title: H1 - Couleur de départ (Gauche)
+        title: H1 - Start Color (Left)
         type: variable-color
         format: hex
         default: '#ffffff'
     - 
         id: h1-end
-        title: H1 - Couleur de fin (Droite)
+        title: H1 - End Color (Right)
         type: variable-color
         format: hex
         default: '#999999'
     - 
         id: h2-start
-        title: H2 - Couleur de départ
+        title: H2 - Start Color
         type: variable-color
         format: hex
         default: '#78B4FF'
     - 
         id: h2-end
-        title: H2 - Couleur de fin
+        title: H2 - End Color
         type: variable-color
         format: hex
         default: '#2563eb'
     - 
         id: h3-start
-        title: H3 - Couleur de départ
+        title: H3 - Start Color
         type: variable-color
         format: hex
         default: '#FFC832'
     - 
         id: h3-end
-        title: H3 - Couleur de fin
+        title: H3 - End Color
         type: variable-color
         format: hex
         default: '#d97706'
     - 
         id: h4-start
-        title: H4 - Couleur de départ
+        title: H4 - Start Color
         type: variable-color
         format: hex
         default: '#CD7F32'
     - 
         id: h4-end
-        title: H4 - Couleur de fin
+        title: H4 - End Color
         type: variable-color
         format: hex
         default: '#b91c1c'
     - 
         id: h5-start
-        title: H5 - Couleur de départ
+        title: H5 - Start Color
         type: variable-color
         format: hex
         default: '#c084fc'
     - 
         id: h5-end
-        title: H5 - Couleur de fin
+        title: H5 - End Color
         type: variable-color
         format: hex
         default: '#6d28d9'
     - 
         id: h6-start
-        title: H6 - Couleur de départ
+        title: H6 - Start Color
         type: variable-color
         format: hex
         default: '#94a3b8'
     - 
         id: h6-end
-        title: H6 - Couleur de fin
+        title: H6 - End Color
         type: variable-color
         format: hex
         default: '#475569'
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap');
 
 :root {
     /* --- CONNEXION INTELLIGENTE STYLE SETTINGS --- */
@@ -183,9 +183,9 @@ settings:
     --hud-blur: 12px;
     --hud-frame: 1.5px;
 
-    --font-headers: 'Orbitron', sans-serif !important;
-    --font-text-theme: 'Montserrat', sans-serif !important;
-    --font-interface-theme: 'Montserrat', sans-serif !important;
+    --font-headers: 'Orbitron', sans-serif;
+    --font-text-theme: 'Montserrat', sans-serif;
+    --font-interface-theme: 'Montserrat', sans-serif;
 
     /* 🌈 Variables par défaut des dégradés de Titres */
     --h1-start: #ffffff;
@@ -203,7 +203,7 @@ settings:
 }
 
 /* =================================================================
-   1. GLOBAL & TYPOGRAPHIE (LA SOLUTION ULTIME)
+   1. GLOBAL & TYPOGRAPHY
    ================================================================= */
 .theme-dark {
     --background-primary: #0a0c12 !important;
@@ -213,7 +213,7 @@ settings:
     --text-muted: #8b9bb4;
 }
 
-/* 🌟 LE CŒUR DU SYSTÈME : On écrase les polices natives d'Obsidian */
+/* 🌟 CORE SYSTEM: Overriding Obsidian native fonts */
 body {
     --font-text: var(--font-text-theme, 'Montserrat', sans-serif) !important;
     --font-interface: var(--font-text-theme, 'Montserrat', sans-serif) !important;
@@ -221,12 +221,12 @@ body {
 
 }
 
-/* Forcer l'éditeur CodeMirror */
+/* Force CodeMirror Editor */
 .markdown-source-view.mod-cm6 .cm-scroller {
     font-family: var(--font-text) !important;
 }
 
-/* 🌟 Forcer la police pour toutes les Propriétés (Metadata) */
+/* 🌟 Force font for all Properties (Metadata) */
 .metadata-container,
 .metadata-container * {
     font-family: var(--font-text) !important;
@@ -248,10 +248,10 @@ body {
 }
 
 /* =================================================================
-   🎨 NEBULUX TITLES : DÉGRADÉS H1 À H6 (CORRIGÉ)
+   🎨 NEBULUX TITLES: H1 TO H6 GRADIENTS
    ================================================================= */
 
-/* 1. Base commune : Typographie et espacement */
+/* 1. Common Base: Typography and Spacing */
 h1,
 h2,
 h3,
@@ -274,43 +274,43 @@ h6,
     font-weight: 700 !important;
 }
 
-/* 2. H1 : Éclat Stellaire */
+/* 2. H1: Stellar Glow */
 h1,
 .cm-header-1 {
     background-image: linear-gradient(90deg, var(--h1-start) 0%, var(--h1-end) 100%) !important;
 }
 
-/* 3. H2 : Nav Néon */
+/* 3. H2: Neon Nav */
 h2,
 .cm-header-2 {
     background-image: linear-gradient(90deg, var(--h2-start) 0%, var(--h2-end) 100%) !important;
 }
 
-/* 4. H3 : Énergie Status */
+/* 4. H3: Status Energy */
 h3,
 .cm-header-3 {
     background-image: linear-gradient(90deg, var(--h3-start) 0%, var(--h3-end) 100%) !important;
 }
 
-/* 5. H4 : Cuivre Projets */
+/* 5. H4: Project Copper */
 h4,
 .cm-header-4 {
     background-image: linear-gradient(90deg, var(--h4-start) 0%, var(--h4-end) 100%) !important;
 }
 
-/* 6. H5 : Nébuleuse */
+/* 6. H5: Nebula */
 h5,
 .cm-header-5 {
     background-image: linear-gradient(90deg, var(--h5-start) 0%, var(--h5-end) 100%) !important;
 }
 
-/* 7. H6 : Métal Froid */
+/* 7. H6: Cold Metal */
 h6,
 .cm-header-6 {
     background-image: linear-gradient(90deg, var(--h6-start) 0%, var(--h6-end) 100%) !important;
 }
 
-/* Gras et Italique unifiés (Lecture ET Éditeur) */
+/* Unified Bold & Italic (Reading & Editor) */
 strong,
 b,
 .cm-strong {
@@ -326,7 +326,7 @@ i,
 }
 
 /* =================================================================
-   2. INTERFACE SYSTÈME (OPAQUE & NÉON)
+   2. SYSTEM INTERFACE (OPAQUE & NEON)
    ================================================================= */
 .workspace-tab-header.is-active,
 .vertical-tab-nav-item.is-active {
@@ -394,7 +394,7 @@ button:not(.excalidraw-wrapper *):not(.canvas-wrapper *):hover {
 }
 
 /* =================================================================
-   3. MODULES : CALLOUTS & DASHBOARD
+   3. MODULES: CALLOUTS & DASHBOARD
    ================================================================= */
 .callout {
     border: 1px solid rgba(var(--hud-color, 160, 190, 220), 0.5) !important;
@@ -499,7 +499,7 @@ button:not(.excalidraw-wrapper *):not(.canvas-wrapper *):hover {
     display: block !important;
 }
 
-/* Callouts Natifs Obsidian Colorisés */
+/* Colorized Native Obsidian Callouts */
 .callout[data-callout="info"],
 .callout[data-callout="todo"] {
     --hud-color: 80, 160, 255 !important;
@@ -640,7 +640,7 @@ button:not(.excalidraw-wrapper *):not(.canvas-wrapper *):hover {
 }
 
 /* =================================================================
-   4. ÉLÉMENTS INTERACTIFS (SCROLL, TAGS, TOGGLES, CHECKBOXES)
+   4. INTERACTIVE ELEMENTS (SCROLL, TAGS, TOGGLES, CHECKBOXES)
    ================================================================= */
 ::-webkit-scrollbar {
     width: 8px !important;
@@ -692,7 +692,7 @@ body .multi-select-pill-remove-button {
     box-shadow: 0 0 12px rgba(var(--color-nav), 0.6) !important;
 }
 
-/* 🌟 Checkboxes Fix Unifié (Lecture & Éditeur) */
+/* 🌟 Unified Checkboxes Fix (Reading & Editor) */
 body .markdown-source-view.mod-cm6 .task-list-item-checkbox,
 body .markdown-rendered .task-list-item-checkbox {
     appearance: none !important;
@@ -748,7 +748,7 @@ body .markdown-rendered .task-list-item.is-checked {
 }
 
 /* =================================================================
-   5. SÉPARATEURS & GRAPH VIEW
+   5. SEPARATORS & GRAPH VIEW
    ================================================================= */
 .markdown-rendered hr,
 .markdown-source-view hr {
@@ -793,7 +793,7 @@ body .markdown-rendered .task-list-item.is-checked {
 }
 
 /* =================================================================
-   6. EXPLORATEUR DE FICHIERS (NÉBULEUSE NÉON DYNAMIQUE)
+   6. FILE EXPLORER (DYNAMIC NEON NEBULA)
    ================================================================= */
 /* 🌟 Application explicite de la police pour garantir la stabilité */
 .nav-folder-title-content {
