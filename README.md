@@ -27,7 +27,7 @@ Designed for focus, immersion, and complex data management.
 - [Building Dashboards](#building-dashboards)
 - [Typography & Offline Use](#typography--offline-use)
 - [Installation & Configuration](#installation--configuration)
-- [Changelog](CHANGELOG.md)
+- [Acknowledgements & Credits](#acknowledgements--credits)
 
 <br>
 <br>
@@ -136,6 +136,17 @@ The theme uses **Orbitron** for headers and **Montserrat** for the body text to 
 2. In Obsidian, go to `Settings > Appearance` and select the theme.
 3. **Important:** Install the **Style Settings** community plugin to unlock all theme options (Neon colors, header gradients, blur intensity, etc.).
 </details>
+
+## Acknowledgements & Credits
+ 
+This theme would not have been possible without the incredible work, open-source code, and inspiration from the Obsidian theme developer community. A massive thank you to the creators of the following themes, whose design philosophies and technical innovations heavily inspired **Nebulux**:
+ 
+* **[Minimal](https://github.com/kepano/obsidian-minimal)** by @kepano
+* **[Obsidianite](https://github.com/hdykokd/obsidian-theme-obsidianite)** by @hdykokd
+* **[Things](https://github.com/colineckert/obsidian-things)** by @colineckert
+* **[AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin)** by @AnubisNekhet
+ 
+Thank you for paving the way and making the Obsidian customization scene so amazing!
  
 *💡 Tip: To fully enjoy the Glassmorphism effect on the top bar, it is highly recommended to enable the "Hidden window frame" option in Obsidian's Appearance settings.*
  
