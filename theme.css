@@ -206,45 +206,45 @@ settings:
    1. GLOBAL & TYPOGRAPHY
    ================================================================= */
 .theme-dark {
-    --background-primary: #0a0c12 !important;
-    --background-secondary: #000000 !important;
-    --background-secondary-alt: #050505 !important;
+    --background-primary: #0a0c12;
+    --background-secondary: #000000;
+    --background-secondary-alt: #050505;
     --text-normal: #e0e6ed;
     --text-muted: #8b9bb4;
 }
 
 /* 🌟 CORE SYSTEM: Overriding Obsidian native fonts */
 body {
-    --font-text: var(--font-text-theme, 'Montserrat', sans-serif) !important;
-    --font-interface: var(--font-text-theme, 'Montserrat', sans-serif) !important;
-    --default-font: var(--font-text-theme, 'Montserrat', sans-serif) !important;
+    --font-text: var(--font-text-theme, 'Montserrat', sans-serif);
+    --font-interface: var(--font-text-theme, 'Montserrat', sans-serif);
+    --default-font: var(--font-text-theme, 'Montserrat', sans-serif);
 
 }
 
 /* Force CodeMirror Editor */
-.markdown-source-view.mod-cm6 .cm-scroller {
-    font-family: var(--font-text) !important;
+body .markdown-source-view.mod-cm6 .cm-scroller {
+    font-family: var(--font-text);
 }
 
 /* 🌟 Force font for all Properties (Metadata) */
-.metadata-container,
-.metadata-container * {
-    font-family: var(--font-text) !important;
+body .metadata-container,
+body .metadata-container * {
+    font-family: var(--font-text);
 }
 
-.metadata-property-key-input {
-    color: var(--text-muted) !important;
+body .metadata-property-key-input {
+    color: var(--text-muted);
 }
 
 /* Ambiance Nebulux : Fond Radial Dynamique */
-.workspace-leaf-content:not([data-type="excalidraw"]) .view-content,
-.markdown-reading-view {
-    background: radial-gradient(circle at center, var(--bg-gradient-center) 0%, var(--bg-gradient-edge) 85%) !important;
-    background-attachment: fixed !important;
+body .workspace-leaf-content:not([data-type="excalidraw"]) .view-content,
+body .markdown-reading-view {
+    background: radial-gradient(circle at center, var(--bg-gradient-center) 0%, var(--bg-gradient-edge) 85%);
+    background-attachment: fixed;
 }
 
-.workspace-leaf-content[data-type="excalidraw"] .view-content {
-    background: transparent !important;
+body .workspace-leaf-content[data-type="excalidraw"] .view-content {
+    background: transparent;
 }
 
 /* =================================================================
@@ -252,387 +252,387 @@ body {
    ================================================================= */
 
 /* 1. Common Base: Typography and Spacing */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.view-header-title,
-.cm-header-1,
-.cm-header-2,
-.cm-header-3,
-.cm-header-4,
-.cm-header-5,
-.cm-header-6 {
-    font-family: var(--font-headers, 'Orbitron', sans-serif) !important;
-    letter-spacing: 0.08em !important;
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body .view-header-title,
+body .cm-header-1,
+body .cm-header-2,
+body .cm-header-3,
+body .cm-header-4,
+body .cm-header-5,
+body .cm-header-6 {
+    font-family: var(--font-headers, 'Orbitron', sans-serif);
+    letter-spacing: 0.08em;
     /* On force la découpe du fond selon la forme du texte */
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    color: transparent !important;
-    font-weight: 700 !important;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
 }
 
 /* 2. H1: Stellar Glow */
-h1,
-.cm-header-1 {
-    background-image: linear-gradient(90deg, var(--h1-start) 0%, var(--h1-end) 100%) !important;
+body h1,
+body .cm-header-1 {
+    background-image: linear-gradient(90deg, var(--h1-start) 0%, var(--h1-end) 100%);
 }
 
 /* 3. H2: Neon Nav */
-h2,
-.cm-header-2 {
-    background-image: linear-gradient(90deg, var(--h2-start) 0%, var(--h2-end) 100%) !important;
+body h2,
+body .cm-header-2 {
+    background-image: linear-gradient(90deg, var(--h2-start) 0%, var(--h2-end) 100%);
 }
 
 /* 4. H3: Status Energy */
-h3,
-.cm-header-3 {
-    background-image: linear-gradient(90deg, var(--h3-start) 0%, var(--h3-end) 100%) !important;
+body h3,
+body .cm-header-3 {
+    background-image: linear-gradient(90deg, var(--h3-start) 0%, var(--h3-end) 100%);
 }
 
 /* 5. H4: Project Copper */
-h4,
-.cm-header-4 {
-    background-image: linear-gradient(90deg, var(--h4-start) 0%, var(--h4-end) 100%) !important;
+body h4,
+body .cm-header-4 {
+    background-image: linear-gradient(90deg, var(--h4-start) 0%, var(--h4-end) 100%);
 }
 
 /* 6. H5: Nebula */
-h5,
-.cm-header-5 {
-    background-image: linear-gradient(90deg, var(--h5-start) 0%, var(--h5-end) 100%) !important;
+body h5,
+body .cm-header-5 {
+    background-image: linear-gradient(90deg, var(--h5-start) 0%, var(--h5-end) 100%);
 }
 
 /* 7. H6: Cold Metal */
-h6,
-.cm-header-6 {
-    background-image: linear-gradient(90deg, var(--h6-start) 0%, var(--h6-end) 100%) !important;
+body h6,
+body .cm-header-6 {
+    background-image: linear-gradient(90deg, var(--h6-start) 0%, var(--h6-end) 100%);
 }
 
 /* Unified Bold & Italic (Reading & Editor) */
-strong,
-b,
-.cm-strong {
-    color: rgb(var(--color-projects)) !important;
-    font-weight: 700 !important;
+body strong,
+body b,
+body .cm-strong {
+    color: rgb(var(--color-projects));
+    font-weight: 700;
 }
 
-em,
-i,
-.cm-em {
-    color: rgba(255, 255, 255, 0.6) !important;
-    font-style: italic !important;
+body em,
+body i,
+body .cm-em {
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
 }
 
 /* =================================================================
    2. SYSTEM INTERFACE (OPAQUE & NEON)
    ================================================================= */
-.workspace-tab-header.is-active,
-.vertical-tab-nav-item.is-active {
-    background-color: #0f192d !important;
-    opacity: 1 !important;
-    color: rgb(var(--color-nav)) !important;
-    border: 1px solid rgba(var(--color-nav), 0.5) !important;
-    box-shadow: inset 0 2px 0 0 rgb(var(--color-nav)), 0 0 10px rgba(var(--color-nav), 0.2) !important;
+body .workspace-tab-header.is-active,
+body .vertical-tab-nav-item.is-active {
+    background-color: #0f192d;
+    opacity: 1;
+    color: rgb(var(--color-nav));
+    border: 1px solid rgba(var(--color-nav), 0.5);
+    box-shadow: inset 0 2px 0 0 rgb(var(--color-nav)), 0 0 10px rgba(var(--color-nav), 0.2);
 }
 
-.workspace-tab-header-container,
-.vertical-tab-header {
-    background-color: #000000 !important;
+body .workspace-tab-header-container,
+body .vertical-tab-header {
+    background-color: #000000;
 }
 
 body .app-container .titlebar {
-    background: #000000 !important;
-    border-bottom: var(--hud-frame) solid rgba(var(--color-nav), 0.8) !important;
-    box-shadow: 0 2px 10px rgba(var(--color-nav), 0.25) !important;
+    background: #000000;
+    border-bottom: var(--hud-frame) solid rgba(var(--color-nav), 0.8);
+    box-shadow: 0 2px 10px rgba(var(--color-nav), 0.25);
 }
 
 body .app-container .status-bar {
-    background: #000000 !important;
-    border-top: var(--hud-frame) solid rgba(var(--color-nav), 0.5) !important;
+    background: #000000;
+    border-top: var(--hud-frame) solid rgba(var(--color-nav), 0.5);
 }
 
-button:not(.excalidraw-wrapper *):not(.canvas-wrapper *),
-button.mod-cta:not(.excalidraw-wrapper *):not(.canvas-wrapper *) {
-    background-color: rgba(15, 25, 45, 0.9) !important;
-    border: 1px solid rgba(var(--color-nav), 0.5) !important;
-    color: #e0e6ed !important;
+body button:not(.excalidraw-wrapper *):not(.canvas-wrapper *),
+body button.mod-cta:not(.excalidraw-wrapper *):not(.canvas-wrapper *) {
+    background-color: rgba(15, 25, 45, 0.9);
+    border: 1px solid rgba(var(--color-nav), 0.5);
+    color: #e0e6ed;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
 }
 
-button:not(.excalidraw-wrapper *):not(.canvas-wrapper *):hover {
-    background-color: rgba(var(--color-nav), 0.15) !important;
-    box-shadow: 0 0 15px rgba(var(--color-nav), 0.6) !important;
-    border-color: rgb(var(--color-nav)) !important;
+body button:not(.excalidraw-wrapper *):not(.canvas-wrapper *):hover {
+    background-color: rgba(var(--color-nav), 0.15);
+    box-shadow: 0 0 15px rgba(var(--color-nav), 0.6);
+    border-color: rgb(var(--color-nav));
     transform: translateY(-2px);
-    color: #fff !important;
+    color: #fff;
 }
 
-.menu,
-.suggestion-container {
-    background-color: #0f192d !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), inset 0 0 0 1px rgba(var(--color-nav), 0.4) !important;
-    border: none !important;
-    padding: 4px !important;
+body .menu,
+body .suggestion-container {
+    background-color: #0f192d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), inset 0 0 0 1px rgba(var(--color-nav), 0.4);
+    border: none;
+    padding: 4px;
 }
 
-.menu-item,
-.suggestion-item {
-    border: none !important;
-    margin: 0 !important;
-    background-color: transparent !important;
+body .menu-item,
+body .suggestion-item {
+    border: none;
+    margin: 0;
+    background-color: transparent;
 }
 
-.menu-item.is-selected,
-.suggestion-item.is-selected,
-.menu-item:hover {
-    background-color: rgba(var(--color-nav), 0.2) !important;
-    color: rgb(var(--color-nav)) !important;
-    box-shadow: inset 3px 0 0 rgb(var(--color-nav)) !important;
+body .menu-item.is-selected,
+body .suggestion-item.is-selected,
+body .menu-item:hover {
+    background-color: rgba(var(--color-nav), 0.2);
+    color: rgb(var(--color-nav));
+    box-shadow: inset 3px 0 0 rgb(var(--color-nav));
 }
 
 /* =================================================================
    3. MODULES: CALLOUTS & DASHBOARD
    ================================================================= */
-.callout {
-    border: 1px solid rgba(var(--hud-color, 160, 190, 220), 0.5) !important;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
-    background: color-mix(in srgb, rgb(var(--hud-color)) 15%, rgba(10, 12, 18, 0.85)) !important;
-    border-radius: 12px !important;
-    transition: all 0.3s ease !important;
+body .callout {
+    border: 1px solid rgba(var(--hud-color, 160, 190, 220), 0.5);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+    background: color-mix(in srgb, rgb(var(--hud-color)) 15%, rgba(10, 12, 18, 0.85));
+    border-radius: 12px;
+    transition: all 0.3s ease;
 }
 
-.callout:hover {
-    transform: translateY(-3px) !important;
-    border-color: rgb(var(--hud-color, 160, 190, 220)) !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(var(--hud-color, 160, 190, 220), 0.3) !important;
-    background: color-mix(in srgb, rgb(var(--hud-color)) 25%, rgba(10, 12, 18, 0.95)) !important;
+body .callout:hover {
+    transform: translateY(-3px);
+    border-color: rgb(var(--hud-color, 160, 190, 220));
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(var(--hud-color, 160, 190, 220), 0.3);
+    background: color-mix(in srgb, rgb(var(--hud-color)) 25%, rgba(10, 12, 18, 0.95));
 }
 
-.callout[data-callout^="nav"] {
-    background: rgba(15, 25, 45, 0.85) !important;
+body .callout[data-callout^="nav"] {
+    background: rgba(15, 25, 45, 0.85);
 }
 
-.callout[data-callout^="nav"]:hover {
-    background: rgba(15, 25, 45, 0.95) !important;
+body .callout[data-callout^="nav"]:hover {
+    background: rgba(15, 25, 45, 0.95);
 }
 
-.callout[data-callout^="nav"] {
-    --hud-color: var(--color-nav) !important;
-    --hud-bg: 15, 25, 45 !important;
+body .callout[data-callout^="nav"] {
+    --hud-color: var(--color-nav);
+    --hud-bg: 15, 25, 45;
 }
 
-.callout[data-callout^="status"] {
-    --hud-color: var(--color-status) !important;
-    --hud-bg: 45, 35, 15 !important;
+body .callout[data-callout^="status"] {
+    --hud-color: var(--color-status);
+    --hud-bg: 45, 35, 15;
 }
 
-.callout[data-callout^="projects"] {
-    --hud-color: var(--color-projects) !important;
-    --hud-bg: 30, 32, 35 !important;
+body .callout[data-callout^="projects"] {
+    --hud-color: var(--color-projects);
+    --hud-bg: 30, 32, 35;
 }
 
-.callout[data-callout^="nav"] .callout-icon svg,
-.callout[data-callout^="status"] .callout-icon svg,
-.callout[data-callout^="projects"] .callout-icon svg {
-    display: none !important;
+body .callout[data-callout^="nav"] .callout-icon svg,
+body .callout[data-callout^="status"] .callout-icon svg,
+body .callout[data-callout^="projects"] .callout-icon svg {
+    display: none;
 }
 
-.callout[data-callout^="nav"] .callout-icon::before,
-.callout[data-callout^="status"] .callout-icon::before,
-.callout[data-callout^="projects"] .callout-icon::before {
+body .callout[data-callout^="nav"] .callout-icon::before,
+body .callout[data-callout^="status"] .callout-icon::before,
+body .callout[data-callout^="projects"] .callout-icon::before {
     content: var(--hud-icon);
     font-size: 1.2rem;
 }
 
-.callout[data-callout^="nav"] {
-    --hud-icon: "🧭" !important;
+body .callout[data-callout^="nav"] {
+    --hud-icon: "🧭";
 }
 
-.callout[data-callout^="status"] {
-    --hud-icon: "📊" !important;
+body .callout[data-callout^="status"] {
+    --hud-icon: "📊";
 }
 
-.callout[data-callout^="projects"] {
-    --hud-icon: "🚀" !important;
+body .callout[data-callout^="projects"] {
+    --hud-icon: "🚀";
 }
 
-.callout[data-callout$="/idea"] {
-    --hud-icon: "💡" !important;
+body .callout[data-callout$="/idea"] {
+    --hud-icon: "💡";
 }
 
-.callout[data-callout$="/brain"] {
-    --hud-icon: "🧠" !important;
+body .callout[data-callout$="/brain"] {
+    --hud-icon: "🧠";
 }
 
-.callout[data-callout$="/bug"] {
-    --hud-icon: "🐞" !important;
+body .callout[data-callout$="/bug"] {
+    --hud-icon: "🐞";
 }
 
-.callout[data-callout$="/target"] {
-    --hud-icon: "🎯" !important;
+body .callout[data-callout$="/target"] {
+    --hud-icon: "🎯";
 }
 
-.callout[data-callout$="/write"] {
-    --hud-icon: "✍️" !important;
+body .callout[data-callout$="/write"] {
+    --hud-icon: "✍️";
 }
 
-.callout[data-callout$="/file"] {
-    --hud-icon: "📂" !important;
+body .callout[data-callout$="/file"] {
+    --hud-icon: "📂";
 }
 
-.callout[data-callout$="/heart"] {
-    --hud-icon: "❤️" !important;
+body .callout[data-callout$="/heart"] {
+    --hud-icon: "❤️";
 }
 
-.callout[data-callout$="/clean"] .callout-icon {
-    display: none !important;
+body .callout[data-callout$="/clean"] .callout-icon {
+    display: none;
 }
 
-.callout[data-callout$="/native"] .callout-icon::before {
-    display: none !important;
+body .callout[data-callout$="/native"] .callout-icon::before {
+    display: none;
 }
 
-.callout[data-callout$="/native"] .callout-icon svg {
-    display: block !important;
+body .callout[data-callout$="/native"] .callout-icon svg {
+    display: block;
 }
 
 /* Colorized Native Obsidian Callouts */
-.callout[data-callout="info"],
-.callout[data-callout="todo"] {
-    --hud-color: 80, 160, 255 !important;
+body .callout[data-callout="info"],
+body .callout[data-callout="todo"] {
+    --hud-color: 80, 160, 255;
 }
 
-.callout[data-callout="example"] {
-    --hud-color: 180, 120, 255 !important;
+body .callout[data-callout="example"] {
+    --hud-color: 180, 120, 255;
 }
 
-.callout[data-callout="success"],
-.callout[data-callout="check"],
-.callout[data-callout="done"] {
-    --hud-color: 80, 220, 120 !important;
+body .callout[data-callout="success"],
+body .callout[data-callout="check"],
+body .callout[data-callout="done"] {
+    --hud-color: 80, 220, 120;
 }
 
-.callout[data-callout="warning"],
-.callout[data-callout="question"],
-.callout[data-callout="help"],
-.callout[data-callout="faq"],
-.callout[data-callout="caution"],
-.callout[data-callout="attention"] {
-    --hud-color: 255, 170, 50 !important;
+body .callout[data-callout="warning"],
+body .callout[data-callout="question"],
+body .callout[data-callout="help"],
+body .callout[data-callout="faq"],
+body .callout[data-callout="caution"],
+body .callout[data-callout="attention"] {
+    --hud-color: 255, 170, 50;
 }
 
-.callout[data-callout="danger"],
-.callout[data-callout="error"],
-.callout[data-callout="fail"],
-.callout[data-callout="failure"],
-.callout[data-callout="bug"] {
-    --hud-color: 255, 80, 80 !important;
+body .callout[data-callout="danger"],
+body .callout[data-callout="error"],
+body .callout[data-callout="fail"],
+body .callout[data-callout="failure"],
+body .callout[data-callout="bug"] {
+    --hud-color: 255, 80, 80;
 }
 
-.callout[data-callout="tip"],
-.callout[data-callout="important"],
-.callout[data-callout="abstract"],
-.callout[data-callout="summary"],
-.callout[data-callout="tldr"],
-.callout[data-callout="hint"] {
-    --hud-color: 50, 220, 255 !important;
+body .callout[data-callout="tip"],
+body .callout[data-callout="important"],
+body .callout[data-callout="abstract"],
+body .callout[data-callout="summary"],
+body .callout[data-callout="tldr"],
+body .callout[data-callout="hint"] {
+    --hud-color: 50, 220, 255;
 }
 
-.callout[data-callout="quote"],
-.callout[data-callout="cite"] {
-    --hud-color: 150, 160, 170 !important;
+body .callout[data-callout="quote"],
+body .callout[data-callout="cite"] {
+    --hud-color: 150, 160, 170;
 }
 
 /* Dashboard Menu Flexbox */
-.callout[data-callout="nav/menu"] .callout-content ul {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 15px !important;
-    padding: 0 !important;
-    margin: 10px 0 0 0 !important;
-    list-style: none !important;
+body .callout[data-callout="nav/menu"] .callout-content ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 0;
+    margin: 10px 0 0 0;
+    list-style: none;
 }
 
-.callout[data-callout="nav/menu"] .callout-content li {
-    flex: 1 1 auto !important;
-    min-width: 120px !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(var(--color-nav), 0.3) !important;
-    border-radius: 10px !important;
-    text-align: center !important;
-    transition: all 0.3s ease !important;
-    margin: 0 !important;
+body .callout[data-callout="nav/menu"] .callout-content li {
+    flex: 1 1 auto;
+    min-width: 120px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(var(--color-nav), 0.3);
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin: 0;
 }
 
-.callout[data-callout="nav/menu"] .callout-content li:hover {
-    background: rgba(var(--color-nav), 0.25) !important;
-    border-color: rgb(var(--color-nav)) !important;
-    box-shadow: 0 0 20px rgba(var(--color-nav), 0.6), inset 0 0 10px rgba(var(--color-nav), 0.3) !important;
-    transform: translateY(-3px) !important;
+body .callout[data-callout="nav/menu"] .callout-content li:hover {
+    background: rgba(var(--color-nav), 0.25);
+    border-color: rgb(var(--color-nav));
+    box-shadow: 0 0 20px rgba(var(--color-nav), 0.6), inset 0 0 10px rgba(var(--color-nav), 0.3);
+    transform: translateY(-3px);
 }
 
-.callout[data-callout="nav/menu"] .callout-content a {
-    display: block !important;
-    padding: 12px 20px !important;
-    color: #e0e6ed !important;
-    font-weight: 700 !important;
-    text-decoration: none !important;
-    letter-spacing: 0.05em !important;
-    transition: all 0.3s ease !important;
+body .callout[data-callout="nav/menu"] .callout-content a {
+    display: block;
+    padding: 12px 20px;
+    color: #e0e6ed;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
 }
 
-.callout[data-callout="nav/menu"] .callout-content li:hover a {
-    color: #ffffff !important;
-    text-shadow: 0 0 12px rgb(var(--color-nav)), 0 0 20px rgb(var(--color-nav)) !important;
+body .callout[data-callout="nav/menu"] .callout-content li:hover a {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgb(var(--color-nav)), 0 0 20px rgb(var(--color-nav));
 }
 
-.callout[data-callout="nav/menu"] .callout-content li::marker {
-    content: "" !important;
+body .callout[data-callout="nav/menu"] .callout-content li::marker {
+    content: "";
 }
 
 /* 1. Retirer le style de liste sur le UL et le LI spécifiques au mode lecture */
-.markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet,
-.markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet li {
-    list-style: none !important;
+body .markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet,
+body .markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet li {
+    list-style: none;
 }
 
 /* 2. Cacher le span "list-bullet" injecté physiquement par Obsidian */
-.markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet li .list-bullet {
-    display: none !important;
+body .markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet li .list-bullet {
+    display: none;
 }
 
 /* 3. Cacher le vrai ::marker natif du navigateur par sécurité */
-.markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet li::marker {
-    content: "" !important;
-    display: none !important;
-    font-size: 0 !important;
+body .markdown-rendered .callout[data-callout="nav/menu"] .callout-content ul.has-list-bullet li::marker {
+    content: "";
+    display: none;
+    font-size: 0;
 }
 
 /* Dashboard Grid Classique */
-.dashboard .callout[data-callout="nav"] .callout-content ul {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
-    justify-content: center !important;
-    gap: 20px !important;
-    padding: 0 !important;
-    list-style: none !important;
+body .dashboard .callout[data-callout="nav"] .callout-content ul {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+    list-style: none;
 }
 
-.dashboard .callout[data-callout="nav"] .callout-content li {
-    height: 100px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+body .dashboard .callout[data-callout="nav"] .callout-content li {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(var(--color-nav), 0.3);
     border-radius: 8px;
     transition: 0.2s;
 }
 
-.dashboard .callout[data-callout="nav"] .callout-content li:hover {
+body .dashboard .callout[data-callout="nav"] .callout-content li:hover {
     background: rgba(var(--color-nav), 0.2);
     border-color: rgb(var(--color-nav));
     box-shadow: 0 0 10px rgba(var(--color-nav), 0.4);
@@ -642,126 +642,126 @@ button:not(.excalidraw-wrapper *):not(.canvas-wrapper *):hover {
 /* =================================================================
    4. INTERACTIVE ELEMENTS (SCROLL, TAGS, TOGGLES, CHECKBOXES)
    ================================================================= */
-::-webkit-scrollbar {
-    width: 8px !important;
-    height: 8px !important;
-    background-color: transparent !important;
+body ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: rgba(var(--color-nav), 0.2) !important;
-    border: 1px solid rgba(var(--color-nav), 0.3) !important;
-    border-radius: 4px !important;
+body ::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--color-nav), 0.2);
+    border: 1px solid rgba(var(--color-nav), 0.3);
+    border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(var(--color-nav), 0.6) !important;
-    box-shadow: 0 0 10px rgba(var(--color-nav), 0.5) !important;
+body ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(var(--color-nav), 0.6);
+    box-shadow: 0 0 10px rgba(var(--color-nav), 0.5);
 }
 
-.modal input[type=range]::-webkit-slider-thumb {
+body .modal input[type=range]::-webkit-slider-thumb {
     background: rgb(var(--color-nav));
     box-shadow: 0 0 10px rgb(var(--color-nav));
 }
 
 body .tag,
 body .metadata-property .multi-select-pill {
-    background-color: rgba(var(--color-nav), 0.15) !important;
-    color: rgb(var(--color-nav)) !important;
-    border: none !important;
+    background-color: rgba(var(--color-nav), 0.15);
+    color: rgb(var(--color-nav));
+    border: none;
 }
 
 body .multi-select-pill-remove-button {
-    color: rgb(var(--color-cross)) !important;
+    color: rgb(var(--color-cross));
 }
 
 /* Toggles Settings */
-.checkbox-container.is-enabled {
-    background-color: rgba(var(--color-nav), 0.3) !important;
-    box-shadow: 0 0 10px rgba(var(--color-nav), 0.4), inset 0 0 5px rgba(var(--color-nav), 0.5) !important;
-    border: 1px solid rgb(var(--color-nav)) !important;
+body .checkbox-container.is-enabled {
+    background-color: rgba(var(--color-nav), 0.3);
+    box-shadow: 0 0 10px rgba(var(--color-nav), 0.4), inset 0 0 5px rgba(var(--color-nav), 0.5);
+    border: 1px solid rgb(var(--color-nav));
 }
 
-.checkbox-container.is-enabled:after {
-    background-color: #ffffff !important;
-    box-shadow: 0 0 15px rgb(var(--color-nav)), 0 0 8px rgb(var(--color-nav)) !important;
+body .checkbox-container.is-enabled:after {
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgb(var(--color-nav)), 0 0 8px rgb(var(--color-nav));
 }
 
-.checkbox-container:hover {
-    border-color: rgb(var(--color-nav)) !important;
-    box-shadow: 0 0 12px rgba(var(--color-nav), 0.6) !important;
+body .checkbox-container:hover {
+    border-color: rgb(var(--color-nav));
+    box-shadow: 0 0 12px rgba(var(--color-nav), 0.6);
 }
 
 /* 🌟 Unified Checkboxes Fix (Reading & Editor) */
 body .markdown-source-view.mod-cm6 .task-list-item-checkbox,
 body .markdown-rendered .task-list-item-checkbox {
-    appearance: none !important;
-    -webkit-appearance: none !important;
-    width: 18px !important;
-    height: 18px !important;
-    border-radius: 4px !important;
-    border: 2px solid rgba(var(--color-nav), 0.5) !important;
-    background-color: rgba(0, 0, 0, 0.4) !important;
-    cursor: pointer !important;
-    position: relative !important;
-    display: inline-flex !important;
-    align-self: center !important;
-    margin-right: 8px !important;
-    margin-top: 4px !important;
-    vertical-align: top !important;
-    transition: all 0.2s ease !important;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid rgba(var(--color-nav), 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    margin-right: 8px;
+    margin-top: 0;
+    vertical-align: middle;
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
 }
 
 body .markdown-source-view.mod-cm6 .task-list-item-checkbox:hover,
 body .markdown-rendered .task-list-item-checkbox:hover {
-    border-color: rgb(var(--color-nav)) !important;
-    box-shadow: 0 0 8px rgba(var(--color-nav), 0.6), inset 0 0 4px rgba(var(--color-nav), 0.3) !important;
-    background-color: rgba(var(--color-nav), 0.1) !important;
+    border-color: rgb(var(--color-nav));
+    box-shadow: 0 0 8px rgba(var(--color-nav), 0.6), inset 0 0 4px rgba(var(--color-nav), 0.3);
+    background-color: rgba(var(--color-nav), 0.1);
 }
 
 body .markdown-source-view.mod-cm6 .task-list-item-checkbox:checked,
 body .markdown-rendered .task-list-item-checkbox:checked {
-    background-color: rgba(var(--color-nav), 0.3) !important;
-    border-color: rgb(var(--color-nav)) !important;
-    box-shadow: 0 0 12px rgba(var(--color-nav), 0.8) !important;
+    background-color: rgba(var(--color-nav), 0.3);
+    border-color: rgb(var(--color-nav));
+    box-shadow: 0 0 12px rgba(var(--color-nav), 0.8);
 }
 
 body .markdown-source-view.mod-cm6 .task-list-item-checkbox:checked::before,
 body .markdown-rendered .task-list-item-checkbox:checked::before {
-    content: "✔" !important;
-    position: absolute !important;
-    top: 45% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    color: #ffffff !important;
-    font-size: 14px !important;
-    font-weight: 900 !important;
-    text-shadow: 0 0 8px rgb(var(--color-nav)) !important;
-    display: block !important;
+    content: "✔";
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 900;
+    text-shadow: 0 0 8px rgb(var(--color-nav));
+    display: block;
 }
 
 body .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="x"],
 body .markdown-rendered .task-list-item.is-checked {
-    color: var(--text-muted) !important;
-    text-decoration: line-through !important;
-    opacity: 0.7 !important;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    opacity: 0.7;
 }
 
 /* =================================================================
    5. SEPARATORS & GRAPH VIEW
    ================================================================= */
-.markdown-rendered hr,
-.markdown-source-view hr {
-    border: none !important;
-    height: 1px !important;
-    background: linear-gradient(90deg, transparent 0%, rgba(var(--color-nav), 0.8) 50%, transparent 100%) !important;
-    margin: 2.5em 0 !important;
+body .markdown-rendered hr,
+body .markdown-source-view hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(var(--color-nav), 0.8) 50%, transparent 100%);
+    margin: 2.5em 0;
     position: relative;
-    overflow: visible !important;
+    overflow: visible;
 }
 
-.markdown-rendered hr::after,
-.markdown-source-view hr::after {
+body .markdown-rendered hr::after,
+body .markdown-source-view hr::after {
     content: "";
     position: absolute;
     top: -2px;
@@ -772,10 +772,10 @@ body .markdown-rendered .task-list-item.is-checked {
     filter: blur(4px);
 }
 
-.table-view-table thead th {
-    border-bottom: 2px solid rgb(var(--color-nav)) !important;
-    color: rgb(var(--color-nav)) !important;
-    font-family: var(--font-headers) !important;
+body .table-view-table thead th {
+    border-bottom: 2px solid rgb(var(--color-nav));
+    color: rgb(var(--color-nav));
+    font-family: var(--font-headers);
     text-transform: uppercase;
 }
 
@@ -788,128 +788,128 @@ body .markdown-rendered .task-list-item.is-checked {
     color: rgba(255, 255, 255, 0.15);
 }
 
-.workspace-leaf-content[data-type="graph"] .view-content {
-    background: radial-gradient(circle at center, #1a253a 0%, #050505 85%) !important;
+body .workspace-leaf-content[data-type="graph"] .view-content {
+    background: radial-gradient(circle at center, #1a253a 0%, #050505 85%);
 }
 
 /* =================================================================
    6. FILE EXPLORER (DYNAMIC NEON NEBULA)
    ================================================================= */
 /* 🌟 Application explicite de la police pour garantir la stabilité */
-.nav-folder-title-content {
-    font-family: var(--font-text) !important;
-    color: rgb(var(--color-nav)) !important;
-    text-shadow: 0 0 8px rgba(var(--color-nav), 0.5) !important;
-    font-weight: 600 !important;
-    transition: all 0.2s ease !important;
+body .nav-folder-title-content {
+    font-family: var(--font-text);
+    color: rgb(var(--color-nav));
+    text-shadow: 0 0 8px rgba(var(--color-nav), 0.5);
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
 
-.nav-file-title-content {
-    font-family: var(--font-text) !important;
-    color: var(--text-normal) !important;
-    font-weight: 500 !important;
-    transition: all 0.2s ease !important;
+body .nav-file-title-content {
+    font-family: var(--font-text);
+    color: var(--text-normal);
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
-.nav-folder-title:hover .nav-folder-title-content,
-.nav-file-title:hover .nav-file-title-content {
-    color: #ffffff !important;
-    text-shadow: 0 0 12px rgb(var(--color-nav)) !important;
+body .nav-folder-title:hover .nav-folder-title-content,
+body .nav-file-title:hover .nav-file-title-content {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgb(var(--color-nav));
 }
 
-.nav-folder-title:hover,
-.nav-file-title:hover {
-    background-color: rgba(var(--color-nav), 0.15) !important;
+body .nav-folder-title:hover,
+body .nav-file-title:hover {
+    background-color: rgba(var(--color-nav), 0.15);
 }
 
-.nav-folder.is-active>.nav-folder-title,
-.nav-folder-title.is-active,
-.nav-file-title.is-active,
-.nav-file.is-active>.nav-file-title {
-    background-color: rgba(var(--color-nav), 0.2) !important;
-    border-left: 3px solid rgb(var(--color-nav)) !important;
-    box-shadow: inset 4px 0 8px rgba(var(--color-nav), 0.2) !important;
+body .nav-folder.is-active>.nav-folder-title,
+body .nav-folder-title.is-active,
+body .nav-file-title.is-active,
+body .nav-file.is-active>.nav-file-title {
+    background-color: rgba(var(--color-nav), 0.2);
+    border-left: 3px solid rgb(var(--color-nav));
+    box-shadow: inset 4px 0 8px rgba(var(--color-nav), 0.2);
 }
 
-.nav-file-title.is-active .nav-file-title-content {
-    color: #ffffff !important;
-    text-shadow: 0 0 12px rgb(var(--color-nav)), 0 0 20px rgb(var(--color-nav)) !important;
-    font-weight: 600 !important;
+body .nav-file-title.is-active .nav-file-title-content {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgb(var(--color-nav)), 0 0 20px rgb(var(--color-nav));
+    font-weight: 600;
 }
 
 /* Cycle Automatique des Couleurs (Rainbow Folders) */
-.nav-folder-children>.nav-folder:nth-child(11n + 2),
-.nav-files-container>div>.nav-folder:nth-child(11n + 2) {
-    --color-nav: 243, 139, 168 !important;
+body .nav-folder-children>.nav-folder:nth-child(11n + 2),
+body .nav-files-container>div>.nav-folder:nth-child(11n + 2) {
+    --color-nav: 243, 139, 168;
 }
 
-.nav-folder-children>.nav-folder:nth-child(11n + 3),
-.nav-files-container>div>.nav-folder:nth-child(11n + 3) {
-    --color-nav: 235, 160, 172 !important;
+body .nav-folder-children>.nav-folder:nth-child(11n + 3),
+body .nav-files-container>div>.nav-folder:nth-child(11n + 3) {
+    --color-nav: 235, 160, 172;
 }
 
-.nav-folder-children>.nav-folder:nth-child(11n + 4),
-.nav-files-container>div>.nav-folder:nth-child(11n + 4) {
-    --color-nav: 250, 179, 135 !important;
+body .nav-folder-children>.nav-folder:nth-child(11n + 4),
+body .nav-files-container>div>.nav-folder:nth-child(11n + 4) {
+    --color-nav: 250, 179, 135;
 }
 
-.nav-folder-children>.nav-folder:nth-child(11n + 5),
-.nav-files-container>div>.nav-folder:nth-child(11n + 5) {
-    --color-nav: 249, 226, 175 !important;
+body .nav-folder-children>.nav-folder:nth-child(11n + 5),
+body .nav-files-container>div>.nav-folder:nth-child(11n + 5) {
+    --color-nav: 249, 226, 175;
 }
 
-.nav-folder-children>.nav-folder:nth-child(11n + 6),
-.nav-files-container>div>.nav-folder:nth-child(11n + 6) {
-    --color-nav: 166, 227, 161 !important;
+body .nav-folder-children>.nav-folder:nth-child(11n + 6),
+body .nav-files-container>div>.nav-folder:nth-child(11n + 6) {
+    --color-nav: 166, 227, 161;
 }
 
-.nav-folder-children>.nav-folder:nth-child(11n + 7),
-.nav-files-container>div>.nav-folder:nth-child(11n + 7) {
-    --color-nav: 148, 226, 213 !important;
+body .nav-folder-children>.nav-folder:nth-child(11n + 7),
+body .nav-files-container>div>.nav-folder:nth-child(11n + 7) {
+    --color-nav: 148, 226, 213;
 }
 
-.nav-folder-children>.nav-folder:nth-child(11n + 8),
-.nav-files-container>div>.nav-folder:nth-child(11n + 8) {
-    --color-nav: 137, 220, 235 !important;
+body .nav-folder-children>.nav-folder:nth-child(11n + 8),
+body .nav-files-container>div>.nav-folder:nth-child(11n + 8) {
+    --color-nav: 137, 220, 235;
 }
 
-.nav-folder-children>.nav-folder:nth-child(11n + 9),
-.nav-files-container>div>.nav-folder:nth-child(11n + 9) {
-    --color-nav: 116, 199, 236 !important;
+body .nav-folder-children>.nav-folder:nth-child(11n + 9),
+body .nav-files-container>div>.nav-folder:nth-child(11n + 9) {
+    --color-nav: 116, 199, 236;
 }
 
-.nav-folder-children>.nav-folder:nth-child(11n + 10),
-.nav-files-container>div>.nav-folder:nth-child(11n + 10) {
-    --color-nav: 135, 176, 249 !important;
+body .nav-folder-children>.nav-folder:nth-child(11n + 10),
+body .nav-files-container>div>.nav-folder:nth-child(11n + 10) {
+    --color-nav: 135, 176, 249;
 }
 
-.nav-folder-children>.nav-folder:nth-child(11n + 11),
-.nav-files-container>div>.nav-folder:nth-child(11n + 11) {
-    --color-nav: 180, 190, 254 !important;
+body .nav-folder-children>.nav-folder:nth-child(11n + 11),
+body .nav-files-container>div>.nav-folder:nth-child(11n + 11) {
+    --color-nav: 180, 190, 254;
 }
 
-.nav-folder-children>.nav-folder:nth-child(11n + 12),
-.nav-files-container>div>.nav-folder:nth-child(11n + 12) {
-    --color-nav: 203, 166, 247 !important;
+body .nav-folder-children>.nav-folder:nth-child(11n + 12),
+body .nav-files-container>div>.nav-folder:nth-child(11n + 12) {
+    --color-nav: 203, 166, 247;
 }
 
 /* =================================================================
    7. DATAVIEW (LIENS DYNAMIQUES)
    ================================================================= */
-.table-view-table a {
-    transition: all 0.2s ease !important;
+body .table-view-table a {
+    transition: all 0.2s ease;
 }
 
-.callout .table-view-table a:hover {
-    color: rgb(var(--hud-color)) !important;
-    text-shadow: 0 0 10px rgba(var(--hud-color), 0.8) !important;
-    text-decoration: underline !important;
-    text-decoration-color: rgb(var(--hud-color)) !important;
+body .callout .table-view-table a:hover {
+    color: rgb(var(--hud-color));
+    text-shadow: 0 0 10px rgba(var(--hud-color), 0.8);
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--hud-color));
 }
 
-.markdown-rendered>div>.table-view-table a:hover {
-    color: rgb(var(--color-nav)) !important;
-    text-shadow: 0 0 10px rgba(var(--color-nav), 0.5) !important;
+body .markdown-rendered>div>.table-view-table a:hover {
+    color: rgb(var(--color-nav));
+    text-shadow: 0 0 10px rgba(var(--color-nav), 0.5);
 }
 
 /* =================================================================
@@ -918,31 +918,31 @@ body .markdown-rendered .task-list-item.is-checked {
 
 /* Mode Lecture */
 body .markdown-rendered mark {
-    background-color: rgba(183, 132, 230, 0.35) !important;
+    background-color: rgba(183, 132, 230, 0.35);
     /* Violet Nébuleuse translucide */
-    color: #ffffff !important;
-    padding: 2px 6px !important;
-    border-radius: 6px !important;
-    box-shadow: 0 0 10px rgba(183, 132, 230, 0.5) !important;
+    color: #ffffff;
+    padding: 2px 6px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(183, 132, 230, 0.5);
     /* Halo lumineux */
-    font-weight: 600 !important;
+    font-weight: 600;
 }
 
 /* Mode Éditeur (Live Preview) */
 body .markdown-source-view.mod-cm6 .cm-highlight {
-    background-color: rgba(183, 132, 230, 0.35) !important;
-    color: #ffffff !important;
-    padding: 2px 4px !important;
-    border-radius: 6px !important;
-    box-shadow: 0 0 10px rgba(183, 132, 230, 0.5) !important;
-    font-weight: 600 !important;
+    background-color: rgba(183, 132, 230, 0.35);
+    color: #ffffff;
+    padding: 2px 4px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(183, 132, 230, 0.5);
+    font-weight: 600;
 }
 
 /* Les balises == elles-mêmes dans l'éditeur (pour les rendre discrètes) */
 body .markdown-source-view.mod-cm6 .cm-formatting-highlight {
-    color: rgba(183, 132, 230, 0.5) !important;
-    background-color: transparent !important;
-    box-shadow: none !important;
+    color: rgba(183, 132, 230, 0.5);
+    background-color: transparent;
+    box-shadow: none;
 }
 
 /* =================================================================
@@ -960,25 +960,23 @@ body .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
 
 /* 🛠️ BOUTON FERMER ONGLET ACTIF (NÉON) */
 body .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
-    color: #ffffff !important;
-    background-color: rgba(var(--color-nav), 0.8) !important;
-    box-shadow: 0 0 10px rgba(var(--color-nav), 0.6) !important;
+    color: #ffffff;
 }
 
 /* 🛠️ ONGLET ACTIF "MICA / GLASSMORPHISM" */
 body .workspace-tab-header.is-active {
-    background-color: rgba(var(--color-nav), 0.15) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(var(--color-nav), 0.4) !important;
-    border-bottom: none !important;
-    box-shadow: inset 0 0 20px rgba(var(--color-nav), 0.15), 0 -4px 15px rgba(var(--color-nav), 0.1) !important;
-    border-top-left-radius: 10px !important;
-    border-top-right-radius: 10px !important;
+    background-color: rgba(var(--color-nav), 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(var(--color-nav), 0.4);
+    border-bottom: none;
+    box-shadow: inset 0 0 20px rgba(var(--color-nav), 0.15), 0 -4px 15px rgba(var(--color-nav), 0.1);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 body .workspace-tab-header.is-active .workspace-tab-header-inner {
-    background-color: transparent !important;
+    background-color: transparent;
 }
 
 /* 🛠️ FIX DES CARRÉS NOIRS (COINS DE L'ONGLET) */
@@ -986,9 +984,9 @@ body .workspace-tab-header.is-active::before,
 body .workspace-tab-header.is-active::after,
 body .workspace-tab-header.is-active .workspace-tab-header-inner::before,
 body .workspace-tab-header.is-active .workspace-tab-header-inner::after {
-    display: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
+    display: none;
+    background: transparent;
+    box-shadow: none;
 }
 
 /* 🛠️ ONGLETS INACTIFS & SURVOL (HOVER) */
@@ -996,80 +994,80 @@ body .workspace-tab-header::before,
 body .workspace-tab-header::after,
 body .workspace-tab-header .workspace-tab-header-inner::before,
 body .workspace-tab-header .workspace-tab-header-inner::after {
-    display: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
+    display: none;
+    background: transparent;
+    box-shadow: none;
 }
 
 body .workspace-tab-header:not(.is-active) {
-    background-color: rgba(0, 0, 0, 0.4) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    border-bottom: 1px solid rgba(var(--color-nav), 0.3) !important;
-    border-top-left-radius: 10px !important;
-    border-top-right-radius: 10px !important;
-    transition: all 0.3s ease !important;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(var(--color-nav), 0.3);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: all 0.3s ease;
 }
 
 body .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-title,
 body .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-icon {
-    color: var(--text-muted) !important;
-    font-weight: 500 !important;
-    text-shadow: none !important;
-    transition: all 0.3s ease !important;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-shadow: none;
+    transition: all 0.3s ease;
 }
 
 body .workspace-tab-header:not(.is-active):hover {
-    background-color: rgba(var(--color-nav), 0.08) !important;
-    border-color: rgba(var(--color-nav), 0.2) !important;
+    background-color: rgba(var(--color-nav), 0.08);
+    border-color: rgba(var(--color-nav), 0.2);
 }
 
 body .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-title,
 body .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-icon {
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 /* 🛠️ BOUTON FERMER L'APPLICATION (TITLEBAR) */
 body .app-container .titlebar-button.mod-close:hover {
-    background-color: rgba(var(--color-nav), 0.8) !important;
-    color: #ffffff !important;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2), 0 0 15px rgba(var(--color-nav), 0.6) !important;
-    transition: all 0.3s ease !important;
+    background-color: rgba(var(--color-nav), 0.8);
+    color: #ffffff;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2), 0 0 15px rgba(var(--color-nav), 0.6);
+    transition: all 0.3s ease;
 }
 
 body .app-container .titlebar-button.mod-close:active {
-    background-color: rgba(var(--color-nav), 1) !important;
-    box-shadow: 0 0 20px rgba(var(--color-nav), 0.9) !important;
+    background-color: rgba(var(--color-nav), 1);
+    box-shadow: 0 0 20px rgba(var(--color-nav), 0.9);
 }
 
 /* 🛠️ FIX ALIGNEMENT DES ICÔNES DE CALLOUTS (ORBITRON) */
 body .callout[data-callout^="nav"] .callout-title,
 body .callout[data-callout^="status"] .callout-title,
 body .callout[data-callout^="projects"] .callout-title {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 body .callout[data-callout^="nav"] .callout-icon,
 body .callout[data-callout^="status"] .callout-icon,
 body .callout[data-callout^="projects"] .callout-icon {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
 body .callout[data-callout^="nav"] .callout-title-inner,
 body .callout[data-callout^="status"] .callout-title-inner,
 body .callout[data-callout^="projects"] .callout-title-inner {
-    margin: 0 !important;
-    transform: translateY(1px) !important;
+    margin: 0;
+    transform: translateY(1px);
 }
 
 body .callout[data-callout^="nav"] .callout-icon::before,
 body .callout[data-callout^="status"] .callout-icon::before,
 body .callout[data-callout^="projects"] .callout-icon::before {
-    display: block !important;
-    line-height: 1 !important;
+    display: block;
+    line-height: 1;
 }
