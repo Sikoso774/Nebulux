@@ -140,4 +140,4 @@ The theme uses **Orbitron** for headers and **Montserrat** for the body text to 
 *💡 Tip: To fully enjoy the Glassmorphism effect on the top bar, it is highly recommended to enable the "Hidden window frame" option in Obsidian's Appearance settings.*
  
 ---
-*Created with ✨ by [Zoléni KOKOLO ZASSI (@Sikoso774)](https://github.com/Sikoso774)*
+*Created with ✨ by [@Sikoso774](https://github.com/Sikoso774)*
