@@ -252,12 +252,12 @@ body .workspace-leaf-content[data-type="excalidraw"] .view-content {
    ================================================================= */
 
 /* 1. Common Base: Typography and Spacing */
-body h1,
-body h2,
-body h3,
-body h4,
-body h5,
-body h6,
+body .markdown-rendered h1,
+body .markdown-rendered h2,
+body .markdown-rendered h3,
+body .markdown-rendered h4,
+body .markdown-rendered h5,
+body .markdown-rendered h6,
 body .view-header-title,
 body .cm-header-1,
 body .cm-header-2,
@@ -275,37 +275,37 @@ body .cm-header-6 {
 }
 
 /* 2. H1: Stellar Glow */
-body h1,
+body .markdown-rendered h1,
 body .cm-header-1 {
     background-image: linear-gradient(90deg, var(--h1-start) 0%, var(--h1-end) 100%);
 }
 
 /* 3. H2: Neon Nav */
-body h2,
+body .markdown-rendered h2,
 body .cm-header-2 {
     background-image: linear-gradient(90deg, var(--h2-start) 0%, var(--h2-end) 100%);
 }
 
 /* 4. H3: Status Energy */
-body h3,
+body .markdown-rendered h3,
 body .cm-header-3 {
     background-image: linear-gradient(90deg, var(--h3-start) 0%, var(--h3-end) 100%);
 }
 
 /* 5. H4: Project Copper */
-body h4,
+body .markdown-rendered h4,
 body .cm-header-4 {
     background-image: linear-gradient(90deg, var(--h4-start) 0%, var(--h4-end) 100%);
 }
 
 /* 6. H5: Nebula */
-body h5,
+body .markdown-rendered h5,
 body .cm-header-5 {
     background-image: linear-gradient(90deg, var(--h5-start) 0%, var(--h5-end) 100%);
 }
 
 /* 7. H6: Cold Metal */
-body h6,
+body .markdown-rendered h6,
 body .cm-header-6 {
     background-image: linear-gradient(90deg, var(--h6-start) 0%, var(--h6-end) 100%);
 }
