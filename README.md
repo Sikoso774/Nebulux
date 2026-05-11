@@ -15,7 +15,7 @@ Designed for focus, immersion, and complex data management.
 </div>
  
 <div align="center">
-<img src="assets/img/screenshot.png" alt="Nebulux Screenshot" width="1000">
+<img src="./screenshot.png" alt="Nebulux Screenshot" width="1000">
 </div>
 <br>
 <br>
