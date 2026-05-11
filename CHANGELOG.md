@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 - 🌌 **Neon Graph View**: Implemented a global WebGL canvas `drop-shadow` hack to create an immersive, glowing "neon" effect on all nodes and links in the Graph View, while remaining 100% compatible with complex plugins like Excalidraw.
 
 ### 🛠️ Changed
-- **Codebase Refactoring (Zero `!important`)**: Completely rewrote the CSS specificity architecture. Removed over 300 `!important` tags. The theme now relies on proper DOM hierarchy (`body`, `.theme-dark`), making it vastly more compatible with user snippets and Obsidian's core engine, while preserving full Style Settings compatibility.
+- **Codebase Refactoring (Massive `!important` Reduction)**: Completely rewrote the CSS specificity architecture. Drastically reduced the usage of `!important` tags. The theme now relies heavily on proper DOM hierarchy (`body`, `.theme-dark`), making it vastly more compatible with user snippets and Obsidian's core engine, while preserving full Style Settings compatibility where necessary.
 
 ---
 
